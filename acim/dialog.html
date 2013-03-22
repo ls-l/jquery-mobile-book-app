@@ -1,0 +1,138 @@
+<html class="ui-mobile"><head><base href="http://jquerymobile.com/demos/1.0rc3/docs/pages/dialog.html">
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport"> 
+	<title>jQuery Mobile Framework - Dialog Example</title> 
+	<link href="../../jquery.mobile-1.0rc3.min.css" rel="stylesheet">  
+	<link href="../_assets/css/jqm-docs.css" rel="stylesheet">
+	<script src="../../jquery.js"></script>
+	<script src="../../experiments/themeswitcher/jquery.mobile.themeswitcher.js"></script>
+	<script src="../_assets/js/jqm-docs.js"></script>
+	<script src="../../jquery.mobile-1.0rc3.min.js"></script>
+</head> 
+<body class="ui-mobile-viewport"> 
+
+	<div class="type-interior ui-page ui-body-c" data-role="page" data-url="/demos/1.0rc3/docs/pages/page-dialogs.html" tabindex="0" style="min-height: 638px;">
+
+		<!--<div data-theme="f" data-role="header" class="ui-header ui-bar-f" role="banner">
+		<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Dialogs</h1>
+		<a class="ui-btn-right jqm-home ui-btn ui-btn-up-f ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-direction="reverse" data-iconpos="notext" data-icon="home" href="../../" title="Home" data-theme="f"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Home</span><span class="ui-icon ui-icon-home ui-icon-shadow"></span></span></a>
+	</div>--><!-- /header -->
+
+	<div class="ui-body ui-content" data-role="content" role="main">
+			<div class="content-primary">
+			<h2>Creating dialogs</h2>
+			<!--<p>Any page can be presented as a modal dialog by adding the <code>data-rel="dialog"</code> attribute to the page anchor link. When the "dialog" attribute is applied, the framework adds styles to add rounded corners, margins around the page and a dark background to make the "dialog" appear to be suspended above the page.</p>
+
+			<p>
+			<code>
+			&lt;a href="foo.html" data-rel="dialog"&gt;Open dialog&lt;/a&gt;
+			</code>
+			</p>
+			
+			<a data-transition="pop" data-rel="dialog" data-inline="true" data-role="button" href="dialog.html" data-theme="c" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Open dialog</span></span></a>
+			
+
+			
+			<h2>Transitions</h2>
+			<p>By default, the dialog will open with a 'pop' transition.  Like all pages, you can specify any page transition you want on the dialog by adding the <code>data-transition</code> attribute to the link. To make it feel more dialog-like, we recommend specifying a transition of "pop", "slideup" or "flip".</p>
+			
+            <code>
+&lt;a href="foo.html" data-rel="dialog" data-transition="pop"&gt;Open dialog&lt;/a&gt;
+</code>
+			
+			<div>
+			<a data-transition="pop" data-rel="dialog" data-inline="true" data-role="button" href="dialog.html" data-theme="c" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">data-transition="pop"</span></span></a>
+			<a data-transition="slidedown" data-rel="dialog" data-inline="true" data-role="button" href="dialog.html" data-theme="c" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">data-transition="slidedown"</span></span></a>
+			<a data-transition="flip" data-rel="dialog" data-inline="true" data-role="button" href="dialog.html" data-theme="c" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">data-transition="flip"</span></span></a>
+			</div>
+	
+	
+			<h2>Closing dialogs</h2>
+			<p>When any link is clicked within in a dialog, the framework will automatically close the dialog and transition to the requested page, just as if the dialog were a normal page. To create a "cancel" button in a dialog, just link to the page that triggered the dialog to open and add the <code>data-rel="back"</code> attribute to your link. This pattern of linking to the previous page is also usable in non-JS devices as well.</p>
+			<p>For JavaScript-generated links, you can simply set the href attribute to "#" and use the <code>data-rel="back"</code> attribute. You can also call the dialog's <code>close()</code> method to programmatically close dialogs, for example: <code>$('.ui-dialog').dialog('close')</code>. </p>
+			
+			<h3>Setting the close button text</h3>
+			<p>Just like the page plugin, you can set a dialog's close button text through an option or data attribute. The option can be configured for all dialogs by binding to the <code>mobileinit</code> event and setting the <code>$.mobile.dialog.prototype.options.closeBtnText</code> property to a string of your choosing, or you can place the data attribute <code>data-close-btn-text</code> to configure the text from your markup.</p>
+			
+			<h2>History &amp; Back button behavior</h2>
+			<p>Since dialogs are typically used to support actions within a page, the framework does not include dialogs in the hash state history tracking. This means that dialogs will not appear in your browsing history chronology when the Back button is clicked. For example, if you are on a page, click a link to open a dialog, close the dialog, then navigate to another page, if you were to click the browser's Back button at that point you will navigate back to the first page, not the dialog.</p>
+			
+			<h2>Styling &amp; theming</h2>
+			<p>Dialogs can be styled with different theme swatches, just like any page by adding <code>data-theme</code> attributes to the header, content, or footer containers. Here is an example of a different dialog design:</p>
+				<a data-transition="pop" data-rel="dialog" data-inline="true" data-role="button" href="dialog-alt.html" data-theme="c" class="ui-btn ui-btn-inline ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">An alternate color scheme</span></span></a>
+				
+			<p>Dialogs appear to be floating above an overlay layer. This overlay adopts the swatch A content color by default, but the <code>data-overlay-theme</code> attribute can be added to the page wrapper to set the overlay to any swatch letter. Here is an example of a dialog with the overlay set to swatch e:</p>
+				<a data-transition="pop" data-rel="dialog" data-inline="true" data-role="button" href="dialog-overlay.html" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-inline ui-btn-corner-all ui-shadow"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Custom overlay swatch</span></span></a>
+		
+		
+			<p>Dialogs can also be used more like a control sheet to offer multiple buttons by removing the header:</p>
+						<a data-transition="slidedown" data-rel="dialog" data-inline="true" data-role="button" href="dialog-buttons.html" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-inline ui-btn-corner-all ui-shadow"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Share photos...</span></span></a>
+			
+			<h2>Dialog width and margins</h2>
+			<p>For the sake of readability, dialogs have a default <code>max-width</code> of 500 pixels (plus 15px padding on each side). There is also a 10% top <code>margin</code> to give dialogs larger top margin on larger screens, but collapse to a small margin on smartphones. To override these styles, add the following CSS override rule to your stylesheet and tweak as needed:</p>
+
+<code><pre>.ui-dialog .ui-header, 
+.ui-dialog .ui-content, 
+.ui-dialog .ui-footer { 
+<strong>	max-width: 500px; 
+	margin: 10% auto 15px auto; </strong>
+}
+</pre></code>-->
+
+			
+
+
+			
+	</div><!--/content-primary -->		
+
+	<!--<div class="content-secondary">
+
+		<div data-content-theme="d" data-theme="b" data-collapsed="true" data-role="collapsible" class="ui-collapsible ui-collapsible-collapsed"><h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed"><a class="ui-collapsible-heading-toggle ui-btn ui-btn-up-b ui-btn-icon-left ui-corner-top ui-corner-bottom" href="#" data-theme="b"><span class="ui-btn-inner ui-corner-top ui-corner-bottom" aria-hidden="true"><span class="ui-btn-text">More in this section<span class="ui-collapsible-heading-status"> click to expand contents</span></span><span class="ui-icon ui-icon-plus ui-icon-shadow"></span></span></a></h3><div class="ui-collapsible-content ui-body-d ui-collapsible-content-collapsed" aria-hidden="true">
+
+				
+
+				<ul data-dividertheme="d" data-theme="c" data-role="listview" class="ui-listview">
+
+								<li data-role="list-divider" role="heading" class="ui-li ui-li-divider ui-btn ui-bar-d ui-btn-up-undefined">Pages &amp; Dialogs</li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="page-anatomy.html" class="ui-link-inherit">Anatomy of a page</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a data-ajax="false" href="page-template.html" class="ui-link-inherit">Single page template</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a data-ajax="false" href="multipage-template.html" class="ui-link-inherit">Multi-page template</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="page-titles.html" class="ui-link-inherit">Page titles</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="page-links.html" class="ui-link-inherit">Linking pages</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a data-ajax="false" href="page-transitions.html" class="ui-link-inherit">Page transitions</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-a"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="page-dialogs.html" class="ui-link-inherit">Dialogs</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="page-cache.html" class="ui-link-inherit">Prefetching &amp; caching pages</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="page-navmodel.html" class="ui-link-inherit">Ajax, hashes &amp; history</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="page-dynamic.html" class="ui-link-inherit">Dynamically injecting pages</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="page-scripting.html" class="ui-link-inherit">Scripting pages</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="phonegap.html" class="ui-link-inherit">PhoneGap apps</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-btn-up-c"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="touchoverflow.html" class="ui-link-inherit">touchOverflow feature</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+								<li data-theme="c" class="ui-btn ui-btn-up-c ui-btn-icon-right ui-li-has-arrow ui-li"><div class="ui-btn-inner ui-li" aria-hidden="true"><div class="ui-btn-text"><a href="pages-themes.html" class="ui-link-inherit">Theming pages</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow"></span></div></li>
+				</ul>
+		</div></div>
+	</div>-->		
+
+</div><!-- /content -->
+
+<div data-theme="c" class="footer-docs ui-footer ui-bar-c" data-role="footer" role="contentinfo">
+		<p>&copy; 2011 The jQuery Project</p>
+</div>
+
+</div><!-- /page -->
+
+
+
+<!--<div class="ui-loader ui-body-a ui-corner-all" style="top: 1174px;"><span class="ui-icon ui-icon-loading spin"></span><h1>loading</h1></div><div data-role="dialog" data-url="/demos/1.0rc3/docs/pages/dialog.html" data-external-page="true" tabindex="0" class="ui-page ui-body-c ui-overlay-a ui-dialog ui-page-active" role="dialog" style="min-height: 363px;">
+	
+		<div data-theme="d" data-role="header" class="ui-corner-top ui-overlay-shadow ui-header ui-bar-d" role="banner"><a data-iconpos="notext" data-icon="delete" href="#" class="ui-btn-left ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" title="Close" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Close</span><span class="ui-icon ui-icon-delete ui-icon-shadow"></span></span></a>
+			<h1 class="ui-title" tabindex="0" role="heading" aria-level="1">Dialog</h1>
+
+		</div>
+
+		<div data-theme="c" data-role="content" class="ui-overlay-shadow ui-corner-bottom ui-content ui-body-c" role="main">
+			<h1>Delete page?</h1>
+			<p>This is a regular page, styled as a dialog. To create a dialog, just link to a normal page and include a transition and <code>data-rel="dialog"</code> attribute.</p>
+			<a data-theme="b" data-rel="back" data-role="button" href="docs-dialogs.html" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-b"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Sounds good</span></span></a>       
+			<a data-theme="c" data-rel="back" data-role="button" href="docs-dialogs.html" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-c"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span></span></a>    
+		</div>
+	</div>--></body></html>
