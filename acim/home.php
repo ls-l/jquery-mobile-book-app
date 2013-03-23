@@ -15,15 +15,6 @@
     <script type="text/javascript">
 	    
 	</script>
-	<script>
-	      //$.mobile.showPageLoadingMsg("a", "Loading theme a...");
-            /*$(document).bind( 'mobileinit', function(){
-               $.mobile.loadingMessageTheme = 'e';
-               $.mobile.loadingMessageTextVisible = true;
-               $.mobile.loadingMessage = "Loading...";
-			   
-            });*/
-        </script>
 		<script>
             $(document).on("click", ".loader", function() {          
                 
@@ -35,33 +26,47 @@
 				loader.attr('class','ui-loader ui-body-'+bgColor+' ui-corner-all');
 				$(this).trigger('create');
 			});
+			function divFunction(){
+               
+				var w=window.innerWidth;
+                var h=window.innerHeight;
+                var w = w-50;
+				
+				if(w < 400){
+				   var per = 100;
+				} else if(w < 1000){
+				  var per = 70;
+				} else if(w < 1300){
+				  var per = 60;
+				} else {
+				  var per = 40;
+				}
+				
+				
+				var popupwidth = (w*per)/100;			
+				var marginleft = (w-popupwidth)/2;
+				var marginright = (w-popupwidth)/2;
+				
+				   $("#popupReading").css("width", popupwidth);
+				   $("#popupReading").css("margin-left", marginleft);
+				   $("#popupReading").css("margin-right", marginright);
+				   $("#popupReading").css("left", "0px");
+				   $("#popupReading").css("right", "0px");
+			    
+			}
         </script>
 </head>
 <body>
-  <div data-role="page">
-     
-	 <div data-role="content">
-		<div class="home">
-    	<div class="main_bg">
+   <div data-role="content">
+		<div class="home innertube">
+    	<div class="main_bg innertube">
             <h1>A Course In <br/> Miracles</h1>
             <h2>Living the Love every day!</h2>
-          	<div class="menu">
+          	<div class="menu innertube">
                 <ul data-type="horizontal" class="localnav">
                     <!--<li><a href="reading_chapter.html" class="loader"><span><img src="images/reding.png" /></span><label>Reading</label></a></li>-->	
                     <!--<li><a href="reading_chapter.html" class="loader" ><span><img src="images/reding.png" /></span><label>Reading</label></a></li>-->
-					<li><a href="#popupReading" data-rel="popup"><span><img src="images/reding.png" /></span><label>Reading</label></a></li>
-                   <div data-role="popup" id="popupReading" class="home-popup">
- 				   <!--<p style="height:70px; width:150px; margin-top:-70px;">
-                        This is a test description
-	               </p>-->
-				   <div class="home-popup-content">
-				        <div class="home-popup-content-first">Book 1</div>
-						<div class="home-popup-content-other">Book 2</div>
-						<div class="home-popup-content-other">Book 3</div>
-						<div class="home-popup-content-other">Book 4</div>
-                   </div> 
-				   </div>
-					
+					<li><a href="#popupReading" data-rel="popup" onClick="divFunction()"><span><img src="images/reding.png" /></span><label>Reading</label></a></li>
 					<li class="menu_sep"><a href="setting.html" class="loader"><span><img src="images/setting.png" /></span><label>Settings</label></a></li>	
                     <li><a href="#"><span><img src="images/lesson.png" class="loader"/></span><label>Lessons</label></a></li>	
                 </ul>
@@ -71,6 +76,14 @@
                     <li><a href="#"><span><img src="images/info.png" /></span><label>Info</label></a></li>	
                 </ul> 
         	  </div>
+			  <div data-role="popup" id="popupReading" class="home-popup">
+				   <div class="home-popup-content">
+				        <div class="home-popup-content-first"><a href="chapter.php" class="loader"><span><img src="images/reding.png" /></span><br/><label>Text Book</label></a></div>
+						<div class="home-popup-content-other"><a href="chapter.php" class="loader"><span><img src="images/reding.png" /></span><br/><label>Teachers's Manual</label></a></div>
+						<div class="home-popup-content-other"><a href="chapter.php" class="loader"><span><img src="images/reding.png" /></span><br/><label>The Song of Prayer</label></a></div>
+						<div class="home-popup-content-other2"><a href="chapter.php" class="loader"><span><img src="images/reding.png" /></span><br/><label>The Psychotherapy Supplementory</label></a></div>
+                   </div> 
+				   </div>
     	</div>
 	 </div>
 	 
