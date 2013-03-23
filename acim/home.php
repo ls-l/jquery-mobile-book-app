@@ -1,3 +1,6 @@
+<?php 
+include('include/db.class.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,6 +60,7 @@
         </script>
 </head>
 <body>
+<div data-role="page">
    <div data-role="content">
 		<div class="home innertube">
     	<div class="main_bg innertube">
@@ -78,15 +82,16 @@
         	  </div>
 			  <div data-role="popup" id="popupReading" class="home-popup">
 				   <div class="home-popup-content">
-				        <div class="home-popup-content-first"><a href="chapter.php" class="loader"><span><img src="images/reding.png" /></span><br/><label>Text Book</label></a></div>
-						<div class="home-popup-content-other"><a href="chapter.php" class="loader"><span><img src="images/reding.png" /></span><br/><label>Teachers's Manual</label></a></div>
-						<div class="home-popup-content-other"><a href="chapter.php" class="loader"><span><img src="images/reding.png" /></span><br/><label>The Song of Prayer</label></a></div>
-						<div class="home-popup-content-other2"><a href="chapter.php" class="loader"><span><img src="images/reding.png" /></span><br/><label>The Psychotherapy Supplementory</label></a></div>
+				        <div class="home-popup-content-first"><a href="main_page.php?bookid=1" class="loader"><span><img src="images/reding.png" /></span><br/><label>Text Book</label></a></div>
+						<div class="home-popup-content-other"><a href="main_page.php?bookid=2" class="loader"><span><img src="images/reding.png" /></span><br/><label>Teachers's Manual</label></a></div>
+						<div class="home-popup-content-other"><a href="main_page.php?bookid=3" class="loader"><span><img src="images/reding.png" /></span><br/><label>The Song of Prayer</label></a></div>
+						<div class="home-popup-content-other2"><a href="main_page.php?bookid=4" class="loader"><span><img src="images/reding.png" /></span><br/><label>The Psychotherapy Supplementory</label></a></div>
                    </div> 
 				   </div>
     	</div>
 	 </div>
 	 
   </div>
+</div>
 </body>
 </html>

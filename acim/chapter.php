@@ -1,3 +1,6 @@
+<?php 
+include('include/db.class.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +22,9 @@
 </head>
 
 <body>
-<div data-role="content">
-	<div class="inner_bg">
+<div data-role="page">
+   <div data-role="content">
+	 <div class="inner_bg">
     	<div class="example-chep">
           <div class="top-menu">
           	<ul>
@@ -36,34 +40,70 @@
           
           </div>
           <div class="midd-cont">
-          	<h4>Chapter 3</h4>
-            <p>The Innocent Perception</p>
+		  <?php 					   
+			    $db = db::__d();
+				$query = "SELECT * FROM tbl_chapter where tbl_ch_id = ".trim($_REQUEST['chid']);
+				$res = qs($query);
+		        if(!isset($_REQUEST['pageno'])){
+				  $pageno = 1; 
+				} else {
+				  $pageno = $_REQUEST['pageno']; 
+				}
+				if($pageno == 1){
+				  $prepage = $pageno;
+				} else {
+				  $prepage = $pageno-1;
+				}
+				$nxtpage = $pageno+1;
+				
+				$chid = $res['tbl_ch_id'];
+				$bookid = $res['tbl_ch_bookid']
+		  ?>
+          	<h4>Chapter <?php echo $res['tbl_ch_no']; ?></h4>
+            <p><?php echo $res['tbl_ch_name']; ?></p>
+			<?php 
+			      $db = db::__d();
+				  $where = " tbl_page_chid = ".$chid." AND tbl_page_bookid = ".$bookid." AND tbl_page_no = ".$pageno;
+		          $query_count = "SELECT tbl_page_id FROM tbl_page where ".$where;  			  
+			      $res_count = q($query_count);
+			?>
             	<div class="chapter-detail">
-                    <div class="bookmark-page">
+                    <?php if(count($res_count) > 0){ ?>
+					<div class="bookmark-page">
                         <ul>
                             <li class="heart_chep"></li>
                             <li class="book_chep"></li>
                             <li class="yellow_chep"></li>
-                           
-                        
                         </ul>
                      </div>
-                    <div class="cont-text">I. Atonement Without Sacrifice
-    A further point must be perfectly clear before any residual fear still associated with miracles can disappear. The crucifixion did not establish the Atonement; the resurrection did. Many sincere Christians have misunderstood this. No one who is free of the belief in scarcity could possibly make this mistake. If the crucifixion is seen from an upside-down point of view, it does appear as if God No one who is free of the belief in scarcity could possibly make this mistake. If the crucifixion is seen from an upside-down point of view, it does appear as if God </div>
-                    <div class="cls"></div>
+					<?php } ?> 
+                    <div class="cont-text" <?php if(count($res_count) > 0){ ?> style="min-height:750px;" <?php } ?>>
+					<?php  
+					  $db = db::__d();
+					  if(count($res_count) > 0){
+					  $query = "SELECT tbl_page_content FROM tbl_page where ".$where;
+					  $res = qs($query);
+					  echo $res['tbl_page_content'];
+					 } else { 
+					  echo "No Record Found.";
+					  ?>
+					 <?php } ?>
+					<div class="cls"></div>
                 </div>
+				 <div style="clear:both;"></div>
           </div>
+		  <?php //if(count($res_count) > 0){ ?>
           <div class="footer-cont">
-          	<span class="left-arrow"><a href="#"><img src="images/left-arrow.png" /></a></span>
+          	<span class="left-arrow"><a href="chapter.php?chid=<?php echo $chid; ?>&pageno=<?php echo $prepage; ?>"><img src="images/left-arrow.png" /></a></span>
            	<div class="pagination">123</div>
-            <span class="right-arrow"><a href="#"><img src="images/right-arrow.png" /></a></span>
+            <span class="right-arrow"><a href="chapter.php?chid=<?php echo $chid; ?>&pageno=<?php echo $nxtpage; ?>"><img src="images/right-arrow.png" /></a></span>
             <div class="cls"></div>
-          </div>  
+          </div> 
+		  <?php //} ?> 
           
     	</div>
-    
-
-</div>
+    </div>
+   </div>
 </div>
 </body>
 </html>
