@@ -1,5 +1,6 @@
 <?php 
 include('include/db.class.php');
+include('include/common_function.php');   
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,9 +53,18 @@ include('include/db.class.php');
 							   ?>
 							</div>
 							<div class="cont-text" style="float:left;">
-								<a href="chapter.php?chid=<?php echo $result[$i]['tbl_ch_id']; ?>">
+							<?php 
+							   $pageno_start = GetChapterPageNo(trim($_REQUEST['bookid']),$result[$i]['tbl_ch_id']);
+							   if($pageno_start > 0){
+							     $p_q_s = "&pageno=".$pageno_start;
+							   }else{
+							     $p_q_s = '';
+							   }
+							?>
+								<a href="chapter.php?chid=<?php echo $result[$i]['tbl_ch_id'].$p_q_s; ?>" data-ajax="false">
 								<?php 
 								   echo $result[$i]['tbl_ch_name'];
+								   
 								?>
 								</a>
 							</div>

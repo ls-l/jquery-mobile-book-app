@@ -3,6 +3,7 @@ define('DB_HOST', 'localhost');
 define('DB_PASSWORD', '');
 define('DB_UNAME', 'root');
 define('DB_NAME', 'acim');
+define('SITE_URL','http://localhost/acim/');
 
 
 class db {
@@ -85,7 +86,11 @@ function q($query='') {
 
 function qs($q) {
     $d = q($q);
-    return $d[0];
+    if(count($d) > 0){
+	   return $d[0];
+	} else {
+	   return "";
+	}
 }
 
 ?>
