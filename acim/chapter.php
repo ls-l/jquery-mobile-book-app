@@ -55,7 +55,7 @@ include('include/common_function.php');
             </ul>
           
           </div>
-          <div class="midd-cont">
+          <div class="midd-cont" style="height:77%">
 		  <?php 					   
 			    $db = db::__d();
 				$query = "SELECT * FROM tbl_chapter where tbl_ch_id = ".trim($_REQUEST['chid']);
@@ -83,7 +83,7 @@ include('include/common_function.php');
 		          $query_count = "SELECT tbl_page_id FROM tbl_page where ".$where;  			  
 			      $res_count = q($query_count);
 			?>
-            	<div class="chapter-detail">
+            	<div class="chapter-detail" style="">
                     <?php if(count($res_count) > 0){ ?>
 					<div class="bookmark-page">
                         <!--<ul>
@@ -93,8 +93,8 @@ include('include/common_function.php');
                         </ul>-->
                      </div>
 					<?php } ?> 
-                    
-					<div class="cont-text" <?php if(count($res_count) > 0){ ?> style="min-height:715px;" <?php } ?>>
+                    <!--style="min-height:70%;"-->
+					<div class="cont-text" <?php if(count($res_count) > 0){ ?>  <?php } ?>>
 					<?php  
 					  $db = db::__d();
 					  if(count($res_count) > 0){
@@ -110,6 +110,7 @@ include('include/common_function.php');
                 </div>
 				 <div style="clear:both;"></div>
           </div>
+		        <div style="clear:both;"></div>
 		  <?php //if(count($res_count) > 0){ 
 		        $db = db::__d();
 				$query = "SELECT tbl_page_no,tbl_page_chid FROM tbl_page where tbl_page_bookid = ".$bookid." ORDER BY tbl_page_no ASC";
@@ -117,14 +118,18 @@ include('include/common_function.php');
 				$total_page = count($res);
 				if($total_page > 0){
 		  ?>
-          <div class="footer-cont">
+           
+		  <?php } ?> 
+          
+    	</div>
+		  <div class="footer-cont">
           	<span class="left-arrow">
 			<?php  if($pageno != 1){ ?>
-			<a href="chapter.php?chid=<?php echo GetChapternoFromPageno($bookid,$prepage); ?>&pageno=<?php echo $prepage; ?>" data-ajax="false">
+			<a href="javascript:void(0);" data-ajax="false" onClick="return redirect_page('chapter.php?chid=<?php echo GetChapternoFromPageno($bookid,$prepage); ?>&pageno=<?php echo $prepage; ?>');">
 			   <img src="images/left-arrow.png" />
 			</a>
 			<?php } else { ?>
-			   <img src="images/left-arrow.png" />
+			   <a href="javascript:void(0);" data-ajax="false"><img src="images/left-arrow.png" /></a>
 			<?php } ?>
 			</span>
            	<div class="pagination">
@@ -154,7 +159,7 @@ include('include/common_function.php');
 						  echo $pageno;
 					   } else {  
 				   ?>   
-						 <a href="chapter.php?chid=<?php echo $res[$i]['tbl_page_chid']; ?>&pageno=<?php echo $res[$i]['tbl_page_no']; ?>" data-ajax="false"><?php echo $res[$i]['tbl_page_no']; ?></a>			  
+						 <a href="javascript:void(0);" data-ajax="false" onClick="return redirect_page('chapter.php?chid=<?php echo $res[$i]['tbl_page_chid']; ?>&pageno=<?php echo $res[$i]['tbl_page_no']; ?>');"><?php echo $res[$i]['tbl_page_no']; ?></a>			  
 				   <?php 
 					   } 
 			      }
@@ -162,16 +167,13 @@ include('include/common_function.php');
 			</div>
             <span class="right-arrow">
 			<?php  if($pageno >= $total_page){ ?>
-			   <img src="images/right-arrow.png" />
+			   <a href="javascript:void(0);" data-ajax="false"><img src="images/right-arrow.png" /></a>
 			<?php } else { ?> 
-			  <a href="chapter.php?chid=<?php echo GetChapternoFromPageno($bookid,$nxtpage); ?>&pageno=<?php echo $nxtpage; ?>" data-ajax="false"><img src="images/right-arrow.png" /></a>
+			  <a href="javascript:void(0);" data-ajax="false" onClick="return redirect_page('chapter.php?chid=<?php echo GetChapternoFromPageno($bookid,$nxtpage); ?>&pageno=<?php echo $nxtpage; ?>');"><img src="images/right-arrow.png" /></a>
 			<?php } ?>
 			</span>
             <div class="cls"></div>
-          </div> 
-		  <?php } ?> 
-          
-    	</div>
+          </div>
     </div>
    </div>
 </div>
@@ -180,6 +182,10 @@ include('include/common_function.php');
 		  $(document).ready(function() {
 			$(".draggable").draggable();
 		  });
+		   function redirect_page(str){
+		     location.href = str;
+		   }
+		  
  </script>
 </body>
 </html>
