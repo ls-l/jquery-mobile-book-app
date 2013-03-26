@@ -75,7 +75,7 @@ include('include/common_function.php');
           <div class="midd-cont" style="height:77%">
 		  <?php 					   
 			    $db = db::__d();
-				$query = "SELECT * FROM tbl_chapter where tbl_ch_id = ".trim($_REQUEST['chid']);
+			    $query = "SELECT * FROM tbl_chapter where tbl_ch_id = ".trim($_REQUEST['chid']);
 				$res = qs($query);
 		        if(!isset($_REQUEST['pageno'])){
 				  $pageno = 1; 
@@ -90,6 +90,7 @@ include('include/common_function.php');
 				$nxtpage = $pageno+1;
 				
 				$chid = $res['tbl_ch_id'];
+				$chno = $res['tbl_ch_no'];
 				$bookid = $res['tbl_ch_bookid']
 		  ?>
           	<h4>Chapter <?php echo $res['tbl_ch_no']; ?></h4>
@@ -104,7 +105,9 @@ include('include/common_function.php');
                     <?php if(count($res_count) > 0){ ?>
 					<div class="bookmark-page">
                         <ul>
-                            <li id="bookmark_icon" class="droppable" style="">&nbsp;</li>
+                            <li id="bookmark_icon" class="droppable" style="">&nbsp;
+							    <div style="top:33%;position:absolute;">..</div>
+							</li>
 						</ul>
                      </div>
 					<?php } ?> 
@@ -218,6 +221,23 @@ include('include/common_function.php');
 				  var pos = ui.draggable.position();
 				  //alert('top: ' + pos.top+ ', left: ' + pos.left);
 				  //alert(h+"--"+w);
+				  var topposition = (pos.top/h)*100; 
+				  //var topposition = (pos.top/dragablediv)*100; 
+				  //alert(topposition);
+				  var url = "icon_insert.php?pageno=<?php echo $pageno;?>&chid=<?php echo $chid;?>&chno=<?php echo $chno;?>&bookid=<?php echo $bookid;?>&topposition="+topposition;
+				  var data = '';
+				  $.ajax({
+                    url: url,
+                    data: data,
+                    dataType: 'json',
+                    success: function() {
+                        if(rsp.success) {
+                            alert(rsp);
+                        }
+                    }
+                 });
+				 
+				   
 			    }
 				// if you want to disable the dragging after drop un-comment this
 		        /*

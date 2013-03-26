@@ -66,7 +66,110 @@ class db {
         }
         return $data_array;
     }
-    
+
+  function insert_query($tableName, $values, $debug=false) {
+        /* Insert the $values into the database. 
+         * e.g. 
+         * $values = array ("name"=>"kris","email"=>"karn@nucleus.com"); 
+         * InsertQuery ("employee", $values); 
+         */
+        return $this->InsertUpdateQuery($tableName, $values, "", $debug);
+    }
+
+    /*     * ***************************************************** */
+
+    /*
+     * update_query 
+     * Desc: Update data in the database. 
+     * Parms: 
+     *   $tableName - database table name. 
+     *   $values - associative array of field names and corresponding values. 
+     *   $where - SQL Where clause to specify which row(s) to update. 
+     *   $debug - If true then return SQL query without executing. 
+     * Returns: 
+     *   Nothing on success. 
+     *   Error String on failure. 
+     */
+
+    function update_query($tableName, $values, $where="", $debug=false) {
+
+        /* Update the $values in the database. 
+         * e.g. 
+         * $values = array ("name"=>"kris","email"=>"karn@nucleus.com"); 
+         * $where = "WHERE id='1'"; 
+         * UpdateQuery ("employee", $values, $where); 
+         */
+        if (empty($where))
+            $where = " ";
+
+        return $this->InsertUpdateQuery($tableName, $values, $where, $debug);
+    }
+
+    /*     * ***************************************************** */
+
+    function InsertUpdateQuery($tableName, $fieldValues, $type="", $debug=false) {
+
+        $i = 0;
+        $fields = "";
+        $values = "";
+        $updateList = "";
+        $error = '';
+        while (list ($key, $val) = each($fieldValues)) {
+            //$val = mysql_real_escape_string($val);
+            if ($i > 0) {
+                $fields .= ", ";
+                $values .= ", ";
+                $updateList .= ", ";
+            }
+
+            $fields .= $key;
+
+            // If you do not want to add quotes 
+            // around the field then specify 
+            // /*NO_QUOTES*/ when passing in the value. 
+            // For update statements like 
+            // "update poll set total_votes=total_votes+1", 
+            // you do not want 
+            // the value field to have quotes around it. 
+            if (strstr($val, "/*NO_QUOTES*/")) {
+                $val = str_replace("/*NO_QUOTES*/", "", $val);
+                $updateList .= "$key=$val";
+                $values .= $val;
+            } else {
+                $updateList .= "$key='$val'";
+                $values .= "'$val'";
+            }
+            $i++;
+        }
+
+        if (empty($type)) {
+            $query = "insert into $tableName ($fields) values ($values)";
+        } else {
+            $type = " where " . $type;
+            $query = "update $tableName set $updateList $type";
+        }
+        /* print $query;
+          exit; */
+        if ($debug) {
+            //@mysql_close($db); 
+            return $query;
+        }
+
+
+        //$query =  mysql_real_escape_string($query);
+        $stmt = mysql_query($query);
+
+
+        if ($stmt == false) {
+            echo mysql_errno() . ": " . mysql_error() . "<br>";
+            echo "<Br>your query is: " . $query;
+            //die();
+        }
+        @mysql_free_result($stmt);
+        //@mysql_close($db); 
+
+        return $error;
+    }    
 }
 
 function d($arr, $hideStyle="block") {
@@ -93,5 +196,7 @@ function qs($q) {
 	   return "";
 	}
 }
+
+
 
 ?>
