@@ -19,72 +19,56 @@ include('include/common_function.php');
     <script type="text/javascript">
 	    
 	</script>
-<title>example-of-chapter</title>
+<title>Reading-Chapter</title>
 </head>
 
 <body>
-<div data-role="page">
-   <div data-role="content">
-	 <div class="inner_bg">
-    	<div class="example-chep">
-          <div class="top-menu cont-text">
-          	  <?php
+	<div data-role="page">
+	   <div data-role="content">
+		<div class="inner_bg">
+			<div class="content">
+			  <div class="home_icon"><a href="home.php"><img src="images/home.png" /></a></div>
+			  <?php
 			     $db = db::__d();
 				 $query = "SELECT tbl_book_title FROM  tbl_book where tbl_book_id = ".trim($_REQUEST['bookid']);
-				 $res = qs($query);
-			     echo $res['tbl_book_title']; 
+				 $res = qs($query); 
 			  ?>
-          </div>
-		  <div style="clear:both;"></div>
-          <div class="midd-cont">
-            	<div class="chapter-detail">
-                    
-					 <?php 					   
+			  <h2><?php echo $res['tbl_book_title']; ?></h2>
+			  <div class="chapter">
+			   
+				<ul>
+				    <!--class="close_chep"-->
+					<li><a href="javascript:void(0);">Preface</a><div class="cls"></div></li>
+					<li><a href="javascript:void(0);">Introduction</a><div class="cls"></div></li>
+					<?php 					   
 						$db = db::__d();
 						$query = "SELECT * FROM tbl_chapter where tbl_ch_bookid = ".trim($_REQUEST['bookid']);
 						$result = q($query);
 						$totql_res = count($result);
 						if($totql_res > 0){
 						  for($i=0;$i<$totql_res;$i++){
-					 ?>
-							<div class="cont-text" style="float:left;margin-right:10px;width:20px;">
-							   <?php 
-							      echo $result[$i]['tbl_ch_no'];
-							   ?>
-							</div>
-							<div class="cont-text" style="float:left;">
-							<?php 
-							   $pageno_start = GetChapterPageNo(trim($_REQUEST['bookid']),$result[$i]['tbl_ch_id']);
-							   if($pageno_start > 0){
+					 
+					      $pageno_start = GetChapterPageNo(trim($_REQUEST['bookid']),$result[$i]['tbl_ch_id']);
+						  if($pageno_start > 0){
 							     $p_q_s = "&pageno=".$pageno_start;
-							   }else{
+						  }else{
 							     $p_q_s = '';
-							   }
-							?>
-								<a href="chapter.php?chid=<?php echo $result[$i]['tbl_ch_id'].$p_q_s; ?>" data-ajax="false">
-								<?php 
-								   echo $result[$i]['tbl_ch_name'];
-								   
-								?>
-								</a>
-							</div>
-							<div style="clear:both;"></div>
+						  }
+					 ?>
+					     <!--class="close_chep"-->
+					        <li><a href="chapter.php?chid=<?php echo $result[$i]['tbl_ch_id'].$p_q_s; ?>" data-ajax="false"><span>Ch. <?php echo $result[$i]['tbl_ch_no'];?>-</span><label><?php echo $result[$i]['tbl_ch_name'];?></label></a><div class="cls"></div></li>
 	                 <?php  } 
 					      }  
 					 ?>
-                    <div class="cls"></div>
-                </div>
-          </div>
-          <!--<div class="footer-cont">
-          	<span class="left-arrow"><a href="#"><img src="images/left-arrow.png" /></a></span>
-           	<div class="pagination">123</div>
-            <span class="right-arrow"><a href="#"><img src="images/right-arrow.png" /></a></span>
-            <div class="cls"></div>
-          </div>-->  
-          
-    	</div>
-    </div>
-   </div>
-</div>
+				</ul>
+			  
+			  </div> 
+				
+			</div>
+		
+	
+	</div>
+	   </div>
+	</div>   
 </body>
 </html>

@@ -1,10 +1,9 @@
 <?php
 define('DB_HOST', 'localhost');
-define('DB_PASSWORD', '');
-define('DB_UNAME', 'root');
-define('DB_NAME', 'acim');
-define('SITE_URL','http://localhost/acim/');
-define('SITE_URL_DEMO','');
+define('DB_PASSWORD', 'K11hh%hQmhky');
+define('DB_UNAME', 'phigib_acimdb');
+define('DB_NAME', 'phigib_acimdb');
+define('SITE_URL','http://thelaunchengine.com/acim/demo/');
 
 
 class db {

@@ -22,12 +22,29 @@ include('include/common_function.php');
 	
 	<!--Apply Image Dragable Script-->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>-->
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>-->
+	<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
 	<!--Apply Image Dragable Script-->
+	
+    
+	<script src="javascript/js/jquery.ui.touch-punch.js"></script>
+	
     <style id="jsbin-css">
-     </style>
+    </style>
+	<style type="text/css">
+	   .unselectable {
+			-webkit-user-select: none; /* Safari, Chrome */
+			-khtml-user-select: none; /* Konqueror */
+			-moz-user-select: none; /* Firefox */
+			-webkit-touch-callout: none;
+			-ms-user-select: none;
+			-o-user-select: none;
+			user-select: none; /* CSS3 */
+		}
+	</style>
 <title>example-of-chapter</title>
 </head>
 
@@ -41,12 +58,12 @@ include('include/common_function.php');
             	<li class="setting-icon"><a href="#"></a></li>
                 <li class="heart-icon"><a href="#"></a></li>
                 <li class="time-icon"><a href="#"></a></li>
-                <li class="pen-icon"><a href="#"></a></li>
+                <li class="pen-icon"><a href="javascript:void(0);" onClick="return select_highlight();"></a></li>
                 <li class="pin-icon"><a href="#"></a></li>
                 <li class="search-icon"><a href="#"></a></li>
                 <li class="tag-icon" style="position:relative;">
 				<?php for($i=1;$i<=10;$i++) { ?>
-				   <a href="javascript:void(0)" class="draggable" style="position:absolute;"></a>
+				   <a href="javascript:void(0)" class="drag" style="position:absolute;"></a>
 				<?php } ?>
 				
 				</li>
@@ -86,26 +103,23 @@ include('include/common_function.php');
             	<div class="chapter-detail" style="">
                     <?php if(count($res_count) > 0){ ?>
 					<div class="bookmark-page">
-                        <!--<ul>
-                            <li class="heart_chep"></li>
-                            <li class="book_chep"></li>
-                            <li class="yellow_chep"></li>
-                        </ul>-->
+                        <ul>
+                            <li id="bookmark_icon" class="droppable" style="">&nbsp;</li>
+						</ul>
                      </div>
 					<?php } ?> 
                     <!--style="min-height:70%;"-->
-					<div class="cont-text" <?php if(count($res_count) > 0){ ?>  <?php } ?>>
-					<?php  
-					  $db = db::__d();
-					  if(count($res_count) > 0){
-					  $query = "SELECT tbl_page_content FROM tbl_page where ".$where;
-					  $res = qs($query);
-					  echo $res['tbl_page_content'];
-					 } else { 
-					  echo "No Record Found.";
+					<div class="cont-text unselectable" <?php if(count($res_count) > 0){ ?>  <?php } ?> id="content_area">
+					  <?php  
+						  $db = db::__d();
+						  if(count($res_count) > 0){
+						     $query = "SELECT tbl_page_content FROM tbl_page where ".$where;
+						     $res = qs($query);
+						     echo $res['tbl_page_content'];
+						  } else { 
+						     echo "No Record Found.";
 					  ?>
-					 <?php } ?>
-					  
+					 <?php } ?>  
 					<div class="cls"></div>
                 </div>
 				 <div style="clear:both;"></div>
@@ -180,12 +194,54 @@ include('include/common_function.php');
 </div>
  <script type="text/javascript" language="javascript">
 		  $(document).ready(function() {
-			$(".draggable").draggable();
+		     //var h=window.innerHeight;
+		     var h=$(".inner_bg").height();
+			 var w=$(".inner_bg").width();
+			 var dragablediv = h-(h/2.5);
+			 $("#bookmark_icon").css("height", dragablediv);
+			 
+			 $(function() {
+			 
+			 var dragOptions = {
+					revert: "invalid",
+					scope: "items",
+					helper: "clone"
+			 }
+			 //$(".drag").draggable();
+			 $('.drag').draggable({
+				revert: "invalid",
+				scope: "items"
+			});
+			$('.droppable').droppable({
+				scope: "items",
+				drop: function(event, ui) {
+				  var pos = ui.draggable.position();
+				  //alert('top: ' + pos.top+ ', left: ' + pos.left);
+				  //alert(h+"--"+w);
+			    }
+				// if you want to disable the dragging after drop un-comment this
+		        /*
+				drop: function(e, ui) {
+					$(ui.draggable).draggable({"disabled":true});
+				}
+				*/
+			  });
+		    });
 		  });
 		   function redirect_page(str){
 		     location.href = str;
 		   }
-		  
+		   $('.cont-text').click(function(e){
+                    //e.preventDefault();
+					//$("#content_area").addClass("unselectable");
+					//$('#content_area').css('background-color', 'red');
+                    $('#content_area::selection').css({color: "#3c3"})
+		   });
+		  function select_highlight(){
+                //e.preventDefault();
+				$("#content_area").removeClass("unselectable");
+           }
+		   
  </script>
 </body>
 </html>
