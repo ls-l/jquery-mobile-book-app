@@ -22,16 +22,20 @@ include('include/common_function.php');
 	
 	<!--Apply Image Dragable Script-->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+ 	
     <!--<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>-->
 	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		
     <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>-->
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js"></script>-->
+	
 	<script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
 	<!--Apply Image Dragable Script-->
 	
     
 	<script src="javascript/js/jquery.ui.touch-punch.js"></script>
-	
+
+
     <style id="jsbin-css">
     </style>
 	<style type="text/css">
@@ -62,8 +66,17 @@ include('include/common_function.php');
                 <li class="pin-icon"><a href="#"></a></li>
                 <li class="search-icon"><a href="#"></a></li>
                 <li class="tag-icon" style="position:relative;">
-				<?php for($i=1;$i<=10;$i++) { ?>
-				   <a href="javascript:void(0)" class="drag" style="position:absolute;"></a>
+				<?php 
+				if(!isset($_REQUEST['pageno'])){
+				  $pageno = 1; 
+				} else {
+				  $pageno = $_REQUEST['pageno']; 
+				}
+				$chid = trim($_REQUEST['chid']);
+				$userid = 1;
+				$counticon = CountIcon($userid,$pageno,$chid,'bookmark');
+				for($i=10;$i>$counticon;$i--) { ?>
+				   <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="<?php echo $i; ?>"></a>
 				<?php } ?>
 				
 				</li>
@@ -77,11 +90,7 @@ include('include/common_function.php');
 			    $db = db::__d();
 			    $query = "SELECT * FROM tbl_chapter where tbl_ch_id = ".trim($_REQUEST['chid']);
 				$res = qs($query);
-		        if(!isset($_REQUEST['pageno'])){
-				  $pageno = 1; 
-				} else {
-				  $pageno = $_REQUEST['pageno']; 
-				}
+		        
 				if($pageno == 1){
 				  $prepage = $pageno;
 				} else {
@@ -103,10 +112,20 @@ include('include/common_function.php');
 			?>
             	<div class="chapter-detail" style="">
                     <?php if(count($res_count) > 0){ ?>
-					<div class="bookmark-page">
+					<div class="bookmark-page get-icon">
                         <ul>
-                            <li id="bookmark_icon" class="droppable" style="">&nbsp;
-							    <div style="top:33%;position:absolute;">..</div>
+                            <li id="bookmark_icon" class="droppable book-mark-icon" style="position:relative;">&nbsp;
+							    <?php 
+			                     if($counticon > 0){
+								 $query = "SELECT tbl_icon_top_position,tbl_icon_no FROM tbl_icon WHERE tbl_icon_userid = ".$userid." AND tbl_icon_pageno = ".$pageno." AND tbl_icon_chid = ".$chid." AND tbl_icon_type = 'bookmark' ORDER BY tbl_icon_top_position DESC ";
+									 $res = q($query);
+									 for($i=0;$i<count($res);$i++){ 
+									?>
+									<a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px" data-id="<?php echo $res[$i]['tbl_icon_no']; ?>"></a>
+									<?php
+									  }
+								 }
+								?>
 							</li>
 						</ul>
                      </div>
@@ -197,10 +216,13 @@ include('include/common_function.php');
 </div>
  <script type="text/javascript" language="javascript">
 		  $(document).ready(function() {
-		     //var h=window.innerHeight;
-		     var h=$(".inner_bg").height();
+		     var h_main=$(window).height();
+			 var h=$(".inner_bg").height();
 			 var w=$(".inner_bg").width();
+			 var h_bookmark=$(".get-icon").height();
+			 
 			 var dragablediv = h-(h/2.5);
+			  
 			 $("#bookmark_icon").css("height", dragablediv);
 			 
 			 $(function() {
@@ -218,13 +240,21 @@ include('include/common_function.php');
 			$('.droppable').droppable({
 				scope: "items",
 				drop: function(event, ui) {
-				  var pos = ui.draggable.position();
-				  //alert('top: ' + pos.top+ ', left: ' + pos.left);
-				  //alert(h+"--"+w);
-				  var topposition = (pos.top/h)*100; 
-				  //var topposition = (pos.top/dragablediv)*100; 
-				  //alert(topposition);
-				  var url = "icon_insert.php?pageno=<?php echo $pageno;?>&chid=<?php echo $chid;?>&chno=<?php echo $chno;?>&bookid=<?php echo $bookid;?>&topposition="+topposition;
+				var el = ui.helper.context;
+				var iconno = $(el).data("id");
+				var pos = ui.draggable.position();
+				//alert('top: ' + pos.top+ ', left: ' + pos.left);
+				//alert(h+"---"+pos.top+"-----"+h_bookmark);
+				
+				var pos = ui.draggable.offset(), dPos = $(this).offset();
+				/*alert("data-id: " + ui.draggable.data("data-id") + 
+						", Top: " + (pos.top - dPos.top) + 
+						", Left: " + (pos.left - dPos.left));*/
+				//var topposition = (pos.top/h)*100;   
+				//var topposition = ((pos.top - dPos.top)/h)*100;
+				var topposition = (pos.top - dPos.top);
+				  
+				var url = "icon_insert.php?pageno=<?php echo $pageno;?>&chid=<?php echo $chid;?>&chno=<?php echo $chno;?>&bookid=<?php echo $bookid;?>&topposition="+topposition+"&iconno="+iconno;
 				  var data = '';
 				  $.ajax({
                     url: url,

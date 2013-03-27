@@ -107,6 +107,9 @@ h2{color:#6d2e83; font-family:QuicksandBook; font-size:58px; line-height:60px; l
 .top-menu ul li.tag-icon a{background:url(../images/exp-tag.png) no-repeat 0 0; height:75px; width:37px; display:block}
 .top-menu ul li.tag-icon a:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0;  height:75px; width:37px;display:block}
 
+.get-icon ul li.book-mark-icon a{background:url(../images/exp-tag.png) no-repeat 0 0; height:75px; width:37px; display:block}
+.get-icon ul li.book-mark-icon a:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0;  height:75px; width:37px;display:block}
+
 .top-menu{background:#FFF;  border-radius:14px; height:75px; padding:30px 55px;}
 .top-menu ul li{float:left; margin-right:34px}
 .top-menu ul li.tag-icon{margin-right:0 !important}
