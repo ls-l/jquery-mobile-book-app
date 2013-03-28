@@ -39,4 +39,5 @@ function CountIcon($userid,$pageno,$chid,$IconType){
       return $res[0]['tbl_icon_no'];
    }
 }
+
 ?>

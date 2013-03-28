@@ -131,13 +131,27 @@ include('include/common_function.php');
                      </div>
 					<?php } ?> 
                     <!--style="min-height:70%;"-->
-					<div class="cont-text unselectable" <?php if(count($res_count) > 0){ ?>  <?php } ?> id="content_area">
+					<div class="cont-text unselectable" <?php if(count($res_count) > 0){ ?>  <?php } ?> id="content_area" >
 					  <?php  
 						  $db = db::__d();
 						  if(count($res_count) > 0){
 						     $query = "SELECT tbl_page_content FROM tbl_page where ".$where;
 						     $res = qs($query);
-						     echo $res['tbl_page_content'];
+					   ?>
+					   <?php 
+					   $query_1 = "SELECT tbl_highlighted_icon_content FROM tbl_highlighted_icon WHERE tbl_highlighted_icon_userid = ".$userid." AND tbl_highlighted_icon_chid = ".$chid." AND tbl_highlighted_icon_pageno = ".$pageno." ORDER BY tbl_highlighted_icon_id ASC";
+                       $res_1 = q($query_1);
+					   $content_display = $res['tbl_page_content'];
+					   if(count($res_1) > 0){
+					      for($i=0;$i<count($res_1);$i++){
+							 if($res_1[$i]['tbl_highlighted_icon_content'] != '' and $res_1[$i]['tbl_highlighted_icon_content'] != ' '){
+							   $replace_text = $res_1[$i]['tbl_highlighted_icon_content'];
+							   $content_display = str_replace($replace_text,'<span class="background-yello">'.$replace_text.'</span>',$content_display);
+							 }
+						  }
+					   }
+					   echo $content_display;  ?>
+					   <?php
 						  } else { 
 						     echo "No Record Found.";
 					  ?>
@@ -216,7 +230,7 @@ include('include/common_function.php');
 </div>
  <script type="text/javascript" language="javascript">
 		  $(document).ready(function() {
-		     var h_main=$(window).height();
+			 var h_main=$(window).height();
 			 var h=$(".inner_bg").height();
 			 var w=$(".inner_bg").width();
 			 var h_bookmark=$(".get-icon").height();
@@ -277,20 +291,42 @@ include('include/common_function.php');
 				*/
 			  });
 		    });
+		  		 
 		  });
 		   function redirect_page(str){
 		     location.href = str;
 		   }
-		   $('.cont-text').click(function(e){
-                    //e.preventDefault();
-					//$("#content_area").addClass("unselectable");
-					//$('#content_area').css('background-color', 'red');
-                    $('#content_area::selection').css({color: "#3c3"})
-		   });
+		   
 		  function select_highlight(){
-                //e.preventDefault();
-				$("#content_area").removeClass("unselectable");
-           }
+			   $("#content_area").removeClass("unselectable");   
+			   $('#content_area').mousedown(function() {
+				   $('#content_area').mouseup(function() {   
+					   if(window.getSelection) {  
+					     var SelText = window.getSelection();
+						 if(SelText != ''){
+							 var url = "highlighted_icon_insert.php?pageno=<?php echo $pageno;?>&chid=<?php echo $chid;?>&chno=<?php echo $chno;?>&bookid=<?php echo $bookid;?>&content="+SelText;
+							  var data = '';
+							  $.ajax({
+								url: url,
+								data: data,
+								dataType: 'json',
+								success: function() {
+									if(rsp.success) {
+										alert(rsp);
+									}
+								}
+							 });
+							 var content_ch = $('#content_area').html();
+							 if(content_ch != ''){
+								 //var content_ch1 = content_ch.replace(/content/g, '<span class="background-yello">'+SelText+'</span>');
+								 var content_ch1 = content_ch.replace(new RegExp('(' + SelText + ')', 'g'), '<span class="background-yello">'+SelText+'</span>');
+								 $('#content_area').html(content_ch1); 
+						   }
+						 }
+					   }
+				   });
+			   });
+		   }
 		   
  </script>
 </body>
