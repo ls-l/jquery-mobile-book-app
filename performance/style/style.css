@@ -1,0 +1,109 @@
+h1  {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+/* ---------------------------------- */
+
+#swfupload-control p{ margin:10px 5px; font-size:0.9em; }
+#log{ margin:0; padding:0; width:500px;}
+#log li{ list-style-position:inside; margin:2px; border:1px solid #ccc; padding:10px; font-size:12px; 
+	font-family:Arial, Helvetica, sans-serif; color:#333; background:#fff; position:relative;}
+#log li .progressbar{ border:1px solid #333; height:5px; background:#fff; }
+#log li .progress{ background:#999; width:0%; height:5px; }
+#log li p{ margin:0; line-height:18px; }
+#log li.success{ border:1px solid #339933; background:#ccf9b9; }
+#log li span.cancel{ position:absolute; top:5px; right:5px; width:20px; height:20px; 
+	background:url('./swfupload/cancel.png') no-repeat; cursor:pointer; }
+	
+/* ---------------------------------- */
+
+#progressbar {
+  background-color: #999999;
+  border-radius: 13px; /* (height of inner div) / 2 + padding */
+  padding: 3px;
+  width: 200px;
+}
+
+#asas {
+	color: #666666;
+	text-align: center;
+   background-color: orange;
+   width: 40%; /* Adjust with JavaScript */
+   height: 20px;
+   border-radius: 10px;
+}
+
+/* ---------------------------------- */
+#ts_tabmenu {
+font-size: .75em; /* set the font size */
+padding: 20px 0px 0px 0px; /* set the padding */
+}
+
+#ts_tabmenu ul {
+line-height: 1em; /* setting the line height now so we don't have any headaches*/
+margin: 0px; /* let's keep the margin set to 0 for the same reasons as above*/
+list-style-type: none; /* we remove the UL's default disc bullets */
+float: left; /* we float the list to the left like we will all the elements inside*/
+padding: 0px 0px 0px 5px; /* give it a left padding of 5px to counter the effect of margin -5px below */
+}
+
+#ts_tabmenu ul li {
+float: left; /* floatin' left */
+}
+
+#ts_tabmenu ul li a {
+text-decoration: none; /* remove the default underline off the anchor text */
+display: block; /* we display this text as block so that we can apply padding/margin without problems */
+float: left; /* floatin' left, to make the menu horizontal */
+padding: 0px 0px 0px 10px;  /* we give it a left padding of 10px to show the first 10 pixels of the tabs image. you can also use padding-left: 10px; */
+background: url(../images/tabs.gif) no-repeat left top;  /* we link to the tabs image, no tiling, showing the top left part of it */
+margin-left: -5px;  /* this is important for the overlapping part - we are overlapping the tabs by 5 px */
+z-index: 0; /* keep it on layer 0 (default) */
+position: relative;  /* very important as this enables the z-index to work for us and keeps the tabs where they should be */
+color: #666666;  /* color of the tab text */
+}
+
+#ts_tabmenu ul li a strong {
+font-weight: normal;   /* remove the bold effect */
+display: block;   /* display the strong element as a block so we can pad it, etc. */
+float: left;   /* float it left as well */
+background: url(../images/tabs.gif) no-repeat right top;  /* now we show the right part of the tab and we complete the "puzzle" */
+padding: 6px 10px 7px 5px;  /* important, as through this you define the position of the text within the tab */
+cursor: pointer;  /* this makes the browser show the "hand" cursor when hovering over the tab */
+}
+
+#ts_tabmenu ul li a:hover {
+position: relative; /* again, keep things relative */
+z-index: 5; /* we show this tab over all other tabs in the menu, which would be on layer 0, thus overlapping occurs */
+background: url(../images/tabs.gif) no-repeat left bottom;  /* now we show the bottom part of the tabs image, the "hover" instance */
+color: #000000;   /* we color the hovered tab's text black */
+}
+
+#ts_tabmenu ul li a:hover strong {
+background-image: url(../images/tabs.gif) no-repeat; 
+position: relative; /* keep it relative */
+z-index: 5; /* show this on layer 5 as well */
+background-position: right bottom; /* we show the right bottom part of the tabs image (the hover instance) */
+}
+
+.alert-danger, .alert-error {
+    background-color: #EDDBE3;
+    border-color: #E8D1DF;
+    color: #BD4247;
+}
+.alert-success {
+    background-color:#339933 !important;
+    border-color:#339933 !important;
+    color: #FFFFFF !important;
+}
+
+.alert {
+    background-color: #8BC5E8;
+    border: 1px solid #7ED0E5;
+    border-radius: 4px 4px 4px 4px;
+    color: #1C628B;
+    margin-bottom: 18px;
+    padding: 8px 35px 8px 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
