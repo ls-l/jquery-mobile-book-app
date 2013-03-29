@@ -1,33 +1,32 @@
-
 <?php
 include "./includes/header.php";
 ?>
 <script type="text/javascript">
-//    function FormSubmit(){
-//        $.post('details_db.php',$(this).serialize(),function(msg){
-//            alert(msg);
-//        // form inputs consist of 5 values total: name, email, website, text, and a hidden input that has the value of an integer
-//        });
-//    }      
+    //    function FormSubmit(){
+    //        $.post('details_db.php',$(this).serialize(),function(msg){
+    //            alert(msg);
+    //        // form inputs consist of 5 values total: name, email, website, text, and a hidden input that has the value of an integer
+    //        });
+    //    }      
     $(document).ready(function() {
-    $('form').submit(function(msg) {
-        $.post("details_db.php",$("#personal_data").serialize(),function(data){                      
-           if(data == 'error'){
-             $("#success_msg").hide();
-             $("#error_msg").show();   
-           } else if(data == 'success'){
-             $("#error_msg").hide();
-             $("#success_msg").show();  
-           }
-      });
-        return false; 
+        $('form').submit(function(msg) {
+            $.post("details_db.php",$("#personal_data").serialize(),function(data){                      
+                if(data == 'error'){
+                    $("#success_msg").hide();
+                    $("#error_msg").show();   
+                } else if(data == 'success'){
+                    $("#error_msg").hide();
+                    $("#success_msg").show();  
+                }
+            });
+            return false; 
+        });
     });
-});
 </script>
 
- 
+
 <?php
-if (isset($_SESSION['uid'])) {
+if (isset($_SESSION['uid']) or isset($_SESSION['auid'])) {
     ?>
     <style>
         .datatables_length {
@@ -50,7 +49,6 @@ if (isset($_SESSION['uid'])) {
         <thead>
             <tr>
                 <th>Edit Personal Detail</th>
-
             </tr>
         </thead>
         <tbody>
@@ -58,14 +56,27 @@ if (isset($_SESSION['uid'])) {
                 <td>
                     <table>
                         <?php
-                        $query = "SELECT * FROM staff WHERE id = " . $_SESSION['uid'];
+                        if (isset($_SESSION['uid']) and $_SESSION['uid'] != '') {
+                            $userid = $_SESSION['uid'];
+                            $admin_edit = 0;
+                        }
+                        if (isset($_SESSION['auid']) and $_SESSION['auid'] != '') {
+                            $userid = $_REQUEST['user_id'];
+                            $admin_edit = 1;
+                        }
+                        $query = "SELECT * FROM staff WHERE id = " . $userid;
                         $res = mysql_query($query);
                         $row = mysql_fetch_assoc($res);
                         ?>
+                         
                         <form method="post" id="personal_data" action="" >
-                          
+
                             <div id="error_msg" class="alert alert-error" style="display:none;text-align: center;">Sorry, Please Fill up all the fields.</div>
                             <div id="success_msg" class="alert alert-success" style="display:none;text-align: center;">Your personal detail updated successfully.</div>
+                            
+                            <?php if(isset($_SESSION['auid']) and $_SESSION['auid'] != '') { ?> 
+                               <a href="./admin.php">Back</a>
+                            <?php } ?>
                             
                             <tr>
                                 <td>User Name</td>
@@ -100,6 +111,10 @@ if (isset($_SESSION['uid'])) {
                                 <td><input type="text" name="current_step" id="current_step" value="<?php echo $row['current_step']; ?>"/></td>
                             </tr>
                             <tr>
+                                <td>Salary Date</td>
+                                <td><input type="text" name="salary_date" id="salary_date" value="<?php echo $row['salary_date']; ?>"/></td>
+                            </tr>
+                            <tr>
                                 <td>TRB</td>
                                 <td><input type="text" name="trb" id="trb" value="<?php echo $row['trb_num']; ?>"/></td>
                             </tr>
@@ -109,6 +124,8 @@ if (isset($_SESSION['uid'])) {
                             </tr>
                             <tr>
                                 <td colspan=2"">
+                                    <input type="hidden" name="user_id" id="user_id" value="<?php echo $userid; ?>" />
+                                    <input type="hidden" name="admin_edit" id="admin_edit" value="<?php echo $admin_edit; ?>" />
                                     <input type="submit" name="personal_form" id="personal_form" value="Submit"/>    
                                 </td>
                             </tr>
@@ -125,5 +142,4 @@ if (isset($_SESSION['uid'])) {
 } else {
     header('Location: ./login.php');
 }
-
 ?>

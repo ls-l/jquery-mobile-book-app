@@ -39,8 +39,8 @@
 			while($staff = mysql_fetch_array($res)) {
 				echo "<tr>";
 				echo "<td>".$staff['id']."</td>";
-				echo "<td>".$staff['fname']."</td>";
-				echo "<td>".$staff['lname']."</td>";
+				echo "<td><a href='./details.php?user_id=".$staff['id']."'>".$staff['fname']."</a></td>";
+				echo "<td><a href='./details.php?user_id=".$staff['id']."'>".$staff['lname']."</a></td>";
 				if($staff['role'] == "admin" || $staff['role'] == "appraiser") {
 					echo "<td><span style='color: gray;'>View Progress</span></td>";
 				}
@@ -56,7 +56,7 @@
 				echo "<td>".$staff['trb_num']."</td>";
 				echo "<td>".$staff['username']."</td>";
 				echo "<td>".$staff['role']."</td>";
-				echo "</tr>";
+                                echo "</tr>";
 			}
 			// ---  End dimension population --- 
 			?>
