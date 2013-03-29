@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2013 at 09:50 AM
+-- Generation Time: Mar 29, 2013 at 08:50 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `tbl_highlighted_icon` (
   `tbl_highlighted_icon_content` text NOT NULL,
   `tbl_highlighted_icon_date` datetime NOT NULL,
   PRIMARY KEY (`tbl_highlighted_icon_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -105,7 +105,19 @@ CREATE TABLE IF NOT EXISTS `tbl_icon` (
   `tbl_icon_top_position` decimal(10,2) NOT NULL,
   `tbl_icon_date` datetime NOT NULL,
   PRIMARY KEY (`tbl_icon_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
+
+--
+-- Dumping data for table `tbl_icon`
+--
+
+INSERT INTO `tbl_icon` (`tbl_icon_id`, `tbl_icon_userid`, `tbl_icon_chid`, `tbl_icon_bookid`, `tbl_icon_chno`, `tbl_icon_pageno`, `tbl_icon_type`, `tbl_icon_no`, `tbl_icon_top_position`, `tbl_icon_date`) VALUES
+(49, 1, 1, 1, 1, 1, 'heart', 1, 80.00, '2013-03-29 08:18:47'),
+(50, 1, 1, 1, 1, 1, 'bookmark', 1, 173.00, '2013-03-29 08:18:51'),
+(51, 1, 1, 1, 1, 2, 'bookmark', 1, 247.00, '2013-03-29 08:19:03'),
+(52, 1, 1, 1, 1, 3, 'heart', 1, -1.00, '2013-03-29 08:19:09'),
+(53, 1, 2, 1, 2, 4, 'heart', 1, 7.00, '2013-03-29 08:19:15'),
+(54, 1, 2, 1, 2, 5, 'bookmark', 1, 22.00, '2013-03-29 08:19:21');
 
 -- --------------------------------------------------------
 
