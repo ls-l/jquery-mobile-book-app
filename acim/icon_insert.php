@@ -9,11 +9,11 @@ echo "</pre>";*/
 $db = db::__d();
 
 $userid = 1;
-$bookid = trim($_REQUEST['bookid']);
-$chid = trim($_REQUEST['chid']);
-$pageno = trim($_REQUEST['pageno']);
-$icontype = 'bookmark';
-$iconno = trim($_REQUEST['iconno']);
+$bookid           = trim($_REQUEST['bookid']);
+$chid             = trim($_REQUEST['chid']);
+$pageno           = trim($_REQUEST['pageno']);
+$icontype         = trim($_REQUEST['icon_type']);
+$iconno           = trim($_REQUEST['iconno']);
 $inserted_icon_no = CheckiconNo($userid,$bookid,$chid,$pageno,$icontype,$iconno);
 if($inserted_icon_no == 0){
 $insert_data = array('tbl_icon_id' => '',
@@ -22,7 +22,7 @@ $insert_data = array('tbl_icon_id' => '',
         "tbl_icon_bookid" => trim($_REQUEST['bookid']),
         "tbl_icon_chno" => trim($_REQUEST['chno']),
 		"tbl_icon_pageno" => trim($_REQUEST['pageno']),
-        "tbl_icon_type" => 'bookmark',
+        "tbl_icon_type" => $icontype,
 		"tbl_icon_no" => trim($_REQUEST['iconno']),
 		"tbl_icon_top_position" => trim($_REQUEST['topposition']),
 		"tbl_icon_date" => date('Y-m-d h:i:s')

@@ -92,6 +92,12 @@ h2{color:#6d2e83; font-family:QuicksandBook; font-size:58px; line-height:60px; l
 .top-menu ul li.heart-icon a{background:url(../images/exp-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
 .top-menu ul li.heart-icon a:hover{background:url(../images/exp-heart-hover.png) no-repeat 0 0; height:76px; width:87px; display:block}
 
+.get-icon ul li.heart-listicon a{background:url(../images/exp-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
+.get-icon ul li.heart-listicon a:hover{background:url(../images/exp-heart-hover.png) no-repeat 0 0; height:76px; width:87px; display:block}
+
+/*a.heart-listicon {background:url(../images/exp-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
+a.heart-listicon:hover{background:url(../images/exp-heart-hover.png) no-repeat 0 0; height:76px; width:87px; display:block}*/
+
 .top-menu ul li.time-icon a{background:url(../images/exp-time.png) no-repeat 0 0; height:76px; width:75px; display:block}
 .top-menu ul li.time-icon a:hover{background:url(../images/exp-time-hover.png) no-repeat 0 0;height:76px; width:75px; display:block}
 
@@ -109,6 +115,10 @@ h2{color:#6d2e83; font-family:QuicksandBook; font-size:58px; line-height:60px; l
 
 .get-icon ul li.book-mark-icon a{background:url(../images/exp-tag.png) no-repeat 0 0; height:75px; width:37px; display:block}
 .get-icon ul li.book-mark-icon a:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0;  height:75px; width:37px;display:block}
+
+
+/*a.book-mark-icon {background:url(../images/exp-tag.png) no-repeat 0 0; height:75px; width:37px; display:block}
+a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0;  height:75px; width:37px;display:block}*/
 
 .top-menu{background:#FFF;  border-radius:14px; height:75px; padding:30px 55px;}
 .top-menu ul li{float:left; margin-right:34px}

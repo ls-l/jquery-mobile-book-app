@@ -59,14 +59,7 @@ include('include/common_function.php');
     	<div class="example-chep">
           <div class="top-menu">
           	<ul>
-            	<li class="setting-icon"><a href="#"></a></li>
-                <li class="heart-icon"><a href="#"></a></li>
-                <li class="time-icon"><a href="#"></a></li>
-                <li class="pen-icon"><a href="javascript:void(0);" onClick="return select_highlight();"></a></li>
-                <li class="pin-icon"><a href="#"></a></li>
-                <li class="search-icon"><a href="#"></a></li>
-                <li class="tag-icon" style="position:relative;">
-				<?php 
+			<?php 
 				if(!isset($_REQUEST['pageno'])){
 				  $pageno = 1; 
 				} else {
@@ -74,6 +67,24 @@ include('include/common_function.php');
 				}
 				$chid = trim($_REQUEST['chid']);
 				$userid = 1;
+			?>
+            	<li class="setting-icon"><a href="#"></a></li>
+                
+				<li class="heart-icon">
+				<?php
+				$counticon_heart = CountIcon($userid,$pageno,$chid,'heart');
+				       for($i=10;$i>$counticon_heart;$i--) { ?>
+					   <span style="position:relative;">
+				      <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="h<?php echo $i; ?>"></a>
+				       <span>
+				   <?php } ?>
+				</li>
+                <li class="time-icon" style="margin-left:19%"><a href="#"></a></li>
+                <li class="pen-icon"><a href="javascript:void(0);" onClick="return select_highlight();"></a></li>
+                <li class="pin-icon"><a href="#"></a></li>
+                <li class="search-icon"><a href="#"></a></li>
+                <li class="tag-icon" style="position:relative;">
+				<?php
 				$counticon = CountIcon($userid,$pageno,$chid,'bookmark');
 				for($i=10;$i>$counticon;$i--) { ?>
 				   <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="<?php echo $i; ?>"></a>
@@ -82,8 +93,7 @@ include('include/common_function.php');
 				</li>
 				<!--<img src="http://localhost/acim/images/exp-tag.png" class="draggable ui-draggable" alt="Book Mark"/>-->
                 <div class="cls"></div>
-            </ul>
-          
+             </ul>      
           </div>
           <div class="midd-cont" style="height:77%">
 		  <?php 					   
@@ -113,17 +123,25 @@ include('include/common_function.php');
             	<div class="chapter-detail" style="">
                     <?php if(count($res_count) > 0){ ?>
 					<div class="bookmark-page get-icon">
-                        <ul>
-                            <li id="bookmark_icon" class="droppable book-mark-icon" style="position:relative;">&nbsp;
+                        <ul id="bookmark_icon" class="droppable">
 							    <?php 
-			                     if($counticon > 0){
-								 $query = "SELECT tbl_icon_top_position,tbl_icon_no FROM tbl_icon WHERE tbl_icon_userid = ".$userid." AND tbl_icon_pageno = ".$pageno." AND tbl_icon_chid = ".$chid." AND tbl_icon_type = 'bookmark' ORDER BY tbl_icon_top_position DESC ";
+								 if($counticon > 0 or $counticon_heart > 0){
+								 $query = "SELECT tbl_icon_top_position,tbl_icon_no,tbl_icon_type FROM tbl_icon WHERE tbl_icon_userid = ".$userid." AND tbl_icon_pageno = ".$pageno." AND tbl_icon_chid = ".$chid." AND (tbl_icon_type = 'bookmark' or tbl_icon_type = 'heart') ORDER BY tbl_icon_top_position DESC ";
 									 $res = q($query);
 									 for($i=0;$i<count($res);$i++){ 
+									   if($res[$i]['tbl_icon_type'] == 'bookmark') {
 									?>
-									<a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px" data-id="<?php echo $res[$i]['tbl_icon_no']; ?>"></a>
-									<?php
+									<li  class="book-mark-icon" style="position:relative;">
+									<a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px" data-id="<?php echo $res[$i]['tbl_icon_no']; ?>"></a></li>
+									<?php } elseif($res[$i]['tbl_icon_type'] == 'heart'){ ?>
+									<li  class="heart-listicon" style="position:relative;">
+									  <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px" data-id="h<?php echo $res[$i]['tbl_icon_no']; ?>"></a></li>
+									<?php	
+										}
 									  }
+								 } else { ?>
+								   <li  class="droppable book-mark-icon" style="position:relative;">&nbsp;</li>
+								 <?php 
 								 }
 								?>
 							</li>
@@ -247,6 +265,11 @@ include('include/common_function.php');
 					helper: "clone"
 			 }
 			 //$(".drag").draggable();
+			 
+			/* $('.drag123').draggable({
+				revert: "invalid",
+				scope: "items"
+			});*/
 			 $('.drag').draggable({
 				revert: "invalid",
 				scope: "items"
@@ -255,7 +278,16 @@ include('include/common_function.php');
 				scope: "items",
 				drop: function(event, ui) {
 				var el = ui.helper.context;
-				var iconno = $(el).data("id");
+				//console.log($(el).data("id"));
+				var iconno = $(el).data("id").toString();
+				
+				if(iconno[0] == 'h'){
+				  iconno = iconno.substring(1);
+				  var icon_type = 'heart';
+				} else {
+				  var icon_type = 'bookmark'; 
+				}
+				
 				var pos = ui.draggable.position();
 				//alert('top: ' + pos.top+ ', left: ' + pos.left);
 				//alert(h+"---"+pos.top+"-----"+h_bookmark);
@@ -268,7 +300,7 @@ include('include/common_function.php');
 				//var topposition = ((pos.top - dPos.top)/h)*100;
 				var topposition = (pos.top - dPos.top);
 				  
-				var url = "icon_insert.php?pageno=<?php echo $pageno;?>&chid=<?php echo $chid;?>&chno=<?php echo $chno;?>&bookid=<?php echo $bookid;?>&topposition="+topposition+"&iconno="+iconno;
+				var url = "icon_insert.php?pageno=<?php echo $pageno;?>&chid=<?php echo $chid;?>&chno=<?php echo $chno;?>&bookid=<?php echo $bookid;?>&topposition="+topposition+"&iconno="+iconno+"&icon_type="+icon_type;
 				  var data = '';
 				  $.ajax({
                     url: url,
