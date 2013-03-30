@@ -92,8 +92,8 @@ h2{color:#6d2e83; font-family:QuicksandBook; font-size:58px; line-height:60px; l
 .top-menu ul li.heart-icon a{background:url(../images/exp-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
 .top-menu ul li.heart-icon a:hover{background:url(../images/exp-heart-hover.png) no-repeat 0 0; height:76px; width:87px; display:block}
 
-.get-icon ul li.heart-listicon a{background:url(../images/exp-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
-.get-icon ul li.heart-listicon a:hover{background:url(../images/exp-heart-hover.png) no-repeat 0 0; height:76px; width:87px; display:block}
+.get-icon ul li.heart-listicon a{background:url(../images/book-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
+.get-icon ul li.heart-listicon a:hover{background:url(../images/book-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
 
 /*a.heart-listicon {background:url(../images/exp-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
 a.heart-listicon:hover{background:url(../images/exp-heart-hover.png) no-repeat 0 0; height:76px; width:87px; display:block}*/
@@ -167,7 +167,13 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .top-popup-menu  ul li.plus-icon a{background:url(../images/exp-plus.png) no-repeat 0 0; height:37px; width:37px; display:block}
 .top-popup-menu  ul li.plus-icon a:hover{background:url(../images/exp-plus-hover.png) no-repeat 0 0; height:37px; width:37px;display:block}
 
-
+.secd_line_icon{float:left; margin-top:20px;width: 100%;display:none;}
+.secd_line_icon li a{display:block; width:76px; height:76px; }
+.secd_line_icon li.icon1 a{background:url(../images/star.png) no-repeat;}
+.secd_line_icon li.icon2 a{background:url(../images/book-heart.png) no-repeat; width:37px !important; height:37px !important;}
+.secd_line_icon li.icon3 a{background:url(../images/current.png) no-repeat;}
+.secd_line_icon li.icon4 a{background:url(../images/mark.png) no-repeat;}
+.secd_line_icon li.icon5 a{background:url(../images/bulb.png) no-repeat;}
 
 @media only screen and (min-width: 768px) and (max-width: 956px){
 

@@ -61,7 +61,7 @@ include('include/db.class.php');
 </head>
 <body>
 <div data-role="page">
-   <div data-role="content">
+    <div data-role="content">
 		<div class="home innertube">
     	<div class="main_bg innertube">
             <h1>A Course In <br/> Miracles</h1>
@@ -78,6 +78,7 @@ include('include/db.class.php');
                     <li><a href="#"><span><img src="images/resource.png" /></span><label>Resources</label></a></li>	
                     <li class="menu_sep"><a href="#"><span><img src="images/reminder.png" /></span><label>Reminders</label></a></li>	
                     <li><a href="#"><span><img src="images/info.png" /></span><label>Info</label></a></li>	
+                    
                 </ul> 
         	  </div>
 			  <div data-role="popup" id="popupReading" class="home-popup">
