@@ -18,9 +18,9 @@ body{margin: 0;padding: 0;font-family:Arial, Helvetica, sans-serif;font-size: 12
     font-family: 'QuicksandR';
     src: url('../fonts/Quicksand_Light-webfont.eot');
     src: url('../fonts/Quicksand_Light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Quicksand_Light-webfont.woff') format('woff'),
-         url('../fonts/Quicksand_Light-webfont.ttf') format('truetype'),
-         url('../fonts/Quicksand_Light-webfont.svg#QuicksandLight') format('svg');
+        url('../fonts/Quicksand_Light-webfont.woff') format('woff'),
+        url('../fonts/Quicksand_Light-webfont.ttf') format('truetype'),
+        url('../fonts/Quicksand_Light-webfont.svg#QuicksandLight') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -31,9 +31,9 @@ body{margin: 0;padding: 0;font-family:Arial, Helvetica, sans-serif;font-size: 12
     font-family: 'QuicksandBook';
     src: url('../fonts/Quicksand_Book-webfont.eot');
     src: url('../fonts/Quicksand_Book-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Quicksand_Book-webfont.woff') format('woff'),
-         url('../fonts/Quicksand_Book-webfont.ttf') format('truetype'),
-         url('../fonts/Quicksand_Book-webfont.svg#QuicksandBook') format('svg');
+        url('../fonts/Quicksand_Book-webfont.woff') format('woff'),
+        url('../fonts/Quicksand_Book-webfont.ttf') format('truetype'),
+        url('../fonts/Quicksand_Book-webfont.svg#QuicksandBook') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -94,6 +94,20 @@ h2{color:#6d2e83; font-family:QuicksandBook; font-size:58px; line-height:60px; l
 
 .get-icon ul li.heart-listicon a{background:url(../images/book-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
 .get-icon ul li.heart-listicon a:hover{background:url(../images/book-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
+
+.get-icon ul li.star-listicon a{background:url(../images/star.png) no-repeat 0 0; height:32px; width:37px; display:block}
+.get-icon ul li.star-listicon a:hover{background:url(../images/star.png) no-repeat 0 0; height:32px; width:37px; display:block}
+
+.get-icon ul li.yellow-listicon a{background:url(../images/book-yellow.png) no-repeat 0 0; height:34px; width:36px; display:block}
+.get-icon ul li.yellow-listicon a:hover{background:url(../images/book-yellow.png) no-repeat 0 0; height:34px; width:36px; display:block}
+
+.get-icon ul li.mark-listicon a{background:url(../images/mark.png) no-repeat 0 0; height:32px; width:37px; display:block}
+.get-icon ul li.mark-listicon a:hover{background:url(../images/mark.png) no-repeat 0 0; height:32px; width:37px; display:block}
+
+.get-icon ul li.bulb-listicon a{background:url(../images/bulb.png) no-repeat 0 0; height:32px; width:37px; display:block}
+.get-icon ul li.bulb-listicon a:hover{background:url(../images/bulb.png) no-repeat 0 0; height:32px; width:37px; display:block}
+
+
 
 /*a.heart-listicon {background:url(../images/exp-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
 a.heart-listicon:hover{background:url(../images/exp-heart-hover.png) no-repeat 0 0; height:76px; width:87px; display:block}*/
@@ -169,100 +183,101 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 
 .secd_line_icon{float:left; margin-top:20px;width: 100%;display:none;}
 .secd_line_icon li a{display:block; width:76px; height:76px; }
-.secd_line_icon li.icon1 a{background:url(../images/star.png) no-repeat;}
+.secd_line_icon li.icon1 a{background:url(../images/star.png) no-repeat;width:37px !important; height:32px !important;}
 .secd_line_icon li.icon2 a{background:url(../images/book-heart.png) no-repeat; width:37px !important; height:37px !important;}
-.secd_line_icon li.icon3 a{background:url(../images/current.png) no-repeat;}
-.secd_line_icon li.icon4 a{background:url(../images/mark.png) no-repeat;}
-.secd_line_icon li.icon5 a{background:url(../images/bulb.png) no-repeat;}
+/*.secd_line_icon li.icon3 a{background:url(../images/current.png) no-repeat;}*/
+.secd_line_icon li.icon3 a{background:url(../images/book-yellow.png) no-repeat;width:34px !important; height:36px !important;}
+.secd_line_icon li.icon4 a{background:url(../images/mark.png) no-repeat;width:37px !important; height:32px !important;}
+.secd_line_icon li.icon5 a{background:url(../images/bulb.png) no-repeat;width:37px !important; height:32px !important;}
 
 @media only screen and (min-width: 768px) and (max-width: 956px){
 
-/*--------------------------------------------------home-page----------------------------------------------------------*/
+    /*--------------------------------------------------home-page----------------------------------------------------------*/
 
-.main_bg{padding-top:340px;padding-bottom:100px }	
-.home{background:url("../images/ipad_bg.jpg") no-repeat scroll center top transparent}
-.main_bg h1{font-size:80px; line-height:80px; letter-spacing:-8px}
-.main_bg h2{letter-spacing:-1px; font-size:35px; line-height:35px; margin-bottom:20px }
-.menu{width:470px; height:279px}
-.menu ul li{width:156px; padding-top:30px}
-.menu ul li label{font-size:23px}
-.menu ul{height:130px}
+    .main_bg{padding-top:340px;padding-bottom:100px }	
+    .home{background:url("../images/ipad_bg.jpg") no-repeat scroll center top transparent}
+    .main_bg h1{font-size:80px; line-height:80px; letter-spacing:-8px}
+    .main_bg h2{letter-spacing:-1px; font-size:35px; line-height:35px; margin-bottom:20px }
+    .menu{width:470px; height:279px}
+    .menu ul li{width:156px; padding-top:30px}
+    .menu ul li label{font-size:23px}
+    .menu ul{height:130px}
 
-/*--------------------------------------------------reading-chapter-page----------------------------------------------------------*/
+    /*--------------------------------------------------reading-chapter-page----------------------------------------------------------*/
 
-.content{width:608px; height:970px}
-.content h2{font-size:67px; line-height:65px }
-.chapter ul li label{width:413px}
-.chapter ul li.current_chep{height:52px; margin-bottom:6px;  background-size:19px auto !important;background-position:56px 5px !important }
-.chapter ul li{font-size:31px; line-height:36px; margin-bottom:18px; background-size:27px auto !important; padding-left:90px; background-position:53px 10px !important}
-.home_icon a img{width:42px}
+    .content{width:608px; height:970px}
+    .content h2{font-size:67px; line-height:65px }
+    .chapter ul li label{width:413px}
+    .chapter ul li.current_chep{height:52px; margin-bottom:6px;  background-size:19px auto !important;background-position:56px 5px !important }
+    .chapter ul li{font-size:31px; line-height:36px; margin-bottom:18px; background-size:27px auto !important; padding-left:90px; background-position:53px 10px !important}
+    .home_icon a img{width:42px}
 
-/*--------------------------------------------------setting-page----------------------------------------------------------*/
+    /*--------------------------------------------------setting-page----------------------------------------------------------*/
 
-.contentimg{width:610px; height:972px;}
-.setting h3{font-size:55px; height:55px; line-height:48px;}
-.setting-mnu{padding-top:30px;}
-.setting-mnu ul li{height:150px; width:163px; margin-bottom:82px;}
-.setting-mnu ul li a span{margin-bottom:17px; height:83px;}
-.setting-mnu ul li a span img{max-width:90px; max-height:83px;}
-.setting-mnu ul li a label{font-size:33px; height:33px; line-height:33px; letter-spacing:-2px;}
+    .contentimg{width:610px; height:972px;}
+    .setting h3{font-size:55px; height:55px; line-height:48px;}
+    .setting-mnu{padding-top:30px;}
+    .setting-mnu ul li{height:150px; width:163px; margin-bottom:82px;}
+    .setting-mnu ul li a span{margin-bottom:17px; height:83px;}
+    .setting-mnu ul li a span img{max-width:90px; max-height:83px;}
+    .setting-mnu ul li a label{font-size:33px; height:33px; line-height:33px; letter-spacing:-2px;}
 
 
-/*--------------------------------------------------example-of-chapter-page----------------------------------------------------------*/
+    /*--------------------------------------------------example-of-chapter-page----------------------------------------------------------*/
 
-.example-chep{width:608px; height:970px; }
-.top-menu ul li.setting-icon a{background-size:58px }
-.top-menu ul li.setting-icon a:hover{background-size:58px }
-.top-menu ul li.heart-icon a{background-size:64px}
-.top-menu ul li.heart-icon a:hover{background-size:64px}
-.top-menu ul li.time-icon a{background-size:55px}
-.top-menu ul li.time-icon a:hover{background-size:55px}
-.top-menu ul li.pen-icon a{background-size:49px}
-.top-menu ul li.pen-icon a:hover{background-size:49px}
-.top-menu ul li.pin-icon a{background-size:49px}
-.top-menu ul li.pin-icon a:hover{background-size:49px}
-.top-menu ul li.search-icon a{background-size:57px}
-.top-menu ul li.search-icon a:hover{background-size:57px}
-.top-menu ul li.tag-icon a{background-size:27px}
-.top-menu ul li.tag-icon a:hover{background-size:27px}
-.top-menu{padding:20px 35px; height:60px}
-.top-menu ul li{margin-right:7px}
-.midd-cont h4{font-size:44px; width:288px; background-size:19px}
-.midd-cont p{font-size:44px; line-height:45px}
-.cont-text{width:501px; font-size:30px; line-height:31px}
-.midd-cont{padding-left:40px; }
-.chapter-detail{margin-top:50px}
-.midd-cont{margin-top:30px}
-.footer-cont .pagination{font-size:33px}
-.heart_chep{background-size:26px}
-.bookmark-page{padding-right:9px}
-.book_chep{margin-top:154px}
+    .example-chep{width:608px; height:970px; }
+    .top-menu ul li.setting-icon a{background-size:58px }
+    .top-menu ul li.setting-icon a:hover{background-size:58px }
+    .top-menu ul li.heart-icon a{background-size:64px}
+    .top-menu ul li.heart-icon a:hover{background-size:64px}
+    .top-menu ul li.time-icon a{background-size:55px}
+    .top-menu ul li.time-icon a:hover{background-size:55px}
+    .top-menu ul li.pen-icon a{background-size:49px}
+    .top-menu ul li.pen-icon a:hover{background-size:49px}
+    .top-menu ul li.pin-icon a{background-size:49px}
+    .top-menu ul li.pin-icon a:hover{background-size:49px}
+    .top-menu ul li.search-icon a{background-size:57px}
+    .top-menu ul li.search-icon a:hover{background-size:57px}
+    .top-menu ul li.tag-icon a{background-size:27px}
+    .top-menu ul li.tag-icon a:hover{background-size:27px}
+    .top-menu{padding:20px 35px; height:60px}
+    .top-menu ul li{margin-right:7px}
+    .midd-cont h4{font-size:44px; width:288px; background-size:19px}
+    .midd-cont p{font-size:44px; line-height:45px}
+    .cont-text{width:501px; font-size:30px; line-height:31px}
+    .midd-cont{padding-left:40px; }
+    .chapter-detail{margin-top:50px}
+    .midd-cont{margin-top:30px}
+    .footer-cont .pagination{font-size:33px}
+    .heart_chep{background-size:26px}
+    .bookmark-page{padding-right:9px}
+    .book_chep{margin-top:154px}
 
-.pop-up{width:315px; top:445px; left:132px }
-.pop-top{ height:26px; background-size:315px }
-.pop-midd {background-size:315px; height:426px }
-.pop-midd ul li label{font-size:16px; width:217px; line-height:18px }
-.pop-midd ul li.pop-icon1 span{ height:37px; width:43px; background-size:43px}
-.pop-midd ul li.pop-icon2 span{height:39px; width:43px;background-size:19px}
-.pop-midd ul li.pop-icon3 span{  height:38px; width:46px; background-size:31px}
-.pop-midd ul li.pop-icon4 span{ height:38px; width:38px; background-size:38px}
-.pop-midd ul li.pop-icon5 span{  height:38px; width:35px; background-size:35px}
-.pop-midd ul li.pop-icon6 span{  height:40px;  width:41px; background-size:41px}
-.pop-midd ul li.pop-icon7 span{ height:38px; width:38px; background-size:38px}
-.pop-midd ul li.pop-icon8 span{  height:39px;  width:39px; background-size:39px}
-.pop-midd ul li{margin-bottom:10px}
+    .pop-up{width:315px; top:445px; left:132px }
+    .pop-top{ height:26px; background-size:315px }
+    .pop-midd {background-size:315px; height:426px }
+    .pop-midd ul li label{font-size:16px; width:217px; line-height:18px }
+    .pop-midd ul li.pop-icon1 span{ height:37px; width:43px; background-size:43px}
+    .pop-midd ul li.pop-icon2 span{height:39px; width:43px;background-size:19px}
+    .pop-midd ul li.pop-icon3 span{  height:38px; width:46px; background-size:31px}
+    .pop-midd ul li.pop-icon4 span{ height:38px; width:38px; background-size:38px}
+    .pop-midd ul li.pop-icon5 span{  height:38px; width:35px; background-size:35px}
+    .pop-midd ul li.pop-icon6 span{  height:40px;  width:41px; background-size:41px}
+    .pop-midd ul li.pop-icon7 span{ height:38px; width:38px; background-size:38px}
+    .pop-midd ul li.pop-icon8 span{  height:39px;  width:39px; background-size:39px}
+    .pop-midd ul li{margin-bottom:10px}
 
-.top-popup-menu{ height:55px; padding:25px 28px; width:160px; }
-.top-popup-menu ul li{margin-right:20px}
-.top-popup-menu ul li.heart-icon a{ height:56px; width:64px; background-size:62px}
-.top-popup-menu ul li.heart-icon a:hover{ height:56px; width:64px; background-size:62px}
+    .top-popup-menu{ height:55px; padding:25px 28px; width:160px; }
+    .top-popup-menu ul li{margin-right:20px}
+    .top-popup-menu ul li.heart-icon a{ height:56px; width:64px; background-size:62px}
+    .top-popup-menu ul li.heart-icon a:hover{ height:56px; width:64px; background-size:62px}
 
-.top-popup-menu ul li.tag-popup-icon a{ height:55px; width:28px; background-size:28px}
-.top-popup-menu ul li.tag-popup-icon a:hover{ height:55px; width:28px; background-size:28px}
+    .top-popup-menu ul li.tag-popup-icon a{ height:55px; width:28px; background-size:28px}
+    .top-popup-menu ul li.tag-popup-icon a:hover{ height:55px; width:28px; background-size:28px}
 
-.top-popup-menu  ul li.plus-icon{margin-top:13px}
-.top-popup-menu  ul li.plus-icon a{ height:28px; width:28px; background-size:28px}
-.top-popup-menu  ul li.plus-icon a:hover{ height:28px; width:28px; background-size:28px}
+    .top-popup-menu  ul li.plus-icon{margin-top:13px}
+    .top-popup-menu  ul li.plus-icon a{ height:28px; width:28px; background-size:28px}
+    .top-popup-menu  ul li.plus-icon a:hover{ height:28px; width:28px; background-size:28px}
 
 
 
@@ -272,197 +287,197 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 
 @media only screen and (min-width: 480px) and (max-width: 766px) {
 
-/*--------------------------------------------------home-page----------------------------------------------------------*/
-	
-.main_bg h1{font-size:63px; line-height:63px; letter-spacing:0; margin-bottom:20px}
-.main_bg h2{letter-spacing:-1px; font-size:30px; line-height:30px; margin-bottom:25px;}
-.menu{width:390px}
-.menu ul li{width:129px}
-.menu ul li label{font-size:15px}
+    /*--------------------------------------------------home-page----------------------------------------------------------*/
 
-/*--------------------------------------------------reading-chapter-page----------------------------------------------------------*/
+    .main_bg h1{font-size:63px; line-height:63px; letter-spacing:0; margin-bottom:20px}
+    .main_bg h2{letter-spacing:-1px; font-size:30px; line-height:30px; margin-bottom:25px;}
+    .menu{width:390px}
+    .menu ul li{width:129px}
+    .menu ul li label{font-size:15px}
 
-.content{width:380px; height:606px}
-.content h2{font-size:42px; line-height:42px; margin-top:-25px; padding-bottom:10px !important}
-.chapter {padding-top:15px}
-.chapter ul li label{width:269px}
-.chapter ul li.current_chep{ margin-bottom:0px;  height:39px}
-.chapter ul li{font-size:20px; line-height:20px; margin-bottom:15px; padding-left:43px; background-size:13px auto !important;background-position:20px 1px !important}
-.chapter ul li.close_chep{background-size:16px auto !important; padding-left:45px; background-position:20px 5px !important}
-.home_icon{padding:10px 0 0 10px}
-.home_icon a img{width:27px}
+    /*--------------------------------------------------reading-chapter-page----------------------------------------------------------*/
 
-/*--------------------------------------------------setting-page----------------------------------------------------------*/
+    .content{width:380px; height:606px}
+    .content h2{font-size:42px; line-height:42px; margin-top:-25px; padding-bottom:10px !important}
+    .chapter {padding-top:15px}
+    .chapter ul li label{width:269px}
+    .chapter ul li.current_chep{ margin-bottom:0px;  height:39px}
+    .chapter ul li{font-size:20px; line-height:20px; margin-bottom:15px; padding-left:43px; background-size:13px auto !important;background-position:20px 1px !important}
+    .chapter ul li.close_chep{background-size:16px auto !important; padding-left:45px; background-position:20px 5px !important}
+    .home_icon{padding:10px 0 0 10px}
+    .home_icon a img{width:27px}
 
-.contentimg{width:382px; height:607px;}	
-.setting h3{font-size:34px; height:34px; line-height:30px;}
-.setting-mnu{padding-top:20px;}
-.setting-mnu ul li{height:82px; width:107px; margin:0 10px 52px;}
-.setting-mnu ul li a span{margin-bottom:10px; height:53px;}
-.setting-mnu ul li a span img{max-width:57px; max-height:53px;}
-.setting-mnu ul li a label{font-size:20px; height:20px; line-height:20px; letter-spacing:-1px;}
+    /*--------------------------------------------------setting-page----------------------------------------------------------*/
 
-/*--------------------------------------------------example-of-chapter-page----------------------------------------------------------*/
+    .contentimg{width:382px; height:607px;}	
+    .setting h3{font-size:34px; height:34px; line-height:30px;}
+    .setting-mnu{padding-top:20px;}
+    .setting-mnu ul li{height:82px; width:107px; margin:0 10px 52px;}
+    .setting-mnu ul li a span{margin-bottom:10px; height:53px;}
+    .setting-mnu ul li a span img{max-width:57px; max-height:53px;}
+    .setting-mnu ul li a label{font-size:20px; height:20px; line-height:20px; letter-spacing:-1px;}
 
-.example-chep{width:380px; height:606px; }
-.top-menu ul li.setting-icon a{background-size:37px; width:37px; height:39px }
-.top-menu ul li.setting-icon a:hover{background-size:37px;width:37px; height:39px }
-.top-menu ul li.heart-icon a{background-size:42px; width:42px; height:36px}
-.top-menu ul li.heart-icon a:hover{background-size:42px; width:42px; height:36px}
-.top-menu ul li.time-icon a{background-size:35px; height:38px; width:35px}
-.top-menu ul li.time-icon a:hover{background-size:35px; height:38px; width:35px}
-.top-menu ul li.pen-icon a{background-size:31px; height:39px; width:31px}
-.top-menu ul li.pen-icon a:hover{background-size:31px; height:39px; width:31px}
-.top-menu ul li.pin-icon a{background-size:35px; height:41px; width:35px}
-.top-menu ul li.pin-icon a:hover{background-size:35px; height:41px; width:35px}
-.top-menu ul li.search-icon a{background-size:39px; height:39px; width:39px}
-.top-menu ul li.search-icon a:hover{background-size:39px; height:39px; width:39px}
-.top-menu ul li.tag-icon a{background-size:17px; height: 37px; width: 17px;}
-.top-menu ul li.tag-icon a:hover{background-size:17px; height: 37px; width: 17px;}
-.top-menu{padding:13px 30px; height:38px}
-.top-menu ul li{margin-right:14px}
-.midd-cont h4{font-size:27px; width:180px; background-size:13px; line-height:27px}
-.midd-cont p{font-size:27px; line-height:30px; letter-spacing:-1px}
-.cont-text{width:279px; font-size:16px; line-height:19px}
-.midd-cont{padding-left:40px; }
-.chapter-detail{margin-top:25px}
-.midd-cont{margin-top:30px; padding-left:25px}
-.footer-cont .pagination{font-size:20px; line-height:20px}
-.heart_chep{background-size:16px}
-.bookmark-page{padding-right:0px}
-.book_chep{margin-top:54px; background-size:12px}
-.yellow_chep{ background-size:17px; margin-top:63px}
-.footer-cont span a img{width:18px}
-.footer-cont{margin-top:16px; padding:0 15px}
+    /*--------------------------------------------------example-of-chapter-page----------------------------------------------------------*/
 
-.pop-up{width:170px; top:290px; left:88px }
-.pop-top{ height:14px; background-size:170px}
-.pop-midd {background-size:170px; height:234px; padding:5px 15px }
-.pop-midd ul li label{font-size:8px; width:109px; line-height:10px }
-.pop-midd ul li.pop-icon1 span{ height:20px; width:23px; background-size:23px}
-.pop-midd ul li.pop-icon2 span{height:23px; width:23px;background-size:12px}
-.pop-midd ul li.pop-icon3 span{  height:22px; width:18px; background-size:18px}
-.pop-midd ul li.pop-icon4 span{ height:22px; width:22px; background-size:22px}
-.pop-midd ul li.pop-icon5 span{  height:23px; width:21px; background-size:21px}
-.pop-midd ul li.pop-icon6 span{  height:23px;  width:20px; background-size:20px}
-.pop-midd ul li.pop-icon7 span{ height:21px; width:22px; background-size:22px}
-.pop-midd ul li.pop-icon8 span{  height:23px;  width:22px; background-size:20px}
-.pop-midd ul li{margin-bottom:5px}
+    .example-chep{width:380px; height:606px; }
+    .top-menu ul li.setting-icon a{background-size:37px; width:37px; height:39px }
+    .top-menu ul li.setting-icon a:hover{background-size:37px;width:37px; height:39px }
+    .top-menu ul li.heart-icon a{background-size:42px; width:42px; height:36px}
+    .top-menu ul li.heart-icon a:hover{background-size:42px; width:42px; height:36px}
+    .top-menu ul li.time-icon a{background-size:35px; height:38px; width:35px}
+    .top-menu ul li.time-icon a:hover{background-size:35px; height:38px; width:35px}
+    .top-menu ul li.pen-icon a{background-size:31px; height:39px; width:31px}
+    .top-menu ul li.pen-icon a:hover{background-size:31px; height:39px; width:31px}
+    .top-menu ul li.pin-icon a{background-size:35px; height:41px; width:35px}
+    .top-menu ul li.pin-icon a:hover{background-size:35px; height:41px; width:35px}
+    .top-menu ul li.search-icon a{background-size:39px; height:39px; width:39px}
+    .top-menu ul li.search-icon a:hover{background-size:39px; height:39px; width:39px}
+    .top-menu ul li.tag-icon a{background-size:17px; height: 37px; width: 17px;}
+    .top-menu ul li.tag-icon a:hover{background-size:17px; height: 37px; width: 17px;}
+    .top-menu{padding:13px 30px; height:38px}
+    .top-menu ul li{margin-right:14px}
+    .midd-cont h4{font-size:27px; width:180px; background-size:13px; line-height:27px}
+    .midd-cont p{font-size:27px; line-height:30px; letter-spacing:-1px}
+    .cont-text{width:279px; font-size:16px; line-height:19px}
+    .midd-cont{padding-left:40px; }
+    .chapter-detail{margin-top:25px}
+    .midd-cont{margin-top:30px; padding-left:25px}
+    .footer-cont .pagination{font-size:20px; line-height:20px}
+    .heart_chep{background-size:16px}
+    .bookmark-page{padding-right:0px}
+    .book_chep{margin-top:54px; background-size:12px}
+    .yellow_chep{ background-size:17px; margin-top:63px}
+    .footer-cont span a img{width:18px}
+    .footer-cont{margin-top:16px; padding:0 15px}
 
-.top-popup-menu{ height:35px; padding:14px 15px; width:104px;  border-radius:22px 18px 18px 22px; }
-.top-popup-menu ul li{margin-right:9px}
-.top-popup-menu ul li.heart-icon a{ height:35px; width:41px; background-size:39px}
-.top-popup-menu ul li.heart-icon a:hover{height:35px; width:41px; background-size:39px}
+    .pop-up{width:170px; top:290px; left:88px }
+    .pop-top{ height:14px; background-size:170px}
+    .pop-midd {background-size:170px; height:234px; padding:5px 15px }
+    .pop-midd ul li label{font-size:8px; width:109px; line-height:10px }
+    .pop-midd ul li.pop-icon1 span{ height:20px; width:23px; background-size:23px}
+    .pop-midd ul li.pop-icon2 span{height:23px; width:23px;background-size:12px}
+    .pop-midd ul li.pop-icon3 span{  height:22px; width:18px; background-size:18px}
+    .pop-midd ul li.pop-icon4 span{ height:22px; width:22px; background-size:22px}
+    .pop-midd ul li.pop-icon5 span{  height:23px; width:21px; background-size:21px}
+    .pop-midd ul li.pop-icon6 span{  height:23px;  width:20px; background-size:20px}
+    .pop-midd ul li.pop-icon7 span{ height:21px; width:22px; background-size:22px}
+    .pop-midd ul li.pop-icon8 span{  height:23px;  width:22px; background-size:20px}
+    .pop-midd ul li{margin-bottom:5px}
 
-.top-popup-menu ul li.tag-popup-icon a{ height:37px; width:18px; background-size:18px}
-.top-popup-menu ul li.tag-popup-icon a:hover{ height:37px; width:18px; background-size:18px}
+    .top-popup-menu{ height:35px; padding:14px 15px; width:104px;  border-radius:22px 18px 18px 22px; }
+    .top-popup-menu ul li{margin-right:9px}
+    .top-popup-menu ul li.heart-icon a{ height:35px; width:41px; background-size:39px}
+    .top-popup-menu ul li.heart-icon a:hover{height:35px; width:41px; background-size:39px}
 
-.top-popup-menu  ul li.plus-icon{margin-top:7px}
-.top-popup-menu  ul li.plus-icon a{ height:22px; width:19px; background-size:20px}
-.top-popup-menu  ul li.plus-icon a:hover{ height:22px; width:19px; background-size:20px}
+    .top-popup-menu ul li.tag-popup-icon a{ height:37px; width:18px; background-size:18px}
+    .top-popup-menu ul li.tag-popup-icon a:hover{ height:37px; width:18px; background-size:18px}
 
-
+    .top-popup-menu  ul li.plus-icon{margin-top:7px}
+    .top-popup-menu  ul li.plus-icon a{ height:22px; width:19px; background-size:20px}
+    .top-popup-menu  ul li.plus-icon a:hover{ height:22px; width:19px; background-size:20px}
 
 
-	}
+
+
+}
 
 @media only screen and (min-width: 320px) and (max-width: 479px) {
 
-/*--------------------------------------------------home-page----------------------------------------------------------*/
+    /*--------------------------------------------------home-page----------------------------------------------------------*/
 
-.main_bg h1{font-size:49px; line-height:49px; letter-spacing:0}
-.main_bg h2{letter-spacing:-1px; font-size:24px; line-height:24px; margin-bottom:25px;}
-.menu{width:313px}
-.menu ul li{width:103px}
-.menu ul li label{font-size:15px}
+    .main_bg h1{font-size:49px; line-height:49px; letter-spacing:0}
+    .main_bg h2{letter-spacing:-1px; font-size:24px; line-height:24px; margin-bottom:25px;}
+    .menu{width:313px}
+    .menu ul li{width:103px}
+    .menu ul li label{font-size:15px}
 
-/*--------------------------------------------------reading-chapter-page----------------------------------------------------------*/
+    /*--------------------------------------------------reading-chapter-page----------------------------------------------------------*/
 
-.content{width:253px; height:404px}
-.content h2{font-size:32px; line-height:32px; margin-top:-10px; padding-bottom:10px !important}
-.chapter ul li label{width:170px}
-.chapter ul li.current_chep{ margin-bottom:0px;  height:25px}
-.chapter ul li{font-size:13px; line-height:15px; margin-bottom:7px; padding-left:37px; background-size:8px auto !important;background-position:21px 1px !important}
-.chapter ul li.close_chep{background-size:11px auto !important; padding-left:37px; background-position:20px 5px !important}
-.chapter{padding-top:10px !important}
-.home_icon{padding:10px 0 0 10px}
-.home_icon a img{width:18px}
+    .content{width:253px; height:404px}
+    .content h2{font-size:32px; line-height:32px; margin-top:-10px; padding-bottom:10px !important}
+    .chapter ul li label{width:170px}
+    .chapter ul li.current_chep{ margin-bottom:0px;  height:25px}
+    .chapter ul li{font-size:13px; line-height:15px; margin-bottom:7px; padding-left:37px; background-size:8px auto !important;background-position:21px 1px !important}
+    .chapter ul li.close_chep{background-size:11px auto !important; padding-left:37px; background-position:20px 5px !important}
+    .chapter{padding-top:10px !important}
+    .home_icon{padding:10px 0 0 10px}
+    .home_icon a img{width:18px}
 
-/*--------------------------------------------------setting-page----------------------------------------------------------*/
+    /*--------------------------------------------------setting-page----------------------------------------------------------*/
 
-.contentimg{width:254px; height:406px;}
-.setting h3{font-size:22px; height:22px; line-height:22px; letter-spacing:-1px;}
-.setting-mnu{padding-top:20px;}
-.setting-mnu ul li{height:55px; width:70px; margin:0 7px 34px;}
-.setting-mnu ul li a span{margin-bottom:5px; height:35px;}
-.setting-mnu ul li a span img{max-width:37px; max-height:35px;}
-.setting-mnu ul li a label{font-size:13px; height:13px; line-height:13px; letter-spacing:-1px;}
-	
-/*--------------------------------------------------example-of-chapter-page----------------------------------------------------------*/
+    .contentimg{width:254px; height:406px;}
+    .setting h3{font-size:22px; height:22px; line-height:22px; letter-spacing:-1px;}
+    .setting-mnu{padding-top:20px;}
+    .setting-mnu ul li{height:55px; width:70px; margin:0 7px 34px;}
+    .setting-mnu ul li a span{margin-bottom:5px; height:35px;}
+    .setting-mnu ul li a span img{max-width:37px; max-height:35px;}
+    .setting-mnu ul li a label{font-size:13px; height:13px; line-height:13px; letter-spacing:-1px;}
 
-.example-chep{width:253px; height:404px; }
-.top-menu ul li.setting-icon a{background-size:25px; width:25px; height:25px }
-.top-menu ul li.setting-icon a:hover{background-size:25px; width:25px; height:25px }
-.top-menu ul li.heart-icon a{background-size:27px; width:27px; height:25px}
-.top-menu ul li.heart-icon a:hover{background-size:27px; width:27px; height:25px}
-.top-menu ul li.time-icon a{background-size:24px; height:25px; width:24px}
-.top-menu ul li.time-icon a:hover{background-size:24px; height:25px; width:24px}
-.top-menu ul li.pen-icon a{background-size:21px; height:25px; width:21px}
-.top-menu ul li.pen-icon a:hover{background-size:21px; height:25px; width:21px}
-.top-menu ul li.pin-icon a{background-size: 26px auto; height: 29px; width: 26px;}
-.top-menu ul li.pin-icon a:hover{background-size: 26px auto; height: 29px; width: 26px;}
-.top-menu ul li.search-icon a{background-size:25px; height:25px; width:25px}
-.top-menu ul li.search-icon a:hover{background-size:25px; height:25px; width:25px}
-.top-menu ul li.tag-icon a{background-size:12px; height: 24px; width: 12px;}
-.top-menu ul li.tag-icon a:hover{background-size:12px; height: 24px; width: 12px;}
-.top-menu{padding:9px 21px; height:25px}
-.top-menu ul li{margin-right:8px}
-.midd-cont h4{font-size:18px; width:120px; background-size:9px; line-height:20px}
-.midd-cont p{font-size:18px; line-height:20px; letter-spacing:-1px; padding-bottom:10px}
-.cont-text{width:200px; font-size:11px; line-height:14px}
-.midd-cont{padding-left:40px; }
-.chapter-detail{margin-top:15px}
-.midd-cont{margin-top:10px; padding-left:15px}
-.footer-cont .pagination{font-size:13px; line-height:13px}
-.heart_chep{background-size:12px}
-.bookmark-page{padding-right:5px; width:20px}
-.book_chep{margin-top:34px; background-size:8px}
-.yellow_chep{ background-size:12px; margin-top:23px}
-.footer-cont span a img{width:12px}
-.footer-cont{margin-top:8px; padding:0 15px}
+    /*--------------------------------------------------example-of-chapter-page----------------------------------------------------------*/
 
-.pop-up{width:130px; top:159px; left:48px }
-.pop-top{ height:10px; background-size:130px}
-.pop-midd {background-size:130px; height:180px; padding:3px 5px }
-.pop-midd ul li label{font-size:6px; width:96px; line-height:7px }
-.pop-midd ul li.pop-icon1 span{ height:15px; width:18px; background-size:15px}
-.pop-midd ul li.pop-icon2 span{height:20px; width:16px;background-size:8px}
-.pop-midd ul li.pop-icon3 span{  height:18px; width:16px; background-size:12px}
-.pop-midd ul li.pop-icon4 span{ height:18px; width:18px; background-size:15px}
-.pop-midd ul li.pop-icon5 span{  height:20px; width:19px; background-size:15px}
-.pop-midd ul li.pop-icon6 span{  height:19px;  width:20px; background-size:16px}
-.pop-midd ul li.pop-icon7 span{ height:17px; width:18px; background-size:16px}
-.pop-midd ul li.pop-icon8 span{  height:18px;  width:18px; background-size:15px}
-.pop-midd ul li{margin-bottom:4px}
+    .example-chep{width:253px; height:404px; }
+    .top-menu ul li.setting-icon a{background-size:25px; width:25px; height:25px }
+    .top-menu ul li.setting-icon a:hover{background-size:25px; width:25px; height:25px }
+    .top-menu ul li.heart-icon a{background-size:27px; width:27px; height:25px}
+    .top-menu ul li.heart-icon a:hover{background-size:27px; width:27px; height:25px}
+    .top-menu ul li.time-icon a{background-size:24px; height:25px; width:24px}
+    .top-menu ul li.time-icon a:hover{background-size:24px; height:25px; width:24px}
+    .top-menu ul li.pen-icon a{background-size:21px; height:25px; width:21px}
+    .top-menu ul li.pen-icon a:hover{background-size:21px; height:25px; width:21px}
+    .top-menu ul li.pin-icon a{background-size: 26px auto; height: 29px; width: 26px;}
+    .top-menu ul li.pin-icon a:hover{background-size: 26px auto; height: 29px; width: 26px;}
+    .top-menu ul li.search-icon a{background-size:25px; height:25px; width:25px}
+    .top-menu ul li.search-icon a:hover{background-size:25px; height:25px; width:25px}
+    .top-menu ul li.tag-icon a{background-size:12px; height: 24px; width: 12px;}
+    .top-menu ul li.tag-icon a:hover{background-size:12px; height: 24px; width: 12px;}
+    .top-menu{padding:9px 21px; height:25px}
+    .top-menu ul li{margin-right:8px}
+    .midd-cont h4{font-size:18px; width:120px; background-size:9px; line-height:20px}
+    .midd-cont p{font-size:18px; line-height:20px; letter-spacing:-1px; padding-bottom:10px}
+    .cont-text{width:200px; font-size:11px; line-height:14px}
+    .midd-cont{padding-left:40px; }
+    .chapter-detail{margin-top:15px}
+    .midd-cont{margin-top:10px; padding-left:15px}
+    .footer-cont .pagination{font-size:13px; line-height:13px}
+    .heart_chep{background-size:12px}
+    .bookmark-page{padding-right:5px; width:20px}
+    .book_chep{margin-top:34px; background-size:8px}
+    .yellow_chep{ background-size:12px; margin-top:23px}
+    .footer-cont span a img{width:12px}
+    .footer-cont{margin-top:8px; padding:0 15px}
 
-.top-popup-menu{ height:24px; padding:9px 9px; width:71px;  border-radius:22px 18px 18px 22px; }
-.top-popup-menu ul li{margin-right:6px}
-.top-popup-menu ul li.heart-icon a{ background-size: 27px ;  height: 23px;  width: 31px;}
-.top-popup-menu ul li.heart-icon a:hover{ background-size: 26px ;  height: 23px;  width: 31px;}
+    .pop-up{width:130px; top:159px; left:48px }
+    .pop-top{ height:10px; background-size:130px}
+    .pop-midd {background-size:130px; height:180px; padding:3px 5px }
+    .pop-midd ul li label{font-size:6px; width:96px; line-height:7px }
+    .pop-midd ul li.pop-icon1 span{ height:15px; width:18px; background-size:15px}
+    .pop-midd ul li.pop-icon2 span{height:20px; width:16px;background-size:8px}
+    .pop-midd ul li.pop-icon3 span{  height:18px; width:16px; background-size:12px}
+    .pop-midd ul li.pop-icon4 span{ height:18px; width:18px; background-size:15px}
+    .pop-midd ul li.pop-icon5 span{  height:20px; width:19px; background-size:15px}
+    .pop-midd ul li.pop-icon6 span{  height:19px;  width:20px; background-size:16px}
+    .pop-midd ul li.pop-icon7 span{ height:17px; width:18px; background-size:16px}
+    .pop-midd ul li.pop-icon8 span{  height:18px;  width:18px; background-size:15px}
+    .pop-midd ul li{margin-bottom:4px}
 
-.top-popup-menu ul li.tag-popup-icon a{ height:27px; width:13px; background-size:12px}
-.top-popup-menu ul li.tag-popup-icon a:hover{ height:27px; width:13px; background-size:12px}
+    .top-popup-menu{ height:24px; padding:9px 9px; width:71px;  border-radius:22px 18px 18px 22px; }
+    .top-popup-menu ul li{margin-right:6px}
+    .top-popup-menu ul li.heart-icon a{ background-size: 27px ;  height: 23px;  width: 31px;}
+    .top-popup-menu ul li.heart-icon a:hover{ background-size: 26px ;  height: 23px;  width: 31px;}
 
-.top-popup-menu  ul li.plus-icon{margin-top:7px}
-.top-popup-menu  ul li.plus-icon a{ height:13px; width:13px; background-size:11px}
-.top-popup-menu  ul li.plus-icon a:hover{ height:13px; width:13px; background-size:11px}
+    .top-popup-menu ul li.tag-popup-icon a{ height:27px; width:13px; background-size:12px}
+    .top-popup-menu ul li.tag-popup-icon a:hover{ height:27px; width:13px; background-size:12px}
+
+    .top-popup-menu  ul li.plus-icon{margin-top:7px}
+    .top-popup-menu  ul li.plus-icon a{ height:13px; width:13px; background-size:11px}
+    .top-popup-menu  ul li.plus-icon a:hover{ height:13px; width:13px; background-size:11px}
 
 
-	}
-	
-	
-	
-	
+}
+
+
+
+
 .background-yello{
-  background-color:#FFFF00;
+    background-color:#FFFF00;
 }
