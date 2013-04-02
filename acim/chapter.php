@@ -66,20 +66,30 @@ include('include/common_function.php');
                         $chid = trim($_REQUEST['chid']);
                         $userid = 1;
                         ?>
-                        <div class="top-menu" style="height:6%;margin-top:0px;">
+						<div class="top-popup-menu" id="first_top_div">
+							<ul>
+								<li class="heart2-icon"><a href="javascript:void(0);" class="top-icon-menu"></a></li>
+								<li class="tag-popup-icon"><a href="javascript:void(0);" class="top-icon-menu"></a></li>
+								 <li class="plus-icon"><a href="javascript:void(0);" class="top-icon-menu"></a></li>
+								<div class="cls"></div>
+							</ul>
+					     </div>
+						 <div class="cls"></div>						  
+                        <div class="top-menu" id="second_top_div" style="height:6%;margin-top:0px; display:none;">
                             <ul>
                                 <li class="setting-icon"><a href="#"></a></li>
                                 <li class="heart-icon second_topmenu "><a href="#"></a></li>
                                 <li class="time-icon"><a href="#"></a></li>
-                                <li class="pen-icon"><a href="javascript:void(0);" onClick="return select_highlight();"></a></li>
+                                <!--<li class="pen-icon"><a href="javascript:void(0);" onClick="return select_highlight();"></a></li>-->
+								<li class="pen-icon"><a href="javascript:void(0);" onClick=""></a></li>
                                 <li class="pin-icon"><a href="#"></a></li>
                                 <li class="search-icon"><a href="#"></a></li>
-                                <li class="tag-icon" style="position:relative;">
+                                <li class="tag-icon" id="tag_icon_small" style="position:relative;">
                                     <?php
                                     $counticon = CountIcon($userid, $pageno, $chid, 'bookmark');
                                     for ($i = 10; $i > $counticon; $i--) {
                                         ?>
-                                        <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="<?php echo $i; ?>"></a>
+                                        <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="<?php echo $i; ?>" data-db="0"></a>
                                     <?php } ?>
 
                                 </li>
@@ -93,7 +103,7 @@ include('include/common_function.php');
                                     for ($i = 10; $i > $counticon_star; $i--) {
                                         ?>
                                         <div style="position:relative;float:left;">
-                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="s<?php echo $i; ?>" ></a>
+                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="s<?php echo $i; ?>" data-db="0"></a>
                                         </div>
                                     <?php } ?>
                                 </li>
@@ -103,7 +113,7 @@ include('include/common_function.php');
                                     for ($i = 10; $i > $counticon_heart; $i--) {
                                         ?>
                                         <div style="position:relative;float:left;">
-                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="h<?php echo $i; ?>" ></a>
+                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="h<?php echo $i; ?>" data-db="0"></a>
                                         </div>
                                     <?php } ?>
                                 </li>
@@ -113,7 +123,7 @@ include('include/common_function.php');
                                     for ($i = 10; $i > $counticon_yellow; $i--) {
                                         ?>
                                         <div style="position:relative;float:left;">
-                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="y<?php echo $i; ?>" ></a>
+                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="y<?php echo $i; ?>" data-db="0"></a>
                                         </div>
                                     <?php } ?>
                                 </li>
@@ -123,7 +133,7 @@ include('include/common_function.php');
                                     for ($i = 10; $i > $counticon_mark; $i--) {
                                         ?>
                                         <div style="position:relative;float:left;">
-                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="m<?php echo $i; ?>" ></a>
+                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="m<?php echo $i; ?>" data-db="0"></a>
                                         </div>
                                     <?php } ?>
                                 </li>
@@ -133,7 +143,7 @@ include('include/common_function.php');
                                     for ($i = 10; $i > $counticon_bulb; $i--) {
                                         ?>
                                         <div style="position:relative;float:left;">
-                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="b<?php echo $i; ?>" ></a>
+                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="b<?php echo $i; ?>" data-db="0"></a>
                                         </div>
                                     <?php } ?>
                                 </li>
@@ -165,7 +175,7 @@ include('include/common_function.php');
                             $query_count = "SELECT tbl_page_id FROM tbl_page where " . $where;
                             $res_count = q($query_count);
                             ?>
-                            <div class="chapter-detail" style="">
+                            <div class="chapter-detail droppable123" style="">
                                 <?php if (count($res_count) > 0) { ?>
                                     <div class="bookmark-page get-icon">
                                         <ul id="bookmark_icon" class="droppable">
@@ -192,22 +202,22 @@ include('include/common_function.php');
                                                     if ($res[$i]['tbl_icon_type'] == 'bookmark') {
                                                         ?>
                                                         <li  class="book-mark-icon" style="position:relative;">
-                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;" data-id="<?php echo $res[$i]['tbl_icon_no']; ?>"></a></li>
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;" data-id="<?php echo $res[$i]['tbl_icon_no']; ?>" data-db="1"></a></li>
                                                     <?php } elseif ($res[$i]['tbl_icon_type'] == 'heart') { ?>
                                                         <li  class="heart-listicon" style="position:relative;">
-                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="h<?php echo $res[$i]['tbl_icon_no']; ?>" ></a></li>
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="h<?php echo $res[$i]['tbl_icon_no']; ?>" data-db="1"></a></li>
                                                     <?php } elseif ($res[$i]['tbl_icon_type'] == 'star') { ?>
                                                         <li  class="star-listicon" style="position:relative;">
-                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="s<?php echo $res[$i]['tbl_icon_no']; ?>" ></a></li>
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="s<?php echo $res[$i]['tbl_icon_no']; ?>" data-db="1"></a></li>
                                                     <?php } elseif ($res[$i]['tbl_icon_type'] == 'yellow') { ?>
                                                         <li  class="yellow-listicon" style="position:relative;">
-                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="y<?php echo $res[$i]['tbl_icon_no']; ?>" ></a></li>
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="y<?php echo $res[$i]['tbl_icon_no']; ?>" data-db="1"></a></li>
                                                     <?php } elseif ($res[$i]['tbl_icon_type'] == 'mark') { ?>
                                                         <li  class="mark-listicon" style="position:relative;">
-                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="m<?php echo $res[$i]['tbl_icon_no']; ?>" ></a></li>
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="m<?php echo $res[$i]['tbl_icon_no']; ?>" data-db="1"></a></li>
                                                     <?php } elseif ($res[$i]['tbl_icon_type'] == 'bulb') { ?>
                                                         <li  class="bulb-listicon" style="position:relative;">
-                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="b<?php echo $res[$i]['tbl_icon_no']; ?>" ></a></li>
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:<?php echo $res[$i]['tbl_icon_top_position']; ?>px;height:37px;width:37px;" data-id="b<?php echo $res[$i]['tbl_icon_no']; ?>" data-db="1"></a></li>
                                                         <?php
                                                     }
                                                 }
@@ -220,6 +230,7 @@ include('include/common_function.php');
                                             </li>
                                         </ul>
                                     </div>
+    
                                 <?php } ?> 
                                 <!--style="min-height:70%;"-->
                                 <div class="cont-text unselectable" <?php if (count($res_count) > 0) { ?>  <?php } ?> id="content_area" >
@@ -297,12 +308,13 @@ include('include/common_function.php');
                                 }
 
                                 //for($i=0;$i<$total_page;$i++){ 
-                                for ($i = ($start_page - 1); $i < $end_page; $i++) {
+                                $start_loop = ($start_page - 1); 
+                                for ($i = $start_loop; $i < $end_page; $i++) {
                                     if ($pageno == $res[$i]['tbl_page_no']) {
-                                        echo $pageno;
+                                       echo $pageno;
                                     } else {
                                         ?>   
-                                        <a href="javascript:void(0);" data-ajax="false" onClick="return redirect_page('chapter.php?chid=<?php echo $res[$i]['tbl_page_chid']; ?>&pageno=<?php echo $res[$i]['tbl_page_no']; ?>');"><?php echo $res[$i]['tbl_page_no']; ?></a>			  
+                                           <a href="javascript:void(0);" data-ajax="false" onClick="return redirect_page('chapter.php?chid=<?php echo $res[$i]['tbl_page_chid']; ?>&pageno=<?php echo $res[$i]['tbl_page_no']; ?>');"><?php echo $res[$i]['tbl_page_no']; ?></a>
                                         <?php
                                     }
                                 }
@@ -321,9 +333,44 @@ include('include/common_function.php');
                 </div>
             </div>
         </div>
+        <div class="pop-up" id="content_popup">
+          	<div class="pop-top"></div>
+           <div class="pop-midd">
+          	<ul>
+            	<li class="pop-icon1"><a href="#"><span></span><label>-lets you mark a sections of readings with icons.</label><div class="cls"></div></a>
+                <li class="pop-icon2"><a href="#"><span></span><label>-let's you bookmark where you left off in your readings</label><div class="cls"></div></a>
+                <li class="pop-icon3"><a href="#"><span></span><label>-let's you highlight section of text.</label><div class="cls"></div></a>
+                <li class="pop-icon4"><a href="#"><span></span><label>-let's you search for keywords in the text.</label><div class="cls"></div></a>
+                <li class="pop-icon5"><a href="#"><span></span><label>-let's you take notes about and part or the text.</label><div class="cls"></div></a>
+                <li class="pop-icon6"><a href="#"><span></span><label>-let's you share/email any part of the text.</label><div class="cls"></div></a>
+                <li class="pop-icon7"><a href="#"><span></span><label>-let's you set reminders to help you through the course.</label><div class="cls"></div></a>
+                <li class="pop-icon8"><a href="#"><span></span><label>-tells you about the tools.</label><div class="cls"></div></a> 
+            </ul>
+            </div> 
+          </div>
+ 
         <script type="text/javascript" language="javascript">
             $(document).ready(function() {
-                $('.ui-content').css("overflow-y",'hidden'); 
+			
+			$("#tag_icon_small").on('mouseenter',function(){
+			   //$("#tag_icon_big").hide();
+			   //$("#tag_icon_small").show(); 
+			   //$("#tag_icon_small").removeClass('tag-icon');
+			   //$("#tag_icon_small").addClass('tag-icon-small');
+			});
+			$("#tag_icon_small").on('mouseleave',function(){
+			   //$("#tag_icon_small").removeClass('tag-icon-small');
+			   //$("#tag_icon_small").addClass('tag-icon');
+			});
+			
+                $("#content_area").click(function() { 
+				     if($('#content_popup').css('display') == 'none'){
+					    $('#content_popup').show(); 
+					 } else {
+					    $('#content_popup').hide(); 
+					 }
+				});
+				$('.ui-content').css("overflow-y",'hidden'); 
                 $(".second_topmenu").click(function() {                          
         
                     if($('#secd_line_icon').css('display') == 'none'){
@@ -344,9 +391,16 @@ include('include/common_function.php');
                 var h_bookmark=$(".get-icon").height();
 			 
                 var dragablediv = h-(h/2.5);
-			  
+			    
+				$(".top-icon-menu").click(function(){
+				    $("#first_top_div").hide();
+					$("#second_top_div").show();
+				});
                 $("#bookmark_icon").css("height", dragablediv);
-			 
+		//$(".clcik-delete").hover(function(){
+                    //alert('hi');
+                    //$(this).find('.clcik-delete').data('id');
+                //});	 
                 $(function() {
 			 
                     var dragOptions = {
@@ -364,49 +418,100 @@ include('include/common_function.php');
                         revert: "invalid",
                         scope: "items"
                     });
-                    $('.droppable').droppable({
+                    $('.droppable123').droppable({
                         scope: "items",
                         drop: function(event, ui) {
                             var el = ui.helper.context;
-                            //console.log($(el).data("id"));
-                            var iconno = $(el).data("id").toString();
-				
+							//$(el).animate({'left':'0px'},1000); //1000 = 1second
+							var iconno = $(el).data("id").toString();
+							//console.log(el);
+							var record_db = $(el).data("db");
+							var icon_last_p = $(el).position();
+				            var drag_area = $('.droppable123').position();
                             if(iconno[0] == 'h'){
                                 iconno = iconno.substring(1);
                                 var icon_type = 'heart';
-                            }
+								var drag_icon = $('.icon2').position();
+								 var icon_left = (drag_area.left + drag_icon.left);		 
+								 if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    $(el).animate({'left':'-129px'},2000); //1000 = 1second
+                                 }
+							}
                             else if(iconno[0] == 's'){
                                 iconno = iconno.substring(1);
                                 var icon_type = 'star';
-                            }
+								var drag_icon = $('.icon1').position();
+							    var icon_left = (drag_area.left + drag_icon.left);
+								if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    $(el).animate({'left':'11px'},2000); //1000 = 1second
+                                 }
+							}
                             else if(iconno[0] == 'y'){
                                 iconno = iconno.substring(1);
                                 var icon_type = 'yellow';
-                            }
+								var drag_icon = $('.icon3').position();
+								var icon_left = (drag_area.left + drag_icon.left);		 
+								if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    $(el).animate({'left':'-274px'},2000); //1000 = 1second
+                                 }
+							}
                             else if(iconno[0] == 'm'){
                                 iconno = iconno.substring(1);
                                 var icon_type = 'mark';
-                            }
+								var drag_icon = $('.icon4').position();
+								var icon_left = (drag_area.left + (drag_icon.left*3));		 
+								if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    $(el).animate({'left':'-414px'},2000); //1000 = 1second
+                                 }
+							}
                             else if(iconno[0] == 'b'){
                                 iconno = iconno.substring(1);
-                                var icon_type = 'bulb';
-                            }
+								var icon_type = 'bulb';
+                               var drag_icon = $('.icon5').position();
+							   var icon_left = (drag_area.left + (drag_icon.left*4));		 
+							   if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+							        $(el).animate({'left':'-554px'},2000); //1000 = 1second
+                                 }
+							}
                             else {
                                 var icon_type = 'bookmark'; 
-                            }
-                            
+								if(record_db == "1"){
+								    //$( this ).addClass('active'); 
+									$(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    $(el).animate({'left':'-647px'},2000,function(){
+									    $(el).css({backgroundSize:'60% 60%'})
+									}); //1000 = 1second
+                                 } 
+							}
                             var pos = ui.draggable.position();
                             //alert('top: ' + pos.top+ ', left: ' + pos.left);
                             //alert(h+"---"+pos.top+"-----"+h_bookmark);
-				
+				            
                             var pos = ui.draggable.offset(), dPos = $(this).offset();
-                            /*alert("data-id: " + ui.draggable.data("data-id") + 
+                            var leftposition = (pos.left - dPos.left);
+							
+							//$(this).offset().left.css({'left':'3px'});
+							/*alert("data-id: " + ui.draggable.data("data-id") + 
                                                        ", Top: " + (pos.top - dPos.top) + 
                                                        ", Left: " + (pos.left - dPos.left));*/
                             //var topposition = (pos.top/h)*100;   
                             //var topposition = ((pos.top - dPos.top)/h)*100;
                             var topposition = (pos.top - dPos.top);
-				  
+							
+							
+				            
+							
                             var url = "icon_insert.php?pageno=<?php echo $pageno; ?>&chid=<?php echo $chid; ?>&chno=<?php echo $chno; ?>&bookid=<?php echo $bookid; ?>&topposition="+topposition+"&iconno="+iconno+"&icon_type="+icon_type;
                             var data = '';
                             $.ajax({
