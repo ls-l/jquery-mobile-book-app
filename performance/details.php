@@ -67,7 +67,18 @@ if (isset($_SESSION['uid']) or isset($_SESSION['auid'])) {
                         $query = "SELECT * FROM staff WHERE id = " . $userid;
                         $res = mysql_query($query);
                         $row = mysql_fetch_assoc($res);
-                        ?>
+                        
+						$select_app = "SELECT fname,lname FROM staff WHERE id = ".$row['appraiser'];
+						$res_app = mysql_query($select_app);
+						$num_app = mysql_num_rows($res_app);
+						$row_app = mysql_fetch_assoc($res_app);
+						if($num_app > 0){
+						   $app_name = $row_app['fname']." ".$row_app['lname']; 
+						} else {
+						   $app_name = 'Not Available';
+						}
+						
+						?>
                          
                         <form method="post" id="personal_data" action="" >
 
@@ -102,10 +113,20 @@ if (isset($_SESSION['uid']) or isset($_SESSION['auid'])) {
                                 <td>Responsible</td>
                                 <td><input type="text" name="responsible" id="responsible" value="<?php echo $row['responsible']; ?>"/></td>
                             </tr>
+							<?php if($row['role'] == 'user') { ?>
                             <tr>
-                                <td>Appraiser</td>
-                                <td><input type="text" name="appraiser" id="appraiser" value="<?php echo $row['appraiser']; ?>"/></td>
+                                <td>
+								  Appraiser
+								</td>
+                                <td>
+								<?php echo $app_name; ?>
+								<?php /*?><input type="text" name="appraiser" id="appraiser" value="<?php echo $row['appraiser']; ?>"/><?php */?>
+								<input type="hidden" name="appraiser" id="appraiser" value="<?php echo $row['appraiser']; ?>"/>
+								</td>
                             </tr>
+							<?php } else { ?>
+							   <input type="hidden" name="appraiser" id="appraiser" value="0"/>
+							<?php } ?>
                             <tr>
                                 <td>Current Step</td>
                                 <td><input type="text" name="current_step" id="current_step" value="<?php echo $row['current_step']; ?>"/></td>
@@ -120,7 +141,7 @@ if (isset($_SESSION['uid']) or isset($_SESSION['auid'])) {
                             </tr>
                             <tr>
                                 <td>Role</td>
-                                <td><input type="text" name="role" id="role" value="<?php echo $row['role']; ?>"/></td>
+                                <td><input type="text" readonly="" name="role" id="role" value="<?php echo $row['role']; ?>"/></td>
                             </tr>
                             <tr>
                                 <td colspan=2"">

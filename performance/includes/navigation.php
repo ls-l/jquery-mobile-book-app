@@ -18,6 +18,7 @@ else if(isset($_SESSION['auid'])) {
 		<div id="ts_tabmenu">
 			<ul>
 				<li><a href="./admin.php"><strong>Home</strong></a></li>
+				<li><a href="./user_appraiser.php"><strong>Appraiser</strong></a></li>
 				<li><a href="./dimensions.php"><strong>Dimensions</strong></a></li>
 			</ul>
 		</div>

@@ -46,7 +46,8 @@ if (isset($_SESSION['uid']) || !empty($user_id)) {
 
             $(document).ready(function(){
                 $('#swfupload-control').swfupload({
-                    upload_url: "./includes/upload-file.php?uid=<? echo $uid; ?>&task_id=<? echo $_SESSION['task_id']; ?>",
+                    <?php /*?>upload_url: "./includes/upload-file.php?uid=<? echo $uid; ?>&task_id=<? echo $_SESSION['task_id']; ?>",<?php */?>
+					upload_url: "./includes/upload-file.php?uid=<? echo $uid; ?>&task_id=<? echo $task_id; ?>",
                     file_post_name: 'uploadfile',
                     file_size_limit : "1024",
                     file_types : "*.doc;*.docx;*.txt;*.rtf;*.pdf;*.jpg;*.png;*.gif",
@@ -152,13 +153,12 @@ if (isset($_SESSION['uid']) || !empty($user_id)) {
         ?>
         
         <?
-        if (isset($_SESSION['uid'])) {
+        if (isset($_SESSION['uid']) or (isset($_SESSION['auid']) and isset($_REQUEST['user_id']))) {
             ?>
-                        function self_scoreChanged() {
-                            var score = document.getElementById('score').value;
-                            var uid = <? echo $_SESSION['uid']; ?>;
-                            var task_id = <? echo $task_id; ?>;
-                            $("#sub2").html('<img src="./images/loading.gif" alt="Loading..." />');	
+                        function self_scoreChanged(uid) {
+                            var score = document.getElementById('score_self').value;
+							var task_id = <? echo $task_id; ?>;
+                            $("#sub3").html('<img src="./images/loading.gif" alt="Loading..." />');	
                             $.post("./includes/update_self_score.php", {						
                                 uid:uid,
                                 task_id:task_id,
@@ -166,10 +166,10 @@ if (isset($_SESSION['uid']) || !empty($user_id)) {
                             }, function(data){
                                 if(data){
                                     if(data == "success") {
-                                        $("#sub2").html('Done');	
+                                        $("#sub3").html('Done');	
                                     }
                                     else {
-                                        $("#sub2").html(data);	
+                                        $("#sub3").html(data);	
                                     }			
                                 }
                             });
@@ -278,7 +278,7 @@ if (isset($_SESSION['uid']) || !empty($user_id)) {
                                         </tr>
         <?
         if (isset($_SESSION['muid']) || isset($_SESSION['auid'])) {
-            ?>
+			?>
                                             <tr>
                                                 <td>
                                                     <strong>Appraiser Score:</strong><br />
@@ -300,7 +300,40 @@ if (isset($_SESSION['uid']) || !empty($user_id)) {
                                                     <div id="sub2" style="display:inline;"></div>
                                                 </td>
                                             </tr>
+				<?php 
+				  if(isset($_SESSION['auid']) and $_SESSION['auid'] != '' and isset($_REQUEST['user_id']) != '' and $_REQUEST['user_id'] != ''){
+				  
+				  
+				  }
+				?>							
+					<tr>
+                                                <td>
+                                                    <strong>Self Appraiser Score:</strong><br />
+                                                    Please select a score (1-4): 
             <?
+            $self_status_res = mysql_query("SELECT score FROM task_score_commonuser WHERE uid = '" . $_REQUEST['user_id'] . "' AND task_id = '" . $_REQUEST['task_id'] . "'");
+            $count_reco = mysql_num_rows($self_status_res);
+            if($count_reco > 0) {
+              if ($stat = mysql_fetch_array($self_status_res)) {
+                $score = $stat['score'];
+              }    
+            } else {
+                $score = 0;
+            }
+            
+            ?>
+                                                    <select id="score_self" onchange="self_scoreChanged(<?php echo $_REQUEST['user_id']; ?>);">
+                                                        <option value="1" <? echo $sel = ($score == 0) ? "selected" : "" ?>>0</option>
+                                                        <option value="1" <? echo $sel = ($score == 1) ? "selected" : "" ?>>1</option>
+                                                        <option value="2" <? echo $sel = ($score == 2) ? "selected" : "" ?>>2</option>
+                                                        <option value="3" <? echo $sel = ($score == 3) ? "selected" : "" ?>>3</option>
+                                                        <option value="4" <? echo $sel = ($score == 4) ? "selected" : "" ?>>4</option>
+                                                    </select>
+                                                    <div id="sub3" style="display:inline;"></div>
+                                                </td>
+                                            </tr>						
+											
+                <?
         } else {
             ?>
                                             <tr>
@@ -333,14 +366,14 @@ if (isset($_SESSION['uid']) || !empty($user_id)) {
             }
             
             ?>
-                                                    <select id="score" onchange="self_scoreChanged();">
+                                                    <select id="score_self" onchange="self_scoreChanged(<? echo $_SESSION['uid']; ?>);">
                                                         <option value="1" <? echo $sel = ($score == 0) ? "selected" : "" ?>>0</option>
                                                         <option value="1" <? echo $sel = ($score == 1) ? "selected" : "" ?>>1</option>
                                                         <option value="2" <? echo $sel = ($score == 2) ? "selected" : "" ?>>2</option>
                                                         <option value="3" <? echo $sel = ($score == 3) ? "selected" : "" ?>>3</option>
                                                         <option value="4" <? echo $sel = ($score == 4) ? "selected" : "" ?>>4</option>
                                                     </select>
-                                                    <div id="sub2" style="display:inline;"></div>
+                                                    <div id="sub3" style="display:inline;"></div>
                                                 </td>
                                             </tr>
             <?

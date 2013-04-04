@@ -16,13 +16,14 @@ if($size > 1048576) {
 	exit;
 }
 if (move_uploaded_file($_FILES['uploadfile']['tmp_name'], $file)) { 
-	mysql_query("INSERT INTO evidence (url) VALUES ('".$file_temp."')");		
+	mysql_query("INSERT INTO evidence (url) VALUES ('".$file_temp."')");
+	$ev_id = mysql_insert_id();		
 
 	if(mysql_num_rows(mysql_query("SELECT * FROM staff_progress WHERE uid = '".$uid."' AND task_id = ".$task_id)) == 0) {
-		mysql_query("INSERT INTO staff_progress (uid, task_id, evidence) VALUES ('".$uid."', '".$task_id."', '".mysql_insert_id()."')");
+		mysql_query("INSERT INTO staff_progress (uid, task_id, evidence) VALUES ('".$uid."', '".$task_id."', '".$ev_id."')");
 	}
 	else {
-		mysql_query("UPDATE staff_progress SET evidence = CONCAT(evidence, ',".mysql_insert_id()."') WHERE uid = '".$uid."' AND task_id = ".$task_id);  
+		mysql_query("UPDATE staff_progress SET evidence = CONCAT(evidence, ',".$ev_id."') WHERE uid = '".$uid."' AND task_id = ".$task_id);  
 	}
 
 	echo "success"; 

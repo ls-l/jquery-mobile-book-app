@@ -10,13 +10,13 @@
 			<td>
 				<? include "./includes/navigation.php"; ?>
 			</td>
+                        <td align="right"><a href="./add_user.php">Add Use</a>r</td>
 			<td align="right"><a href="./logout.php" title="Logout"><img src="./images/logout.png" width="30" border="0" /></a></td>
 		</tr>
 	</table>
-		
 	<table cellpadding="0" cellspacing="0" border="0" class="display" id="table">
-		<thead>
-			<tr>
+		<thead>	
+                    <tr>
 				<th>ID</th>
 				<th>First Name</th>
 				<th>Last Name</th>
