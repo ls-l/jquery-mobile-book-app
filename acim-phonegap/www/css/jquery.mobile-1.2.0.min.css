@@ -1,0 +1,123 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td{margin: 0;padding: 0;}
+
+ul{ list-style:none;}
+
+.cls{clear:both;float:none;}
+
+.fltL{float:left;}
+.fltR{float:right;}
+a,a:visited{outline: none;text-decoration: none;}
+
+img{margin: 0;padding: 0;border: 0;outline: 0;}
+
+
+body{margin: 0;padding: 0;font-family:Arial, Helvetica, sans-serif;font-size: 12px;color:#000;}
+
+.cls{clear:both; float:none; line-height:0}
+@font-face {
+    font-family: 'QuicksandR';
+    src: url('../fonts/Quicksand_Light-webfont.eot');
+    src: url('../fonts/Quicksand_Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Quicksand_Light-webfont.woff') format('woff'),
+         url('../fonts/Quicksand_Light-webfont.ttf') format('truetype'),
+         url('../fonts/Quicksand_Light-webfont.svg#QuicksandLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'QuicksandBook';
+    src: url('../fonts/Quicksand_Book-webfont.eot');
+    src: url('../fonts/Quicksand_Book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Quicksand_Book-webfont.woff') format('woff'),
+         url('../fonts/Quicksand_Book-webfont.ttf') format('truetype'),
+         url('../fonts/Quicksand_Book-webfont.svg#QuicksandBook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.home{background: url(../images/bg.jpg) no-repeat center top;}
+.main_bg{margin:0 auto; padding-top:575px; text-align:center; padding-bottom:55px}
+.main_bg h1{color:#fff; font-family:QuicksandBook; font-size:120px; line-height:120px; letter-spacing:-10px; font-weight:normal}
+h2{color:#6d2e83; font-family:QuicksandBook; font-size:58px; line-height:60px; letter-spacing:-2px; margin-bottom:25px;font-weight:600}
+.menu{height:291px; width:645px;margin:0 auto; background-color:#ebf2fc; border-radius:50px; }
+.menu ul li{height: 109px;  padding-top: 42px;width: 211px; float:left}	
+.menu ul li span{display:block; margin-bottom:15px}
+.menu ul li label{font-size:27px; color:#6d2e83; font-family:QuicksandBook; font-weight:600; letter-spacing:-1px; }
+.menu ul li.menu_sep{border-left:1px solid #FFF; border-right:1px solid #FFF;}
+.menu ul{border-bottom:1px solid #fff; height:150px}
+.menu ul.menu_img{border-bottom:none}
+.menu ul.menu_img li{padding-top:23px !important}
+.menu ul.menu_img li.menu_sep{height:117px}
+
+.inner_bg{background: url(../images/inner_bg.jpg) no-repeat center top; padding:35px 0}
+.content{width:812px; background:url(../images/white_bg.png) repeat; margin:0 auto;  border-radius:14px; height:1295px;}
+.home_icon{padding:10px 0 0 20px}
+.content h2{text-align:center; font-size:104px; line-height:100px; border-bottom:1px solid #fff; padding:20px 0 35px 0 } 
+.chapter{ padding-bottom:20px}
+.chapter ul li {margin-bottom:30px;color:#156ec9; font-size:40px; line-height:40px; font-family:QuicksandBook; padding-left:120px;}
+.chapter ul li a{color:#156ec9; font-size:40px; line-height:40px; font-family:QuicksandBook; display:block}
+.chapter ul li span{float:left; display:block}
+.chapter ul li label{color:#156ec9; font-size:40px; line-height:40px; font-family:QuicksandBook; float:left; width:557px}
+
+.setting h3{font-size:73px; color:#176ec9; text-align:center; font-family: 'QuicksandBook'; font-weight:normal; border-bottom:4px solid #FFF; padding:20px 0; letter-spacing:-5px; height:73px; line-height:63px;}
+.setting-mnu{padding-top:40px;}
+.setting-mnu ul{float:left; width:100%;}
+.setting-mnu ul li{float:left; width:230px; margin:0 20px 107px; height:190px;}
+.setting-mnu ul li a{color:#6d2e83; font-family: 'QuicksandBook';}
+.setting-mnu ul li a label{display:block; font-size:43px; text-align:center; letter-spacing:-5px; cursor:pointer; height:43px; line-height:40px;}
+.setting-mnu ul li a span{display:block; text-align:center; margin-bottom:30px;}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 956px){
+	
+.content{width:610px; height:972px;}
+.setting h3{font-size:55px; height:55px; line-height:48px;}
+.setting-mnu{padding-top:30px;}
+.setting-mnu ul li{height:150px; width:163px; margin-bottom:82px;}
+.setting-mnu ul li a span{margin-bottom:17px; height:83px;}
+.setting-mnu ul li a span img{max-width:90px; max-height:83px;}
+.setting-mnu ul li a label{font-size:33px; height:33px; line-height:33px; letter-spacing:-2px;}
+
+.main_bg h1{font-size:106px; line-height:106px; letter-spacing:-8px}
+.main_bg h2{letter-spacing:-1px; font-size:42px; line-height:24px; margin-bottom:30px}
+.menu{width:470px}
+.menu ul li{width:156px}
+.menu ul li label{font-size:23px}
+
+
+}
+
+@media only screen and (min-width: 480px) and (max-width: 766px){
+	.content{width:382px; height:607px;}	
+	.setting h3{font-size:34px; height:34px; line-height:30px;}
+	.setting-mnu{padding-top:20px;}
+	.setting-mnu ul li{height:82px; width:107px; margin:0 10px 52px;}
+	.setting-mnu ul li a span{margin-bottom:10px; height:53px;}
+	.setting-mnu ul li a span img{max-width:57px; max-height:53px;}
+	.setting-mnu ul li a label{font-size:20px; height:20px; line-height:20px; letter-spacing:-1px;}
+
+			
+}
+
+@media only screen and (min-width: 320px) and (max-width: 479px) {
+
+	.content{width:254px; height:406px;}
+	.setting h3{font-size:22px; height:22px; line-height:22px; letter-spacing:-1px;}
+	.setting-mnu{padding-top:20px;}
+	.setting-mnu ul li{height:55px; width:70px; margin:0 7px 34px;}
+	.setting-mnu ul li a span{margin-bottom:5px; height:35px;}
+	.setting-mnu ul li a span img{max-width:37px; max-height:35px;}
+	.setting-mnu ul li a label{font-size:13px; height:13px; line-height:13px; letter-spacing:-1px;}
+	
+.main_bg h1{font-size:49px; line-height:49px; letter-spacing:0}
+.main_bg h2{letter-spacing:-1px; font-size:24px; line-height:24px; margin-bottom:25px;}
+.menu{width:313px}
+.menu ul li{width:103px}
+.menu ul li label{font-size:15px}
+
+	}
