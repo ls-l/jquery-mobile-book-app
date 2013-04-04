@@ -1,8 +1,5 @@
 var serviceURL = "http://localhost/acim-phonegap/services/";
 
-/*$(document).on('pageinit', function(){
-	  
-});*/
 $(document).ready(function(){
 	  window.q_string = location.search;
 	  getChapterContent();
@@ -52,8 +49,25 @@ function getIconDivHeight() {
 
 
 function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
-   
+				
+			var con_area_height = (($(".midd-cont").height()*75)/100);
+			$("#p_droppable").css("height", con_area_height);
+			$("#p_droppable").css("overflow", "hidden");
 			
+			$("#next_con").click(function(){
+			   var con_area_height = (($(".midd-cont").height()*70)/100);
+			   var h_content=$("#content_area").height();
+			   var h_content=$("#p_droppable").height();
+			   var mt_content=$("#inner_content_area").css('margin-top');
+			   var mt_content=mt_content.substring(0,mt_content.length - 2);
+			   var inner_area_height=$("#inner_content_area").height();
+			   var inner_top = (parseInt(h_content) + parseInt(Math.abs(mt_content)));
+			   if(inner_area_height > inner_top){
+			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},2000);
+			   } else {
+			      alert('content is finished');
+			   }
+			});
 			$("#tag_icon_small").on('mouseenter',function(){
 			   //$("#tag_icon_big").hide();
 			   //$("#tag_icon_small").show(); 
@@ -82,11 +96,11 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
         
                     if($('#secd_line_icon').css('display') == 'none'){
                         $('.top-menu').css("height",'9%');
-                        $('.midd-cont').css("height",'81%');
+                        $('.midd-cont').css("height",'79%');
                         $('#secd_line_icon').show();                              
                     } else {
                         $('.top-menu').css("height",'6%');
-                        $('.midd-cont').css("height",'84%');
+                        $('.midd-cont').css("height",'79%');
                         $('#secd_line_icon').hide();                              
                     }
                 });
@@ -134,10 +148,23 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 							//console.log(el);
 							var record_db = $(el).data("db");
 							var icon_last_p = $(el).position();
+							
+							
+							var mt_content=$("#inner_content_area").css('margin-top');
+			                var mt_content=mt_content.substring(0,mt_content.length - 2);
+                            var top_icon_t = (parseInt(icon_last_p.top) + parseInt(Math.abs(mt_content)));
+							//alert(top_icon_t);
+							//alert($(el).offset().top);
+							//$(el).css({ top: top_icon_t+'px' });
+							//$(el).animate({'top':top_icon_t+'px'},2000);
+							
 				            var drag_area = $('.droppable123').position();
-							var ani_left = ($(".midd-cont").offset().left - $(el).parent().parent().offset().left) + 65;
+							//var ani_left = ($(".midd-cont").offset().left - $(el).parent().parent().offset().left) + 65;
 							
-							
+							//var ani_left = ((-($("#p_chno").offset().left)) + $(".midd-cont").offset().left);
+							var ani_left = ($("#p_chno").offset().left - $(el).parent().parent().offset().left);
+							//alert($("#inner_content_area").offset().left);
+                             							
                             if(iconno[0] == 'h'){
                                 iconno = iconno.substring(1);
                                 var icon_type = 'heart';
@@ -207,7 +234,8 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 								    /*$(el).animate({'left':'-647px'},2000,function(){
 									    $(el).css({backgroundSize:'60% 60%'})
 									});*/ 
-									var ani_left = ($(".midd-cont").offset().left - $(el).parent().offset().left) + 65;
+									//var ani_left = ($(".midd-cont").offset().left - $(el).parent().offset().left) + 65;
+									var ani_left = $("#p_chno").offset().left;
 									$(el).animate({'left':ani_left+'px'},2000,function(){
 									    $(el).css({backgroundSize:'60% 60%'})
 									});
@@ -219,7 +247,7 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
                             //alert(h+"---"+pos.top+"-----"+h_bookmark);
 				            
                             var pos = ui.draggable.offset(), dPos = $(this).offset();
-                            var leftposition = (pos.left - dPos.left);
+							var leftposition = (pos.left - dPos.left);
 							
 							//$(this).offset().left.css({'left':'3px'});
 							/*alert("data-id: " + ui.draggable.data("data-id") + 
@@ -227,8 +255,16 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
                                                        ", Left: " + (pos.left - dPos.left));*/
                             //var topposition = (pos.top/h)*100;   
                             //var topposition = ((pos.top - dPos.top)/h)*100;
-                            var topposition = (pos.top - dPos.top);
-                            var url = serviceURL+"icon_insert.php?pageno="+p_pageno+"&chid="+p_chid+"&chno="+p_chno+"&bookid="+p_bookid+"&topposition="+topposition+"&iconno="+iconno+"&icon_type="+icon_type;
+                            
+							var topposition = (pos.top - dPos.top);
+							
+							//Scroller with icon
+							var mt_content=$("#inner_content_area").css('margin-top');
+			                var mt_content=mt_content.substring(0,mt_content.length - 2);
+                            var topposition = (parseInt(topposition) + parseInt(Math.abs(mt_content)));
+							//Scroller with icon
+							
+							var url = serviceURL+"icon_insert.php?pageno="+p_pageno+"&chid="+p_chid+"&chno="+p_chno+"&bookid="+p_bookid+"&topposition="+topposition+"&iconno="+iconno+"&icon_type="+icon_type;
                             var data = '';
                             $.ajax({
                                 url: url,
@@ -236,11 +272,10 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
                                 dataType: 'json',
                                 success: function() {
                                     if(rsp.success) {
-                                        alert(rsp);
+                                        alert(rsp); 		
                                     }
                                 }
                             });
-				 
 				   
                         }
                         // if you want to disable the dragging after drop un-comment this

@@ -101,7 +101,7 @@ $data_last = '';
       
 	  $data = '';                     
 	  if (count($res_count) > 0) { 
-        $data.='<div id="inner_content_area" style="margin-top:0px;"><div class="bookmark-page get-icon">
+        $data.='<div class="bookmark-page get-icon">
                                         <ul id="bookmark_icon" class="droppable">';
                                             
            $total_all_icon = 0;
@@ -177,7 +177,7 @@ $data_last = '';
          $data.="No Record Found.";
                                          } 
          $data.='<div class="cls"></div>
-     </div><div style="clear:both;"></div></div>';
+     </div><div style="clear:both;"></div>';
 	  
 	  $data_last.=$data."#*@@*#";	
 	  $data = '';
@@ -250,7 +250,6 @@ $data_last = '';
 	  $data_last.=$data."#*@@*#";	
 	  $data = '';
 	  
-	  $data_last.=$pageno."**".$chid."**".$chno."**".$bookid."**".$userid."#*@@*#";
 	  
 	  echo $data_last;
 ?>

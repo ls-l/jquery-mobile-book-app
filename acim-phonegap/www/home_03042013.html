@@ -37,16 +37,7 @@
 		    $(document).ready(function(){
 
 		        $("#content_popup").hide();
-              
-			  $('body').click(function(e) {
-			  
-				  if(e.target.className == 'popup_book' || e.target.className == 'pop-top' || e.target.className == 'pop-midd' || e.target.className == 'pop-icon-home')    {
-			
-				   } else {
-				     $("#content_popup").hide();
-				   } 
-			   });	
-			  
+
 			  $("#popup_book").click(function(){
 
 				  if($('#content_popup').css('display') == 'none'){ 
@@ -169,7 +160,7 @@
 
 					<!--<a href="#popupReading" data-rel="popup" onClick="divFunction()"><span><img src="images/reding.png" /></span><label>Reading</label></a>-->
 
-					<a href="javascript:void(0);" id="popup_book" class="popup_book"><span><img src="images/reding.png" class="popup_book"/></span><label>Reading</label></a>
+					<a href="javascript:void(0);" id="popup_book"><span><img src="images/reding.png" /></span><label>Reading</label></a>
 
 					</li>
 
