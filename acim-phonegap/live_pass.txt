@@ -1,0 +1,16 @@
+define('DB_HOST', 'localhost');
+define('DB_PASSWORD', 'K11hh%hQmhky');
+define('DB_UNAME', 'phigib_acimdb');
+define('DB_NAME', 'phigib_acimdb');
+define('SITE_URL','http://thelaunchengine.com/acim/');
+define('SITE_URL_DEMO','');
+
+
+
+js
+For demo1
+var serviceURL = "http://thelaunchengine.com/acim/demo1/services/";
+
+For demo
+var serviceURL = "http://thelaunchengine.com/acim/demo/services/";
+

@@ -6,7 +6,9 @@ $(document).ready(function(){
 });
 
 function getChapterContent() {
-	$.post(serviceURL + 'chapter.php'+q_string, function(data) {
+	var win_h = $(window).height();
+	var win_w = $(window).width();
+	$.post(serviceURL + 'chapter.php'+q_string+'&scr_h='+win_h+'&scr_w='+win_w, function(data) {
 	   var res = data.split("#*@@*#");
 	   
 	   
@@ -19,9 +21,9 @@ function getChapterContent() {
 	   $('#p_chno').append(res[6]);
 	   $('#p_chname').append(res[7]);
 	   $('#p_droppable').html(res[8]);
-	   $('#p_left_arrow').append(res[9]);
+	   /*$('#p_left_arrow').append(res[9]);
 	   $('#p_pagination').append(res[10]);
-	   $('#p_right_arrow').append(res[11]);
+	   $('#p_right_arrow').append(res[11]);*/
 	   var q_str_data = res[12];
 	   var q_str_res = q_str_data.split("**");
 	   var p_pageno = q_str_res[0];
@@ -29,13 +31,20 @@ function getChapterContent() {
 	   var p_chno = q_str_res[2];
 	   var p_bookid = q_str_res[3];
 	   var p_userid = q_str_res[4];
-        	   
+       
+	   
 	   //getIconDivHeight();
 	   GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid);
 	   
 	   
 	});
 	
+}
+
+function getContentRefresh(list,disp,toppos){
+    $("#"+list).hide();
+	$("#"+disp).show();
+    $("#"+disp).css("top",toppos+'px');
 }
 
 function getIconDivHeight() {
@@ -65,9 +74,26 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 			   if(inner_area_height > inner_top){
 			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},2000);
 			   } else {
-			      alert('content is finished');
+			      alert('This is a last page');
 			   }
 			});
+			
+			$("#pre_con").click(function(){
+			   var con_area_height = (($(".midd-cont").height()*70)/100);
+			   var h_content=$("#content_area").height();
+			   var h_content=$("#p_droppable").height();
+			   var mt_content=$("#inner_content_area").css('margin-top');
+			   var mt_content=mt_content.substring(0,mt_content.length - 2);
+			   var inner_area_height=$("#inner_content_area").height();
+			   var inner_top = (parseInt(Math.abs(mt_content)) - parseInt(h_content));
+			   //alert(inner_area_height+"##"+inner_top+"##"+parseInt(Math.abs(mt_content))+"##"+parseInt(h_content));
+			   if(inner_top >= 0){
+			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},2000);
+			   } else {
+			      alert('This is a first page');
+			   }
+			});
+			
 			$("#tag_icon_small").on('mouseenter',function(){
 			   //$("#tag_icon_big").hide();
 			   //$("#tag_icon_small").show(); 
@@ -164,85 +190,9 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 							//var ani_left = ((-($("#p_chno").offset().left)) + $(".midd-cont").offset().left);
 							var ani_left = ($("#p_chno").offset().left - $(el).parent().parent().offset().left);
 							//alert($("#inner_content_area").offset().left);
-                             							
-                            if(iconno[0] == 'h'){
-                                iconno = iconno.substring(1);
-                                var icon_type = 'heart';
-								var drag_icon = $('.icon2').position();
-								 var icon_left = (drag_area.left + drag_icon.left);		 
-								 if(record_db == "1"){
-								    $(el).animate({'left':'0px'},2000); //1000 = 1second
-								 } else {
-								    //$(el).animate({'left':'-129px'},2000); 
-									$(el).animate({'left':ani_left+'px'},2000); 
-                                 }
-							}
-                            else if(iconno[0] == 's'){
-                                iconno = iconno.substring(1);
-                                var icon_type = 'star';
-								var drag_icon = $('.icon1').position();
-							    var icon_left = (drag_area.left + drag_icon.left);
-								if(record_db == "1"){
-								    $(el).animate({'left':'0px'},2000); //1000 = 1second
-								 } else {
-								    //$(el).animate({'left':'11px'},2000); //1000 = 1second
-                                    $(el).animate({'left':ani_left+'px'},2000); 
-								 }
-							}
-                            else if(iconno[0] == 'y'){
-                                iconno = iconno.substring(1);
-                                var icon_type = 'yellow';
-								var drag_icon = $('.icon3').position();
-								var icon_left = (drag_area.left + drag_icon.left);		 
-								if(record_db == "1"){
-								    $(el).animate({'left':'0px'},2000); //1000 = 1second
-								 } else {
-								    //$(el).animate({'left':'-274px'},2000); //1000 = 1second
-                                    $(el).animate({'left':ani_left+'px'},2000); 
-								 }
-							}
-                            else if(iconno[0] == 'm'){
-                                iconno = iconno.substring(1);
-                                var icon_type = 'mark';
-								var drag_icon = $('.icon4').position();
-								var icon_left = (drag_area.left + (drag_icon.left*3));		 
-								if(record_db == "1"){
-								    $(el).animate({'left':'0px'},2000); //1000 = 1second
-								 } else {
-								    //$(el).animate({'left':'-414px'},2000); //1000 = 1second
-                                    $(el).animate({'left':ani_left+'px'},2000); 
-								 }
-							}
-                            else if(iconno[0] == 'b'){
-                                iconno = iconno.substring(1);
-								var icon_type = 'bulb';
-                               var drag_icon = $('.icon5').position();
-							   var icon_left = (drag_area.left + (drag_icon.left*4));		 
-							   if(record_db == "1"){
-								    $(el).animate({'left':'0px'},2000); //1000 = 1second
-								 } else {
-							        //$(el).animate({'left':'-554px'},2000); //1000 = 1second
-                                    $(el).animate({'left':ani_left+'px'},2000); 
-								 }
-							}
-                            else {
-                                var icon_type = 'bookmark'; 
-								if(record_db == "1"){
-								    //$( this ).addClass('active'); 
-									$(el).animate({'left':'0px'},2000); //1000 = 1second
-								 } else {
-								    /*$(el).animate({'left':'-647px'},2000,function(){
-									    $(el).css({backgroundSize:'60% 60%'})
-									});*/ 
-									//var ani_left = ($(".midd-cont").offset().left - $(el).parent().offset().left) + 65;
-									var ani_left = $("#p_chno").offset().left;
-									$(el).animate({'left':ani_left+'px'},2000,function(){
-									    $(el).css({backgroundSize:'60% 60%'})
-									});
-									 
-                                 } 
-							}
-                            var pos = ui.draggable.position();
+                            
+							
+							var pos = ui.draggable.position();
                             //alert('top: ' + pos.top+ ', left: ' + pos.left);
                             //alert(h+"---"+pos.top+"-----"+h_bookmark);
 				            
@@ -264,7 +214,103 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
                             var topposition = (parseInt(topposition) + parseInt(Math.abs(mt_content)));
 							//Scroller with icon
 							
-							var url = serviceURL+"icon_insert.php?pageno="+p_pageno+"&chid="+p_chid+"&chno="+p_chno+"&bookid="+p_bookid+"&topposition="+topposition+"&iconno="+iconno+"&icon_type="+icon_type;
+                            if(iconno[0] == 'h'){
+                                iconno = iconno.substring(1);
+                                var icon_type = 'heart';
+								var drag_icon = $('.icon2').position();
+								 var icon_left = (drag_area.left + drag_icon.left);		 
+								 if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    //$(el).animate({'left':'-129px'},2000); 
+									$(el).animate({'left':ani_left+'px'},2000,function(){
+									    getContentRefresh('h-l'+iconno,'h-d'+iconno,topposition);
+									});
+                                 }
+							}
+                            else if(iconno[0] == 's'){
+                                iconno = iconno.substring(1);
+                                var icon_type = 'star';
+								var drag_icon = $('.icon1').position();
+							    var icon_left = (drag_area.left + drag_icon.left);
+								if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    //$(el).animate({'left':'11px'},2000); //1000 = 1second
+                                    $(el).animate({'left':ani_left+'px'},2000,function(){
+									    getContentRefresh('s-l'+iconno,'s-d'+iconno,topposition);
+									}); 
+								 }
+							}
+                            else if(iconno[0] == 'y'){
+                                iconno = iconno.substring(1);
+                                var icon_type = 'yellow';
+								var drag_icon = $('.icon3').position();
+								var icon_left = (drag_area.left + drag_icon.left);		 
+								if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    //$(el).animate({'left':'-274px'},2000); //1000 = 1second
+                                    $(el).animate({'left':ani_left+'px'},2000,function(){
+									    getContentRefresh('y-l'+iconno,'y-d'+iconno,topposition);
+									});
+								 }
+							}
+                            else if(iconno[0] == 'm'){
+                                iconno = iconno.substring(1);
+                                var icon_type = 'mark';
+								var drag_icon = $('.icon4').position();
+								var icon_left = (drag_area.left + (drag_icon.left*3));		 
+								if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    //$(el).animate({'left':'-414px'},2000); //1000 = 1second
+                                    $(el).animate({'left':ani_left+'px'},2000,function(){
+									    getContentRefresh('m-l'+iconno,'m-d'+iconno,topposition);
+									});
+								 }
+							}
+                            else if(iconno[0] == 'b'){
+                                iconno = iconno.substring(1);
+								var icon_type = 'bulb';
+                               var drag_icon = $('.icon5').position();
+							   var icon_left = (drag_area.left + (drag_icon.left*4));		 
+							   if(record_db == "1"){
+								    $(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+							        //$(el).animate({'left':'-554px'},2000); //1000 = 1second
+                                    $(el).animate({'left':ani_left+'px'},2000,function(){
+									    getContentRefresh('b-l'+iconno,'b-d'+iconno,topposition);
+									});
+								 }
+							}
+                            else {
+                                var icon_type = 'bookmark'; 
+								if(record_db == "1"){
+								    //$( this ).addClass('active'); 
+									$(el).animate({'left':'0px'},2000); //1000 = 1second
+								 } else {
+								    /*$(el).animate({'left':'-647px'},2000,function(){
+									    $(el).css({backgroundSize:'60% 60%'})
+									});*/ 
+									//var ani_left = ($(".midd-cont").offset().left - $(el).parent().offset().left) + 65;
+									//var ani_left = $("#p_chno").offset().left;
+									var ani_left = ($("#p_chno").offset().left - $(el).parent().offset().left);
+									$(el).animate({'left':ani_left+'px'},2000,function(){
+									    $(el).css({backgroundSize:'60% 60%'});
+										getContentRefresh('bm-l'+iconno,'bm-d'+iconno,topposition);
+									});
+									 
+                                 } 
+							}
+                            
+							var win_h = $(window).height();
+							var win_w = $(window).width();
+							
+							//var win_h = $("#inner_content_area").height();
+							//var win_w = $("#inner_content_area").width();
+							
+							var url = serviceURL+"icon_insert.php?pageno="+p_pageno+"&chid="+p_chid+"&chno="+p_chno+"&bookid="+p_bookid+"&topposition="+topposition+"&iconno="+iconno+"&icon_type="+icon_type+"&win_h="+win_h+"&win_w="+win_w;
                             var data = '';
                             $.ajax({
                                 url: url,
@@ -276,6 +322,7 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
                                     }
                                 }
                             });
+							
 				   
                         }
                         // if you want to disable the dragging after drop un-comment this

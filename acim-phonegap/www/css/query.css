@@ -171,6 +171,10 @@ h2{color:#6d2e83; font-family:QuicksandBook; font-size:58px; line-height:60px; l
 
 .get-icon ul li a{background-size:37px !important;}
 
+.get-icon ul li.book-mark-icon1 a{background:url(../images/current_chp.png) no-repeat 0 0; height:52px; width:26px; display:block;background-size:25px !important;}
+.get-icon ul li.book-mark-icon1 a:hover{background:url(../images/current_chp.png) no-repeat 0 0; height:52px; width:26px; display:block;background-size:25px !important;}
+
+
 .get-icon ul li.heart-listicon a{background:url(../images/book-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
 .get-icon ul li.heart-listicon a:hover{background:url(../images/book-heart.png) no-repeat 0 0; height:76px; width:87px; display:block}
 
@@ -315,7 +319,7 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 
 .ui-loader{display:none;}
 .ui-content{overflow:hidden;}
-#bookmark_icon{padding-top:15px;}
+#bookmark_icon{padding-top:0px;}
 
 
 @media only screen and (min-width: 768px) and (max-width: 956px){
@@ -433,6 +437,8 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .secd_line_icon li.icon5{margin-left:280px;}
 
 .get-icon ul li a{background-size:30px !important;}
+.get-icon ul li.book-mark-icon1 a{background-size:24px !important;}
+.get-icon ul li.book-mark-icon1 a:hover{background-size:24px !important;}
 }
 
 
@@ -573,6 +579,9 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .secd_line_icon li.icon5{margin-left:160px;}
 
 .get-icon ul li a{background-size:24px !important;}
+
+.get-icon ul li.book-mark-icon1 a{background-size:18px !important;}
+.get-icon ul li.book-mark-icon1 a:hover{background-size:18px !important;}
 }
 
 
@@ -781,6 +790,8 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 
 
 .get-icon ul li a{background-size:17px !important;}
+.get-icon ul li.book-mark-icon1 a{background-size:11px !important;}
+.get-icon ul li.book-mark-icon1 a:hover{background-size:11px !important;}
 }
 
 
