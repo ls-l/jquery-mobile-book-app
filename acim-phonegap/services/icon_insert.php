@@ -16,6 +16,7 @@ $icontype         = trim($_REQUEST['icon_type']);
 $iconno           = trim($_REQUEST['iconno']);
 $win_h            = trim($_REQUEST['win_h']);
 $win_w            = trim($_REQUEST['win_w']);
+$win_inner_h      = trim($_REQUEST['win_inner_h']);
 $inserted_icon_no = CheckiconNo($userid,$bookid,$chid,$pageno,$icontype,$iconno);
 if($inserted_icon_no == 0){
 $insert_data = array('tbl_icon_id' => '',
@@ -29,6 +30,7 @@ $insert_data = array('tbl_icon_id' => '',
 		"tbl_icon_top_position" => trim($_REQUEST['topposition']),
 		"tbl_icon_screen_width" => $win_w,
 		"tbl_icon_screen_height" => $win_h,
+		"tbl_icon_content_height" => $win_inner_h,
 		"tbl_icon_date" => date('Y-m-d h:i:s')
 		);
 $query = $db->insert_query("tbl_icon",$insert_data);
@@ -38,7 +40,8 @@ echo "Icon Position Inserted Successfully";
      $update_data = array(
 		"tbl_icon_top_position" => trim($_REQUEST['topposition']),
 		"tbl_icon_screen_width" => $win_w,
-		"tbl_icon_screen_height" => $win_h
+		"tbl_icon_screen_height" => $win_h,
+		"tbl_icon_content_height" => $win_inner_h
 		);
      $where = ' tbl_icon_id = '.$inserted_icon_no.' ';	
 	 $query = $db->update_query("tbl_icon",$update_data,$where);

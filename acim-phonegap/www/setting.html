@@ -4,31 +4,81 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/query.css"/>
-<title>Reading-Chapter</title>
+
+
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<script type="text/javascript">
+            $(document).ready(function(){
+				  $(document).on("click", ".loader", function() { 
+					$.mobile.showPageLoadingMsg();
+					var bgColor = $(this).attr('id');
+					var loader  = $('div.ui-loader');
+					loader.removeAttr('class');
+					loader.attr('class','ui-loader ui-body-'+bgColor+' ui-corner-all');
+					$(this).trigger('create');
+				});
+				
+				$('body').click(function(e) {
+				   if(e.target.className == 'social-click' || e.target.className == 'social-icon' || e.target.className == 'pop-top' || e.target.className == 'popup-top' || e.target.className == 'pop-midd')    {
+                    } else {
+
+                        $("#social_popup").hide();
+
+                    } 
+				});
+				
+				$("#social_icon").click(function(){
+				 
+					 if($('#social_popup').css('display') == 'none'){ 
+					   $("#social_popup").show();
+					 } else {
+					   $("#social_popup").hide();
+					 }
+				});
+            });
+</script>
+
+<title>social-media</title>
 </head>
 
 <body>
 <div class="inner_bg">
-	<div class="content">
+	<div class="contentimg">
   		<div class="setting">
         	<h3>Settings</h3>
             <div class="setting-mnu">
             	<ul>
-                	<li><a href="home.html" data-ajax="false"><span><img alt="" src="images/set_icon1.png" /></span><label>Home</label></a></li>
+                	<li><a href="home.html" data-ajax="false" class="loader"><span><img alt="" src="images/set_icon1.png" /></span><label>Home</label></a></li>
                     <li><a href="#"><span><img alt="" src="images/set_icon2.png" /></span><label>Reminders</label></a></li>
-                    <li><a href="#"><span><img alt="" src="images/set_icon3.png" /></span><label>Share</label></a></li>
+                    <li ><a href="javascript:void(0);" id="social_icon" ><span class="social-click"><img alt="" src="images/set_icon3.png" class="social-click"/></span><label>Share</label></a></li>
                     <li><a href="#"><span><img alt="" src="images/set_icon4.png" /></span><label>Feedback</label></a></li>
                     <li><a href="#"><span><img alt="" src="images/set_icon5.png" /></span><label>Sound</label></a></li>
                     <li><a href="#"><span><img alt="" src="images/set_icon6.png" /></span><label>Background</label></a></li>
                     <li><a href="#"><span><img alt="" src="images/set_icon7.png" /></span><label>Website</label></a></li>
                     <li><a href="#"><span><img alt="" src="images/set_icon8.png" /></span><label>Video</label></a></li>
-                    <li><a href="#"><span><img alt="" src="images/set_icon8.png" /></span><label>Donate</label></a></li>
+                    <li><a href="#"><span><img alt="" src="images/set_icon9.png" /></span><label>Donate</label></a></li>
                 </ul>
                 <div class="cls"></div>
             </div>
+            <div class="social-popup" id="social_popup" style="display:none;">
+          	<div class="popup-top"></div>
+           <div class="pop-midd">
+          	<ul class="social-icon">
+            	<li class="social-icon1"><a href="#" class="social-click"><span class="social-click"></span></a></li>
+                <li class="social-icon2"><a href="#" class="social-click"><span class="social-click"></span></a></li>
+                <li class="social-icon3"><a href="#" class="social-click"><span class="social-click"></span></a></li>
+                <li class="social-icon4"><a href="#" class="social-click"><span class="social-click"></span></a></li>
+                <li class="social-icon5"><a href="#" class="social-click"><span class="social-click"></span></a></li>
+                <li class="social-icon6"><a href="#" class="social-click"><span class="social-click"></span></a></li>
+                <div class="cls"></div>
+            </ul>
+            </div> 
+          </div>
         </div>
 	</div>   
 </div>
 
 </body>
 </html>
+

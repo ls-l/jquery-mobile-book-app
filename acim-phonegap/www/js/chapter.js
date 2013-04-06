@@ -2,6 +2,8 @@ var serviceURL = "http://localhost/acim-phonegap/services/";
 
 $(document).ready(function(){
 	  window.q_string = location.search;
+	  var con_inner_h = '';
+	  var con_inner_w = '';
 	  getChapterContent();
 });
 
@@ -10,7 +12,6 @@ function getChapterContent() {
 	var win_w = $(window).width();
 	$.post(serviceURL + 'chapter.php'+q_string+'&scr_h='+win_h+'&scr_w='+win_w, function(data) {
 	   var res = data.split("#*@@*#");
-	   
 	   
 	   $('#tag_icon_small').append(res[0]);
 	   $('#p_icon1').append(res[1]);
@@ -21,9 +22,13 @@ function getChapterContent() {
 	   $('#p_chno').append(res[6]);
 	   $('#p_chname').append(res[7]);
 	   $('#p_droppable').html(res[8]);
+	   
+	   
 	   /*$('#p_left_arrow').append(res[9]);
 	   $('#p_pagination').append(res[10]);
 	   $('#p_right_arrow').append(res[11]);*/
+       
+	   
 	   var q_str_data = res[12];
 	   var q_str_res = q_str_data.split("**");
 	   var p_pageno = q_str_res[0];
@@ -38,6 +43,8 @@ function getChapterContent() {
 	   
 	   
 	});
+		
+	
 	
 }
 
@@ -72,7 +79,7 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 			   var inner_area_height=$("#inner_content_area").height();
 			   var inner_top = (parseInt(h_content) + parseInt(Math.abs(mt_content)));
 			   if(inner_area_height > inner_top){
-			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},2000);
+			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},0);
 			   } else {
 			      alert('This is a last page');
 			   }
@@ -88,7 +95,7 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 			   var inner_top = (parseInt(Math.abs(mt_content)) - parseInt(h_content));
 			   //alert(inner_area_height+"##"+inner_top+"##"+parseInt(Math.abs(mt_content))+"##"+parseInt(h_content));
 			   if(inner_top >= 0){
-			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},2000);
+			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},0);
 			   } else {
 			      alert('This is a first page');
 			   }
@@ -307,10 +314,12 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 							var win_h = $(window).height();
 							var win_w = $(window).width();
 							
+							var win_inner_h = $("#inner_content_area").height();
+							
 							//var win_h = $("#inner_content_area").height();
 							//var win_w = $("#inner_content_area").width();
 							
-							var url = serviceURL+"icon_insert.php?pageno="+p_pageno+"&chid="+p_chid+"&chno="+p_chno+"&bookid="+p_bookid+"&topposition="+topposition+"&iconno="+iconno+"&icon_type="+icon_type+"&win_h="+win_h+"&win_w="+win_w;
+							var url = serviceURL+"icon_insert.php?pageno="+p_pageno+"&chid="+p_chid+"&chno="+p_chno+"&bookid="+p_bookid+"&topposition="+topposition+"&iconno="+iconno+"&icon_type="+icon_type+"&win_h="+win_h+"&win_w="+win_w+"&win_inner_h="+win_inner_h;
                             var data = '';
                             $.ajax({
                                 url: url,
