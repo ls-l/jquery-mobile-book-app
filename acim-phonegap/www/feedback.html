@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>		
+<script src="js/feedback.js"></script>  	
+<link rel="stylesheet" type="text/css" href="css/query.css"/>
+<title>Feedback</title>
+</head>
+
+<body>
+<div class="inner_bg">
+	<div class="contentimg">
+  		<div class="thank-you">
+        	<h3>Feedback</h3>
+			<form id="feedback_form" method="post" action="">
+            <div class="feed-back">
+            	<div class="nam" id="succ_msg" style="color:#009933;text-align:center;font-size:14px;display:none;">Feedback Added Successfully</div>
+				<div class="nam" id="error_msg" style="color:#FF0000;text-align:center;font-size:14px;display:none;">Please Fillup all the fields</div>
+				<div class="nam">
+               		<span>Date:</span>
+                    <span class="date"><input type="text" name="date_feed" id="date_feed" value="" /> </span>
+                </div>
+                <div class="nam">
+               		<span>Email:</span>
+                    <span class="email"><input type="text" name="email" id="email" value="" /></span>
+                </div>
+                <div class="comnt">
+               		<span>Comments:</span>
+                    <span class="commnet"><textarea  name="comments" id="comments"></textarea></span>
+                </div>
+				 <div style="text-align:right;">
+				  <input type="submit" name="submit" id="submit" value="Submit"/>
+				</div>
+             </div>
+			 </form>
+            </div>
+        </div>
+	</div>   
+</div>
+
+</body>
+</html>

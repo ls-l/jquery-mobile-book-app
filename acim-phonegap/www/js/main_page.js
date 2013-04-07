@@ -1,7 +1,5 @@
 var serviceURL = "http://localhost/acim-phonegap/services/";
 
-
-
 $(document).on('pageinit', function(){
 
 	  window.q_string = location.search;

@@ -14,3 +14,13 @@ var serviceURL = "http://thelaunchengine.com/acim/demo1/services/";
 For demo
 var serviceURL = "http://thelaunchengine.com/acim/demo/services/";
 
+For demo
+var serviceURL = "http://thelaunchengine.com/acim/demo3/services/";
+
+
+http://thelaunchengine.com/acim/demo3/www/home.html
+
+
+
+File Compare
+http://www.quickdiff.com/

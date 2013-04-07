@@ -1,5 +1,5 @@
 var serviceURL = "http://localhost/acim-phonegap/services/";
-
+//var serviceURL = "http://thelaunchengine.com/acim/demo3/services/";
 $(document).ready(function(){
 	  window.q_string = location.search;
 	  var con_inner_h = '';
@@ -7,6 +7,18 @@ $(document).ready(function(){
 	  getChapterContent();
 });
 
+function delete_icon(list_id,icon_id,icon_type,chid,bookid){
+	//alert(list_id+"**"+icon_id+"**"+icon_type);
+	$.ajax({
+		type: "POST",
+		url: serviceURL + 'icon_delete.php',
+		data: {icon_id:icon_id, icon_type:icon_type, chid:chid, bookid:bookid}
+		}).done(function( result ) {
+		   if(result == 'deleted'){
+			 $("#"+list_id).hide();
+		   } 
+	    });
+}
 function getChapterContent() {
 	var win_h = $(window).height();
 	var win_w = $(window).width();
@@ -100,6 +112,42 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 			      alert('This is a first page');
 			   }
 			});
+			
+			$("#minus_icon_div").click(function(){
+				$("#first_top_div").show();
+				$("#second_top_div").hide();							
+			});
+			
+			var star_disp = new Array();
+			var star_del = new Array();
+			
+			var star_disp = ['s-d1','s-d2','s-d3','s-d4','s-d5','s-d6','s-d7','s-d8','s-d9','s-d10'];
+			var star_del = ['s-dr1','s-dr2','s-dr3','s-dr4','s-dr5','s-dr6','s-dr7','s-dr8','s-dr9','s-dr10'];
+			
+				
+			/*for(var i=0;i<10;i++){
+			   //STAR DELETE
+				$("#"+star_disp[i]).on('mouseenter',function(){
+				   $("#"+star_del[i]).show();
+				});
+				$("#"+star_disp[i]).on('mouseleave',function(){
+				   $("#"+star_del[i]).hide();
+				});
+				$("#"+star_disp[i]).mousedown(function() {
+				  $("#"+star_del[i]).hide();
+				});
+			}
+			$("#s-d1").on('mouseenter',function(){
+				   $("#s-dr1").show();
+				});
+				$("#s-d1").on('mouseleave',function(){
+				   $("#s-dr1").hide();
+				});
+				$("#s-d1").mousedown(function() {
+				  //$("#s-dr1").hide();
+				});
+			
+			*/
 			
 			$("#tag_icon_small").on('mouseenter',function(){
 			   //$("#tag_icon_big").hide();

@@ -23,10 +23,12 @@ include('include/common_function.php');
 			for($i=0;$i<$totql_res;$i++){
 							 
 				$pageno_start = GetChapterPageNo(trim($_REQUEST['bookid']),$result[$i]['tbl_ch_id']);
+				$p_q_s = '';
+				$p_q_s.="&bookid=".trim($_REQUEST['bookid']);
 				if($pageno_start > 0){
-					$p_q_s = "&pageno=".$pageno_start;
+					$p_q_s.="&pageno=".$pageno_start;
 				}else{
-					$p_q_s = '';
+					$p_q_s.= '';
 				}
 				$data.= '<li><a href="chapter.html?chid='.$result[$i]["tbl_ch_id"].$p_q_s.'" data-ajax="false"><span>Ch.'.$result[$i]['tbl_ch_no'].'-</span><label>'.$result[$i]['tbl_ch_name'].'</label></a><div class="cls"></div></li>';
 			}

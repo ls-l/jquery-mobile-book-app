@@ -8,6 +8,7 @@ if (!isset($_REQUEST['pageno'])) {
      $pageno = $_REQUEST['pageno'];
 }
 $chid = trim($_REQUEST['chid']);
+$bookid = trim($_REQUEST['bookid']);
 $userid = 1;
 
 if(isset($_REQUEST['scr_h']) and $_REQUEST['scr_h'] != ''){
@@ -113,6 +114,7 @@ $data_last = '';
       
 	  $data = '';                     
 	  $data.='<div id="inner_content_area" style="margin-top:0px;">';
+
 	  if (count($res_count) > 0) { 
         $data.='<div class="bookmark-page get-icon">
                                         <ul id="bookmark_icon" class="droppable">';
@@ -127,9 +129,13 @@ $data_last = '';
 			
 			//STAR
 			for ($i = 10; $i > $counticon_star; $i--) {
-											 
+			 $list_id = "'s-d".$i."'";
+			 $icon_id = $i; 
+			 $icon_type = "'star'";				 
 			 $data.= '<li  class="star-listicon" style="position:relative;display:none;" id="s-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:0px;height:37px;width:37px;" data-id="s'.$i.'" data-db="1"></a></li>';
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:0px;height:37px;width:37px;" data-id="s'.$i.'" data-db="1">';
+															/*$data.= '<span id="s-dr'.$i.'" style="position:absolute;top:0px;margin-left:2%;display:none;" onclick="return delete_icon('.$list_id.','.$icon_id.','.$icon_type.','.$chid.','.$bookid.');"><img src="../www/images/icon_delete.png"/></span>';*/
+															$data.= '</a></li>';
 			}
 			
 			//HEART
@@ -193,8 +199,13 @@ $data_last = '';
                                                         $data.='<li  class="heart-listicon" style="position:relative;">
                                                             <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="h'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
                                                      } elseif ($res[$i]['tbl_icon_type'] == 'star') { 
-                                                        $data.='<li  class="star-listicon" style="position:relative;">
-                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="s'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
+                                                        $list_id = "'s-d".$res[$i]['tbl_icon_no']."'";
+														$icon_id = $res[$i]['tbl_icon_no']; 
+														$icon_type = "'star'"; 
+														$data.='<li  class="star-listicon" style="position:relative;" id="s-d'.$res[$i]['tbl_icon_no'].'">
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="s'.$res[$i]['tbl_icon_no'].'" data-db="1">';
+	                                                          /*$data.='<span id="s-dr'.$res[$i]['tbl_icon_no'].'" style="position:absolute;top:0px;margin-left:2%;display:none;" onclick="return delete_icon('.$list_id.','.$icon_id.','.$icon_type.','.$chid.','.$bookid.');"><img src="../www/images/icon_delete.png"/></span>';*/
+    $data.='</a></li>';
                                                     } elseif ($res[$i]['tbl_icon_type'] == 'yellow') { 
                                                         $data.='<li  class="yellow-listicon" style="position:relative;">
                                                             <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="y'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
