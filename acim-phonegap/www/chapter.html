@@ -62,7 +62,8 @@
 
         <script src="javascript/js/jquery.ui.touch-punch.js"></script>
 
-        <script src="js/chapter.js"></script>  
+        <script src="js/chapter.js"></script>
+		<script src="js/range.js"></script>  
 
 
 
@@ -132,8 +133,8 @@
                                 <li class="setting-icon"><a href="#"></a></li>
                                 <li class="heart-icon second_topmenu"><a href="javascript:void(0);" id="topmenu_second"></a></li>
                                 <li class="time-icon"><a href="#"></a></li>
-                                <!--<li class="pen-icon"><a href="javascript:void(0);" onClick="return select_highlight();"></a></li>-->
-								<li class="pen-icon"><a href="javascript:void(0);" onClick=""></a></li>
+                                <li class="pen-icon"><a href="javascript:void(0);" onClick="return select_highlight();"></a></li>
+								<!--<li class="pen-icon"><a href="javascript:void(0);" onClick=""></a></li>-->
                                 <li class="pin-icon"><a href="#"></a></li>
                                 <li class="search-icon"><a href="#"></a></li>
 								 <li class="mail_icon"><a href="#"></a></li>
@@ -292,71 +293,6 @@
 				location.href = str;
 
             }
-
-		   
-
-            function select_highlight(){
-
-                $("#content_area").removeClass("unselectable");   
-
-                $('#content_area').mousedown(function() {
-
-                    $('#content_area').mouseup(function() {   
-
-                        if(window.getSelection) {  
-
-                            var SelText = window.getSelection();
-
-                            if(SelText != ''){
-
-                                var url = "highlighted_icon_insert.php?pageno=<?php echo $pageno; ?>&chid=<?php echo $chid; ?>&chno=<?php echo $chno; ?>&bookid=<?php echo $bookid; ?>&content="+SelText;
-
-                                var data = '';
-
-                                $.ajax({
-
-                                    url: url,
-
-                                    data: data,
-
-                                    dataType: 'json',
-
-                                    success: function() {
-
-                                        if(rsp.success) {
-
-                                            alert(rsp);
-
-                                        }
-
-                                    }
-
-                                });
-
-                                var content_ch = $('#content_area').html();
-
-                                if(content_ch != ''){
-
-                                    //var content_ch1 = content_ch.replace(/content/g, '<span class="background-yello">'+SelText+'</span>');
-
-                                    var content_ch1 = content_ch.replace(new RegExp('(' + SelText + ')', 'g'), '<span class="background-yello">'+SelText+'</span>');
-
-                                    $('#content_area').html(content_ch1); 
-
-                                }
-
-                            }
-
-                        }
-
-                    });
-
-                });
-
-            }
-
-		   
-
         </script>
 
     </body>

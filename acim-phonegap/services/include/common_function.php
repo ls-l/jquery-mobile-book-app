@@ -39,5 +39,32 @@ function CountIcon($userid,$pageno,$chid,$IconType){
       return $res[0]['tbl_icon_no'];
    }
 }
+function GetChepNo($chid,$bookid){
+  $db = db::__d();
+  $query = "SELECT tbl_ch_no FROM tbl_chapter WHERE tbl_ch_id = ".$chid." AND tbl_ch_bookid = ".$bookid;
+  $res = qs($query);
+  if(empty($res)){
+      return 0;
+   }else{
+      return $res['tbl_ch_no'];
+   }
+}
+
+function CheckHighlightPage($userid,$bookid,$chid,$chno,$pageno){
+   $db = db::__d();
+  $query = "SELECT tbl_highlighted_icon_id  
+                   FROM tbl_highlighted_icon 
+				   WHERE tbl_highlighted_icon_userid = ".$userid." 
+				     AND tbl_highlighted_icon_bookid = ".$bookid." 
+					 AND tbl_highlighted_icon_chid   = ".$chid."
+					 AND tbl_highlighted_icon_chno   = ".$chno."
+					 AND tbl_highlighted_icon_pageno = ".$pageno;
+  $res = qs($query);
+  if(empty($res)){
+      return 0;
+   }else{
+      return $res['tbl_highlighted_icon_id'];
+   }
+}
 
 ?>

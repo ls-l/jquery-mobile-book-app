@@ -7,6 +7,83 @@ $(document).ready(function(){
 	  getChapterContent();
 });
 
+function getFirstRange() {
+            var sel = rangy.getSelection();
+            return sel.rangeCount ? sel.getRangeAt(0) : null;
+ }
+
+function surroundRange() {
+            var range = getFirstRange();
+            if (range != '') {
+                var el = document.createElement("span");
+                el.style.backgroundColor = "yellow";
+                try {
+                    var all_text = range.surroundContents(el);
+					return 'yes';
+				} catch(ex) {
+                    if ((ex instanceof rangy.RangeException || Object.prototype.toString.call(ex) == "[object RangeException]") && ex.code == 1) {
+                        alert("Unable to surround range because range partially selects a non-text node. See DOM Level 2 Range spec for more information.\n\n" + ex);
+                    } else {
+                        alert("Unexpected errror: " + ex);
+                    }
+                   return 'no';
+				}
+            } else {
+				return 'no';
+			}
+        }
+
+function select_highlight(){
+                $("#content_area").removeClass("unselectable");   
+
+                $('#content_area').mousedown(function() {
+
+                    $('#content_area').mouseup(function() {   
+						var with_range_alltext = surroundRange();
+						if(with_range_alltext == 'yes'){
+						var all_content = $('#content_area').html();
+						//var all_content = "'"+all_content+"'";
+						var url = serviceURL + "highlighted_icon_insert.php"+q_string;
+                                var data = '';
+                                $.ajax({
+									type: "POST", 
+                                    url: url,
+                                    data: {
+										'content':all_content
+									},
+                                    dataType: 'json',
+                                    success: function(data) {
+										return false;
+                                    }
+                                });
+						}
+						
+						/*if(window.getSelection) {  
+                            var SelText = window.getSelection();
+                            if(SelText != ''){
+                               var url = serviceURL + "highlighted_icon_insert.php"+q_string+"&content="+SelText;
+                                var data = '';
+                                $.ajax({
+                                    url: url,
+                                    data: data,
+                                    dataType: 'json',
+                                    success: function() {
+                                        if(rsp.success) {
+                                            alert(rsp);
+                                        }
+                                    }
+                                });
+                                var content_ch = $('#content_area').html();
+                                if(content_ch != ''){
+                                    var content_ch1 = content_ch.replace(new RegExp('(' + SelText + ')', 'g'), '<span class="background-yello">'+SelText+'</span>');
+                                    $('#content_area').html(content_ch1); 
+                                }
+                            }
+                        }*/
+                    });
+                });
+            }
+
 function delete_icon(list_id,icon_id,icon_type,chid,bookid){
 	//alert(list_id+"**"+icon_id+"**"+icon_type);
 	$.ajax({

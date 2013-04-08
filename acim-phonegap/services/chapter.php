@@ -234,9 +234,17 @@ $data_last = '';
        if (count($res_count) > 0) {
          $query = "SELECT tbl_page_content FROM tbl_page where " . $where;
          $res = qs($query);
-         $query_1 = "SELECT tbl_highlighted_icon_content FROM tbl_highlighted_icon WHERE tbl_highlighted_icon_userid = " . $userid . " AND tbl_highlighted_icon_chid = " . $chid . " AND tbl_highlighted_icon_pageno = " . $pageno . " ORDER BY tbl_highlighted_icon_id ASC";
+		 $content_display = $res['tbl_page_content'];
+		 
+         $query_1 = "SELECT tbl_highlighted_icon_content 
+		               FROM tbl_highlighted_icon 
+					  WHERE tbl_highlighted_icon_userid = " . $userid . " 
+					    AND tbl_highlighted_icon_chid = " . $chid . " 
+						AND tbl_highlighted_icon_pageno = " . $pageno . " 
+						AND tbl_highlighted_icon_bookid = ".$bookid;
          $res_1 = q($query_1);
-         $content_display = $res['tbl_page_content'];
+         
+		 /*$content_display = $res['tbl_page_content'];
          if (count($res_1) > 0) {
           for ($i = 0; $i < count($res_1); $i++) {
             if ($res_1[$i]['tbl_highlighted_icon_content'] != '' and $res_1[$i]['tbl_highlighted_icon_content'] != ' ') {
@@ -245,7 +253,13 @@ $data_last = '';
          }
                                             }
                                         }
-              $data.=$content_display;
+              $data.=$content_display;*/
+			  
+		if (count($res_1) > 0) {
+		   $content_display = stripslashes($res_1[0]['tbl_highlighted_icon_content']);
+		}
+		 $data.=$content_display;
+			  
               } else {
          $data.="No Record Found.";
                                          } 
