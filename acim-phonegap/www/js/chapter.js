@@ -7,6 +7,15 @@ $(document).ready(function(){
 	  getChapterContent();
 });
 
+function ContentPopup() {
+				     //if($('#content_popup').css('display') == 'none' && $('#content_popup_big').css('display') == 'none'){
+					    $('#content_popup').show(); 
+					 //} else {
+					    //$('#content_popup').hide();
+						//$('#content_popup_big').hide();
+					 //}
+}
+
 function getFirstRange() {
             var sel = rangy.getSelection();
             return sel.rangeCount ? sel.getRangeAt(0) : null;
@@ -41,6 +50,7 @@ function select_highlight(){
                     $('#content_area').mouseup(function() {   
 						var with_range_alltext = surroundRange();
 						if(with_range_alltext == 'yes'){
+					    ContentPopup();
 						var all_content = $('#content_area').html();
 						//var all_content = "'"+all_content+"'";
 						var url = serviceURL + "highlighted_icon_insert.php"+q_string;
@@ -154,7 +164,23 @@ function getIconDivHeight() {
 
 
 function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
-				
+			
+			$("#delete_all_icon").click(function(){
+		       if (confirm("Do you want to delete all the icons of this page?")) {
+				   var data = '';	
+						$.ajax({
+							url: serviceURL + "all_icon_delete.php"+q_string,
+							data: data
+							}).done(function( result ) {
+							   if(result == 'deleted'){
+								  window.location.reload(); 
+							   } 
+					 });
+				} else {
+				   return false;	
+				}	
+			});
+			
 			var con_area_height = (($(".midd-cont").height()*75)/100);
 			$("#p_droppable").css("height", con_area_height);
 			$("#p_droppable").css("overflow", "hidden");
@@ -170,7 +196,17 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 			   if(inner_area_height > inner_top){
 			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},0);
 			   } else {
-			      alert('This is a last page');
+                    var data = '';	
+					$.ajax({
+						url: serviceURL + "nxt_pre_page.php"+q_string+"&nxtpre=1",
+						data: data
+						}).done(function( result ) {
+						   if(result == 'last'){
+							  alert('This is a last page');   
+						   } else {
+						      window.location.href = result; 
+						   } 
+						});			
 			   }
 			});
 			
@@ -186,7 +222,17 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 			   if(inner_top >= 0){
 			     $("#inner_content_area").animate({'margin-top':'-'+inner_top+'px'},0);
 			   } else {
-			      alert('This is a first page');
+			      var data = '';	
+					$.ajax({
+						url: serviceURL + "nxt_pre_page.php"+q_string+"&nxtpre=0",
+						data: data
+						}).done(function( result ) {
+						   if(result == 'first'){
+							  alert('This is a first page');   
+						   } else {
+						      window.location.href = result; 
+						   } 
+						});
 			   }
 			});
 			
@@ -237,13 +283,22 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
 			   //$("#tag_icon_small").addClass('tag-icon');
 			});
 			
+			$("#close_popup").click(function() { 
+				$('#content_popup').hide();
+				$('#content_popup_big').hide();							 
+			});
+			$("#close_popup_big").click(function() { 
+				$('#content_popup').hide();
+				$('#content_popup_big').hide();							 
+			});
+			
                 $("#content_area").click(function() { 
-				     if($('#content_popup').css('display') == 'none' && $('#content_popup_big').css('display') == 'none'){
+				     /*if($('#content_popup').css('display') == 'none' && $('#content_popup_big').css('display') == 'none'){
 					    $('#content_popup').show(); 
 					 } else {
 					    $('#content_popup').hide();
 						$('#content_popup_big').hide();
-					 }
+					 }*/
 				});
 				$("#popup_desc").click(function() { 
 					    $('#content_popup').hide();
@@ -467,6 +522,28 @@ function GetDocReady(p_pageno,p_chid,p_chno,p_bookid,p_userid){
                          */
                     });
                 });
-		  		 
-            
+		  		
+				
+				$( "a.hold" ).on( 'taphold', tapholdHandler );
+				function tapholdHandler( event ) {
+				  if (confirm("Do you want to delete this icon?")) {	
+                    var child = $(event.target);
+					var par = $(event.target).parent();
+					var data_id = child.attr('data-id');
+					var a_id = par.attr('id');
+					
+					$.ajax({
+						type: "POST",
+						url: serviceURL + 'icon_delete.php'+q_string,
+						//data: {icon_id:icon_id, icon_type:icon_type}
+						data: {data_id:data_id}
+						}).done(function( result ) {  
+						   if(result == 'deleted'){
+							 $("#"+a_id).hide();
+						   } 
+				    });	
+				  } else {
+					  return false;
+				  }
+				}
 }

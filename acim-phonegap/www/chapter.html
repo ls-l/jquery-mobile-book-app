@@ -130,9 +130,9 @@
                         <div class="top-menu" id="second_top_div" style="height:6%;margin-top:0px; display:none;">
 
                             <ul>
-                                <li class="setting-icon"><a href="#"></a></li>
+                                <li class="setting-icon"><a href="javascript:void(0);" data-ajax="false" id="setting_page"></a></li>
                                 <li class="heart-icon second_topmenu"><a href="javascript:void(0);" id="topmenu_second"></a></li>
-                                <li class="time-icon"><a href="#"></a></li>
+                                <li class="time-icon"><a href="javascript:void(0);" id="delete_all_icon"></a></li>
                                 <li class="pen-icon"><a href="javascript:void(0);" onClick="return select_highlight();"></a></li>
 								<!--<li class="pen-icon"><a href="javascript:void(0);" onClick=""></a></li>-->
                                 <li class="pin-icon"><a href="#"></a></li>
@@ -226,7 +226,7 @@
 
                 <li class="pop-icon3"><a href="#"><span></span></a></li>
 
-                <li class="pop-icon4"><a href="#"><span></span></a></li>
+                <li class="pop-icon4"><a href="javascript:void(0);" id="close_popup"><span></span></a></li>
 
                 <div class="cls"></div>
 
@@ -264,7 +264,7 @@
 
                 <li class="pop-icon3"><a href="#"><span></span><label>-let's you highlight section of text.</label><div class="cls"></div></a>
 
-                <li class="pop-icon4"><a href="#"><span></span><label>-let's you search for keywords in the text.</label><div class="cls"></div></a>
+                <li class="pop-icon4"><a href="javascript:void(0);" id="close_popup_big"><span></span><label>-let's you search for keywords in the text.</label><div class="cls"></div></a>
 
                 <li class="pop-icon5"><a href="#"><span></span><label>-let's you take notes about and part or the text.</label><div class="cls"></div></a>
 
@@ -285,13 +285,13 @@
         <script type="text/javascript" language="javascript">
 
             $(document).ready(function() {
-               
+               $("#setting_page").click(function(){
+				   window.location.href = 'setting.html';
+			   });       
 			});
 
             function redirect_page(str){
-
 				location.href = str;
-
             }
         </script>
 

@@ -124,7 +124,7 @@ $data_last = '';
 			//BOOK MARK
 			for ($i = 10; $i > $counticon; $i--) {
 			   $data.='<li  class="book-mark-icon1" style="position:relative;display:none;" id="bm-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:52px;width:26px;" data-id="'.$i.'" data-db="1"></a></li>';
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:0px;height:52px;width:26px;" data-id="'.$i.'" data-db="1"></a></li>';
 			}
 			
 			//STAR
@@ -133,7 +133,7 @@ $data_last = '';
 			 $icon_id = $i; 
 			 $icon_type = "'star'";				 
 			 $data.= '<li  class="star-listicon" style="position:relative;display:none;" id="s-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="s'.$i.'" data-db="1">';
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:0px;height:37px;width:37px;" data-id="s'.$i.'" data-db="1">';
 															/*$data.= '<span id="s-dr'.$i.'" style="position:absolute;top:0px;margin-left:2%;display:none;" onclick="return delete_icon('.$list_id.','.$icon_id.','.$icon_type.','.$chid.','.$bookid.');"><img src="../www/images/icon_delete.png"/></span>';*/
 															$data.= '</a></li>';
 			}
@@ -141,25 +141,25 @@ $data_last = '';
 			//HEART
 			for ($i = 10; $i > $counticon_heart; $i--) {
 			   $data.='<li  class="heart-listicon" style="position:relative;display:none;" id="h-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="h'.$i.'" data-db="1"></a></li>';
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:0px;height:37px;width:37px;" data-id="h'.$i.'" data-db="1"></a></li>';
 			}
 			
 			//YELLOW
 			for ($i = 10; $i > $counticon_yellow; $i--) {
 			   $data.='<li  class="yellow-listicon" style="position:relative;display:none;" id="y-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="y'.$i.'" data-db="1"></a></li>';
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:0px;height:37px;width:37px;" data-id="y'.$i.'" data-db="1"></a></li>';
 			}
 			
 			//MARK 
 			for ($i = 10; $i > $counticon_mark; $i--) {
 			   $data.='<li  class="mark-listicon" style="position:relative;display:none;" id="m-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="m'.$i.'" data-db="1"></a></li>';		
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:0px;height:37px;width:37px;" data-id="m'.$i.'" data-db="1"></a></li>';		
 			} 
 			
 			//BULB  
 		    for ($i = 10; $i > $counticon_bulb; $i--) {
 			   $data.='<li  class="bulb-listicon" style="position:relative;display:none;" id="b-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="b'.$i.'" data-db="1"></a></li>';		
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:0px;height:37px;width:37px;" data-id="b'.$i.'" data-db="1"></a></li>';		
 	        } 
 	  
 										
@@ -193,28 +193,28 @@ $data_last = '';
                                                 												
                                                     if ($res[$i]['tbl_icon_type'] == 'bookmark') {
                                                         
-                                                        $data.='<li  class="book-mark-icon1" style="position:relative;" id="bm-d'.$res[$i]['tbl_icon_no'].'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:52px;width:26px;" data-id="'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
+                                                        $data.='<li  class="book-mark-icon1" style="position:relative;">
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:52px;width:26px;" data-id="'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
                                                     } elseif ($res[$i]['tbl_icon_type'] == 'heart') { 
-                                                        $data.='<li  class="heart-listicon" style="position:relative;" id="h-d'.$res[$i]['tbl_icon_no'].'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="h'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
+                                                        $data.='<li  class="heart-listicon" style="position:relative;">
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="h'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
                                                      } elseif ($res[$i]['tbl_icon_type'] == 'star') { 
                                                         $list_id = "'s-d".$res[$i]['tbl_icon_no']."'";
 														$icon_id = $res[$i]['tbl_icon_no']; 
 														$icon_type = "'star'"; 
 														$data.='<li  class="star-listicon" style="position:relative;" id="s-d'.$res[$i]['tbl_icon_no'].'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="s'.$res[$i]['tbl_icon_no'].'" data-db="1">';
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="s'.$res[$i]['tbl_icon_no'].'" data-db="1">';
 	                                                          /*$data.='<span id="s-dr'.$res[$i]['tbl_icon_no'].'" style="position:absolute;top:0px;margin-left:2%;display:none;" onclick="return delete_icon('.$list_id.','.$icon_id.','.$icon_type.','.$chid.','.$bookid.');"><img src="../www/images/icon_delete.png"/></span>';*/
     $data.='</a></li>';
                                                     } elseif ($res[$i]['tbl_icon_type'] == 'yellow') { 
-                                                        $data.='<li  class="yellow-listicon" style="position:relative;" id="y-d'.$res[$i]['tbl_icon_no'].'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="y'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
+                                                        $data.='<li  class="yellow-listicon" style="position:relative;">
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="y'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
                                                     } elseif ($res[$i]['tbl_icon_type'] == 'mark') { 
-                                                        $data.='<li  class="mark-listicon" style="position:relative;" id="m-d'.$res[$i]['tbl_icon_no'].'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="m'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
+                                                        $data.='<li  class="mark-listicon" style="position:relative;">
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="m'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
                                                     } elseif ($res[$i]['tbl_icon_type'] == 'bulb') { 
-                                                        $data.='<li  class="bulb-listicon" style="position:relative;" id="b-d'.$res[$i]['tbl_icon_no'].'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="b'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
+                                                        $data.='<li  class="bulb-listicon" style="position:relative;">
+                                                            <a href="javascript:void(0)" class="drag" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="b'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
                                                         
                                                     }
                                                 }
@@ -232,9 +232,15 @@ $data_last = '';
                                     
        $db = db::__d();
        if (count($res_count) > 0) {
-         $query = "SELECT tbl_page_content FROM tbl_page where " . $where;
-         $res = qs($query);
-		 $content_display = $res['tbl_page_content'];
+	     $where_content = " tbl_page_chid = " . $chid . " AND tbl_page_bookid = " . $bookid;
+         $query = "SELECT tbl_page_content FROM tbl_page where " . $where_content." ORDER BY tbl_page_no ASC";
+		 $res = q($query);
+		 $content_display_loop = '';
+		 for($con=0;$con<count($res);$con++){
+		   $content_display_loop.=$res[$con]['tbl_page_content'];
+		   $content_display_loop.="<br/>";   
+		 }
+		 $content_display = $content_display_loop;
 		 
          $query_1 = "SELECT tbl_highlighted_icon_content 
 		               FROM tbl_highlighted_icon 

@@ -325,7 +325,7 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .pop-midd ul.pop-icon li.pop-icon8{height: 52px; margin-right:0}
 
 .ui-loader{display:none;}
-#bookmark_icon{padding-top:15px;}
+#bookmark_icon{padding-top:0px;}
 
 
 /*--------------------------------------------------thank-you-page----------------------------------------------------------*/
@@ -363,7 +363,14 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .feed-back span.commnet{display:block !important; background:#FFF; border:1px solid #ebebeb;   border-radius: 8px 8px 8px 8px; width:725px; height:300px;}
 .feed-back span.commnet textarea{background:none; border:none; color: #6D2E83;  font-family: 'QuicksandBook';  font-size: 33px; width:705px; height:280px; padding:10px; min-width:705px; max-width:705px; min-height:280px; max-height:280px}
 
+/*--------------------------------------------------sound-popup-page----------------------------------------------------------*/
 
+.sound-on-off{ position:absolute; right:512px;  top:593px; width: 301px;}	
+.sound-on-off .sound-midd{  width:301px; height:35px; background: url("../images/pop-midd-sound.png") no-repeat scroll 0 0 transparent; }
+.sound-on-off .pop-midd{padding:25px 20px 10px 20px; background-size:299px !important; width:260px !important}
+.sound-on-off p{color: #6D2E83;  font-family: 'QuicksandBook';  font-size: 27px; line-height:27px; margin-bottom:40px}
+.sound-on-off p span{margin-left:10px; color:#7a7a7a !important}
+.sound-on-off p span b{font-weight:bold; color: #6D2E83;}
 
 @media only screen and (min-width: 768px) and (max-width: 956px){
 
@@ -444,7 +451,8 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 
 .pop-up{width:315px; top:445px; left:132px }
 .pop-top{ height:26px; background-size:315px }
-.pop-midd {background-size:315px; height:426px }
+/*.pop-midd {background-size:315px; height:426px }*/
+.pop-midd {background-size:315px; }
 .pop-midd ul li label{font-size:16px; width:217px; line-height:18px }
 .pop-midd ul li.pop-icon1 span{ height:37px; width:43px; background-size:43px}
 .pop-midd ul li.pop-icon2 span{height:39px; width:43px;background-size:19px}
@@ -476,7 +484,7 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 #p_chname{font-size:44px; line-height:55px; text-transform:capitalize; letter-spacing:-3px;}
 
 .secd_line_icon{margin-top:10px;}
-.secd_line_icon li a{background-size: auto 40px !important;height:40px !important;width:40px !important;}
+.secd_line_icon li a{background-size: auto 31px !important;height:50px !important;width:50px !important;}
 .secd_line_icon li.icon1{margin-left:10px;}
 .secd_line_icon li.icon2{margin-left:88px;}
 .secd_line_icon li.icon3{margin-left:157px;}
@@ -523,6 +531,11 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .feed-back span.email input{font-size: 33px;  width:425px; height:45px; }
 .feed-back .comnt span{width:auto; margin-bottom:20px}
 .feed-back span.commnet textarea{ width:531px; height:280px; padding:10px; min-width:531px; max-width:531px; min-height:280px; max-height:280px}
+
+
+/*--------------------------------------------------sound-popup-page----------------------------------------------------------*/
+
+.sound-on-off{ right:237px;  top:480px; width: 301px;}	
 
 }
 
@@ -709,6 +722,13 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .feed-back span.commnet textarea{ width:331px; height:220px; padding:10px; min-width:331px; max-width:331px; min-height:220px; max-height:220px}
 
 
+
+/*--------------------------------------------------sound-popup-page----------------------------------------------------------*/
+
+.sound-on-off{ right:65px;  top:285px; width: 240px;}	
+.sound-on-off .sound-midd{background-size:240px; width:240px; height:29px}
+.sound-on-off .pop-midd{background-size:239px !important; width:199px !important}
+.sound-on-off p{font-size:20px; line-height:20px; margin-bottom:30px}
 }
 
 
@@ -835,7 +855,7 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .pop-up{width:130px; top:159px; left:48px }
 .pop-top{ height:10px; background-size:130px}
 /*.pop-midd {background-size:130px; padding:3px 5px }*/
-.pop-midd {background-size:130px; height:180px; padding:3px 5px }
+.pop-midd {background-size:130px; padding:3px 5px }
 .pop-midd ul li label{font-size:6px; width:96px; line-height:7px }
 .pop-midd ul li.pop-icon1 span{ height:15px; width:18px; background-size:15px}
 .pop-midd ul li.pop-icon2 span{height:20px; width:16px;background-size:8px}
@@ -879,7 +899,7 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 #p_chname{font-size:18px; line-height:23px; text-transform:capitalize; letter-spacing:-1px;}
 
 .secd_line_icon{margin-top:4px;}
-.secd_line_icon li a{background-size:auto 20px !important;height:20px !important;width:20px !important;}
+.secd_line_icon li a{background-size:auto 17px !important;height:20px !important;width:20px !important;}
 .secd_line_icon li.icon1{margin-left:3px;}
 .secd_line_icon li.icon2{margin-left:33px;}
 .secd_line_icon li.icon3{margin-left:58px;}
@@ -928,4 +948,10 @@ a.book-mark-icon:hover{background:url(../images/exp-tag-hover.png) no-repeat 0 0
 .feed-back span.commnet{height:138px}
 .feed-back span.commnet textarea{ width:215px; height:119px; padding:10px; min-width:215px; max-width:215px; min-height:119px; max-height:119px}
 
+/*--------------------------------------------------sound-popup-page----------------------------------------------------------*/
+
+.sound-on-off{ right:70px;  top:244px; width:170px;}	
+.sound-on-off .sound-midd{background-size:170px; width:170px; height:20px}
+.sound-on-off .pop-midd{background-size:169px !important; width:139px !important; padding: 10px 15px;}
+.sound-on-off p{font-size:13px; line-height:13px; margin-bottom:18px}
 }
