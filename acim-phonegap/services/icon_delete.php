@@ -9,7 +9,11 @@ echo "</pre>";*/
 if(isset($_REQUEST['data_id']) && $_REQUEST['data_id'] != ''){
    $str = trim($_REQUEST['data_id']); 
    $icon_char = substr($str,0,1);
-   
+   $icon_char_b = substr($str,0,2);
+   if($icon_char_b == 'bm'){
+      $icon_type = 'bookmark';
+	  $icon_no = substr($str,2); 
+   } else {
    if($icon_char == 's'){
       $icon_type = 'star';
 	  $icon_no = substr($str,1);
@@ -29,10 +33,8 @@ if(isset($_REQUEST['data_id']) && $_REQUEST['data_id'] != ''){
    elseif($icon_char == 'b'){
       $icon_type = 'bulb';
 	  $icon_no = substr($str,1);
-   } else {
-      $icon_type = 'bookmark';
-	  $icon_no = $str;
-   }
+    } 
+  }
 }
 
 $user_id = 1;

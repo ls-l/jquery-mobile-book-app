@@ -27,59 +27,62 @@ function ChechIconTopPosition($scr_h,$db_scr_h,$pos_t){
 $data = '';
 $data_last = '';
 
+$rand_number = mt_rand(10000,99999);
+
     $counticon = CountIcon($userid, $pageno, $chid, 'bookmark');
-	for ($i = 10; $i > $counticon; $i--) {
-        $data.= '<a href="javascript:void(0)" class="drag" style="position:absolute;" id="bm-l'.$i.'" data-id="'.$i.'" data-db="0"></a>';
-     }
+	
+        $data.= '<a href="javascript:void(0)" class="drag" style="position:absolute;" id="bm-l'.$rand_number.'" data-id="bm'.$rand_number.'" data-db="0"></a>';
+     
 	 $data_last.=$data."#*@@*#"; 
 	 $data = '';
 
 
      $counticon_star = CountIcon($userid, $pageno, $chid, 'star');
-	 for ($i = 10; $i > $counticon_star; $i--) {
-                                     
-     $data.= '<div style="position:relative;float:left;" id="s-l'.$i.'">
-                 <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="s'.$i.'" data-db="0"></a>
+	 
+	
+	$data.= '<div style="position:relative;float:left;" id="s-l'.$rand_number.'">
+                 <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="s'.$rand_number.'"  data-db="0"></a>
               </div>';
-	}
+	
+	
 	$data_last.=$data."#*@@*#";	
 	$data = '';
 	
 	$counticon_heart = CountIcon($userid, $pageno, $chid, 'heart');
-    for ($i = 10; $i > $counticon_heart; $i--) {
+    
                           
-    $data.= '<div style="position:relative;float:left;" id="h-l'.$i.'">
-               <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="h'.$i.'" data-db="0"></a>
+    $data.= '<div style="position:relative;float:left;" id="h-l'.$rand_number.'">
+               <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="h'.$rand_number.'" data-db="0"></a>
                                         </div>';
-     }
+     
 	 $data_last.=$data."#*@@*#";	
 	 $data = '';
 	 
 	
     $counticon_yellow = CountIcon($userid, $pageno, $chid, 'yellow');
-    for ($i = 10; $i > $counticon_yellow; $i--) {
-      $data.= '<div style="position:relative;float:left;" id="y-l'.$i.'">
-                  <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="y'.$i.'" data-db="0"></a>
+    
+      $data.= '<div style="position:relative;float:left;" id="y-l'.$rand_number.'">
+                  <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="y'.$rand_number.'" data-db="0"></a>
                                         </div>';
-     }
+     
 	 $data_last.=$data."#*@@*#";	
 	 $data = '';
 	 
 	 $counticon_mark = CountIcon($userid, $pageno, $chid, 'mark');
-      for ($i = 10; $i > $counticon_mark; $i--) {
-            $data.= '<div style="position:relative;float:left;" id="m-l'.$i.'">
-                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="m'.$i.'" data-db="0"></a>
+     
+            $data.= '<div style="position:relative;float:left;" id="m-l'.$rand_number.'">
+                                            <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="m'.$rand_number.'" data-db="0"></a>
                                         </div>';
-      } 
+       
 	  $data_last.=$data."#*@@*#";	
 	  $data = '';
 
      $counticon_bulb = CountIcon($userid, $pageno, $chid, 'bulb');
-          for ($i = 10; $i > $counticon_bulb; $i--) {
-            $data.= '<div style="position:relative;float:left;" id="b-l'.$i.'">
-                       <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="b'.$i.'" data-db="0"></a>
+          
+            $data.= '<div style="position:relative;float:left;" id="b-l'.$rand_number.'">
+                       <a href="javascript:void(0)" class="drag" style="position:absolute;" data-id="b'.$rand_number.'" data-db="0"></a>
                     </div>';
-         } 
+          
 	  $data_last.=$data."#*@@*#";	
 	  $data = '';							
       
@@ -122,45 +125,33 @@ $data_last = '';
 			##REMAINING ICON##
 			
 			//BOOK MARK
-			for ($i = 10; $i > $counticon; $i--) {
-			   $data.='<li  class="book-mark-icon1" style="position:relative;display:none;" id="bm-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:52px;width:26px;" data-id="'.$i.'" data-db="1"></a></li>';
-			}
+			   $data.='<span id="bm_below"><li  class="book-mark-icon1" style="position:relative;display:none;" id="bm-d0">
+                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:52px;width:26px;" data-id="bm0" data-db="1"></a></li></span>';
+			
 			
 			//STAR
-			for ($i = 10; $i > $counticon_star; $i--) {
-			 $list_id = "'s-d".$i."'";
-			 $icon_id = $i; 
-			 $icon_type = "'star'";				 
-			 $data.= '<li  class="star-listicon" style="position:relative;display:none;" id="s-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="s'.$i.'" data-db="1">';
-															/*$data.= '<span id="s-dr'.$i.'" style="position:absolute;top:0px;margin-left:2%;display:none;" onclick="return delete_icon('.$list_id.','.$icon_id.','.$icon_type.','.$chid.','.$bookid.');"><img src="../www/images/icon_delete.png"/></span>';*/
-															$data.= '</a></li>';
-			}
+			$data.= '<span id="s_below"><li class="star-listicon" style="position:relative;display:none;top:0px;" id="s-d0">
+                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="s0" data-db="1"></a></li></span>';
+																												
 			
 			//HEART
-			for ($i = 10; $i > $counticon_heart; $i--) {
-			   $data.='<li  class="heart-listicon" style="position:relative;display:none;" id="h-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="h'.$i.'" data-db="1"></a></li>';
-			}
+			   $data.='<span id="h_below"><li  class="heart-listicon" style="position:relative;display:none;" id="h-d0">
+                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="h0" data-db="1"></a></li></span>';
 			
 			//YELLOW
-			for ($i = 10; $i > $counticon_yellow; $i--) {
-			   $data.='<li  class="yellow-listicon" style="position:relative;display:none;" id="y-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="y'.$i.'" data-db="1"></a></li>';
-			}
+			   $data.='<span id="y_below"><li  class="yellow-listicon" style="position:relative;display:none;" id="y-d0">
+                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="y0" data-db="1"></a></li></span>';
+			
 			
 			//MARK 
-			for ($i = 10; $i > $counticon_mark; $i--) {
-			   $data.='<li  class="mark-listicon" style="position:relative;display:none;" id="m-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="m'.$i.'" data-db="1"></a></li>';		
-			} 
+			   $data.='<span id="m_below"><li  class="mark-listicon" style="position:relative;display:none;" id="m-d0">
+                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="m0" data-db="1"></a></li></span>';		
+			
 			
 			//BULB  
-		    for ($i = 10; $i > $counticon_bulb; $i--) {
-			   $data.='<li  class="bulb-listicon" style="position:relative;display:none;" id="b-d'.$i.'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="b'.$i.'" data-db="1"></a></li>';		
-	        } 
+			   $data.='<span id="b_below"><li  class="bulb-listicon" style="position:relative;display:none;" id="b-d0">
+                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:0px;height:37px;width:37px;" data-id="b0" data-db="1"></a></li></span>';		
+	       
 	  
 										
                                             
@@ -194,7 +185,7 @@ $data_last = '';
                                                     if ($res[$i]['tbl_icon_type'] == 'bookmark') {
                                                         
                                                         $data.='<li  class="book-mark-icon1" style="position:relative;" id="bm-d'.$res[$i]['tbl_icon_no'].'">
-                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:52px;width:26px;" data-id="'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
+                                                            <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:52px;width:26px;" data-id="bm'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
                                                     } elseif ($res[$i]['tbl_icon_type'] == 'heart') { 
                                                         $data.='<li  class="heart-listicon" style="position:relative;" id="h-d'.$res[$i]['tbl_icon_no'].'">
                                                             <a href="javascript:void(0)" class="drag hold" style="position:absolute;top:'.$icon_top_scr.'px;height:37px;width:37px;" data-id="h'.$res[$i]['tbl_icon_no'].'" data-db="1"></a></li>';
