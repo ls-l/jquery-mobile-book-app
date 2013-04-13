@@ -1,0 +1,67 @@
+
+  /*********************************************************************************************
+		-	SET THE SCREEN SIZES FOR THE BANNER IF YOU WISH TO MAKE THE BANNER RESOPONSIVE 	-
+  **********************************************************************************************/
+
+  /*	-	THE BANNER CONTAINER (Padding, Shadow, Border etc. )	-	*/
+
+
+.fullwidthbanner-container{
+       width:100%;
+       position:relative;
+       padding:0;
+       max-height:498px !important;
+       overflow:hidden;
+}
+
+
+.revolution_header1 {
+       color:#f2532f;
+       font-size:32px;
+       text-align:center;
+}
+
+.revolution_header2 {
+       text-align:center;
+       color:#000;
+       font-size:32px;
+       padding-bottom:20px;
+       background:url(../../images/slider-line.png) center bottom no-repeat;
+}
+
+.revolution_header3 {
+       text-align:center;
+       color:#000;
+       font-size:30px;
+       font-weight:bold;
+}
+
+.revolution_text {
+       color:#000000;
+       font-size:14px;
+       text-align:center;
+       line-height:21px;
+}
+
+.revolution-product-image {
+       border:5px solid #F2532F;
+       box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+}
+
+.revolution-product-image:hover {
+       border:5px solid #000;
+}
+
+.revolution-product-title {
+       font-size:24px;
+       font-weight:bold;
+       color:#000;
+}
+
+.revolution-product-price {
+       font-size:20px;
+       color:#f2532f;
+       font-weight:bold;
+}

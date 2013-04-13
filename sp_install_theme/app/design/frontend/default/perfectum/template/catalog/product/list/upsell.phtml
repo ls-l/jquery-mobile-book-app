@@ -1,0 +1,113 @@
+<?php if(count($this->getItemCollection()->getItems())): ?>
+<h5 class="upsell-product-h5"><?php echo $this->__('Up-sell products') ?></h5>
+<div class="box-up-sell-wrapper">
+<div class="box-collateral box-up-sell clearfix">
+    <div class="slider">
+   
+    <?php $this->resetItemsIterator() ?>
+    <?php for($_i=0;$_i<$this->getRowCount();$_i++): ?>
+        
+        <?php for($_j=0;$_j<$this->getColumnCount();$_j++): ?>
+            <?php if($_product=$this->getIterableItem()): ?>
+            
+          
+<div class="item slide"> 
+                        <?php include('view/labels.phtml')  ?>
+
+                        
+<div class="box-product-item">
+<div class="box-product-buttons">
+    <div class="buttons-compare" onclick="setLocation('<?php echo $this->getAddToCompareUrl($_product) ?>')"></div>
+    <div class="buttons-wish" onclick="setLocation('<?php echo $this->getAddToWishlistUrl($_product) ?>')"></div>
+</div>
+<div class="box-line"></div>
+<div class="view-first">
+
+<div class="view-content">
+
+<div class="image">
+<a href="<?php echo $_product->getProductUrl() ?>">
+<img alt="<?php echo $this->htmlEscape($_product->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(225,255) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>"">
+</a>
+</div>
+<div class="name">
+<?php
+
+ $shortenby = themeOptions('shorten_name');
+
+ $product_name = $this->htmlEscape($_product->getName());
+
+ mb_internal_encoding("UTF-8");
+  
+ if(strlen($product_name) > $shortenby) { $product_name = mb_substr($product_name,0,$shortenby).'...'; }
+?>
+<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $product_name ?></a>
+</div>
+
+<div class="buttons-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"></div>
+
+    
+
+<div class="price">
+    
+<?php
+ if($_product->getSpecialPrice() != ''){// has special price
+                                                   
+    echo '<span class="price-old">'.strip_tags(Mage::helper('core')->currency(Mage::helper('tax')->getPrice($_product, $_product->getPrice()), true, false)).'</span>
+    <span class="price-new">'.strip_tags(Mage::helper('core')->currency(Mage::helper('tax')->getPrice($_product, $_product->getSpecialPrice()), true, false)).'</span>';
+ }
+ else
+ {
+    echo strip_tags(Mage::helper('core')->currency(Mage::helper('tax')->getPrice($_product, $_product->getPrice()), true, false));
+    
+ }
+?>  
+    
+</div>
+
+</div>
+
+
+</div>
+</div>
+                      
+</div>
+
+            <?php else: ?>
+            
+            <?php endif; ?>
+        <?php endfor; ?>
+        
+    <?php endfor; ?>
+</div>
+
+</div>
+<div class="prev upsell-arrow"></div>
+<div class="next upsell-arrow"></div>
+</div>
+<?php if(count($this->getItemCollection()->getItems()) > 1): ?>
+        <script type="text/javascript">
+            jQuery('.upsell-arrow.prev').addClass('disabled');
+            jQuery('.box-up-sell').iosSlider({
+                desktopClickDrag: true,
+                snapToChildren: true,
+                infiniteSlider: false,
+                navNextSelector: '.upsell-arrow.next',
+                navPrevSelector: '.upsell-arrow.prev',
+      
+                onFirstSlideComplete: function(){
+                    jQuery('.upsell-arrow.prev').addClass('disabled');
+                },
+                onLastSlideComplete: function(){
+                    jQuery('.upsell-arrow.next').addClass('disabled');
+                },
+                onSlideChange: function(){
+                    jQuery('.upsell-arrow.prev').removeClass('disabled');
+                    jQuery('.upsell-arrow.next').removeClass('disabled');
+                }
+            });               
+        </script>           
+    <?php endif; ?>  
+<?php endif ?>
+
+

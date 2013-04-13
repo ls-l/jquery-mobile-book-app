@@ -1,0 +1,135 @@
+</section>
+<footer>
+<!-- custom footer -->
+<div class="custom-footer-wrapper">
+<div class="custom-footer clearfix">
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('custom_footer_block')->toHtml(); ?>
+   <?php if(themeOptions('twittername')<>'') { ?>
+    <div class="custom-footer-column">
+  <div class="line">&nbsp;</div>
+<h1><?php echo $this->__('Twitter') ?></h1>
+<div class="twitter-posts">
+  <script type="text/javascript">
+function parseTwitterDate($stamp)
+{		
+// convert to local string and remove seconds and year //		
+	var date = new Date(Date.parse($stamp)).toLocaleString().substr(0, 16);
+// get the two digit hour //
+	var hour = date.substr(-5, 2);
+// convert to AM or PM //
+	var ampm = hour<12 ? ' AM' : ' PM';
+	if (hour>12) hour-= 12;
+	if (hour==0) hour = 12;
+// return the formatted string //
+	return date.substr(0, 11)+' - ' + hour + date.substr(13) + ampm;
+}
+
+  function format_twitter(twitters) {
+var statusHTML = [];
+for (var i=0; i<twitters.length; i++){
+var username = twitters[i].user.screen_name;
+var created_at = twitters[i].created_at;
+
+var status = twitters[i].text.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function(url) {
+return '<a href="'+url+'">'+url+'</a>';
+}).replace(/\B@([_a-z0-9]+)/ig, function(reply) {
+return reply.charAt(0)+'<a href="http://twitter.com/'+reply.substring(1)+'">'+reply.substring(1)+'</a>';
+});
+statusHTML.push('<li><div class="tweet-icon"></div><div class="text">'+status+'</div><div class="created">'+parseTwitterDate(created_at)+'</div></li>');
+}
+return statusHTML.join('');
+}
+  </script>
+  <script type="text/javascript">
+jQuery(document).ready(function($){
+$.getJSON('http://api.twitter.com/1/statuses/user_timeline/<?php echo themeOptions('twittername') ?>.json?count=3&callback=?', function(tweets){
+$("#twitter_update_list").html(format_twitter(tweets));
+});
+});
+</script>
+  
+    <ul id="twitter_update_list"></ul>
+    <div class="follow-link"><a href="http://twitter.com/<?php echo themeOptions('twittername') ?>/"><?php echo $this->__('Follow us on Twitter') ?></a></div>
+</div>
+  </div>
+     <?php } ?>
+     
+
+ <?php if(themeOptions('facebookgroupid')<>'') { ?>
+<div class="custom-footer-column">
+<div class="line">&nbsp;</div>
+<h1><?php echo $this->__('Facebook') ?></h1>
+
+
+
+<div class="facebookOuter">
+ <div class="facebookInner">
+  <div class="fb-like-box" data-href="http://www.facebook.com/pages/dx/<?php echo themeOptions('facebookgroupid') ?>" data-width="235" data-height="270" data-show-faces="true" data-colorscheme="light" data-stream="false" data-border-color="#fafafa" data-header="false"></div>       
+ </div>
+</div>
+           
+<div id="fb-root"></div>
+
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+    <!-- / Facebook -->
+    <?php } ?>
+    
+  </div>
+
+
+
+</div>
+</div>
+<!-- / custom footer -->
+
+<div class="footer-container">
+    <div class="additional-footer">
+        
+    <!-- perfectum footer -->
+     <div id="footer">
+        <?php if(themeOptions('topbtn')): ?>                    
+                        <div id="message"><a href="#top" id="top-link"></a></div> 
+                    <?php endif; ?>
+   <!-- columns -->
+   <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_menu')->toHtml(); ?>
+   
+  </div>
+  </div>
+    
+    
+    
+    <!-- / perfectum footer -->
+    
+    
+    
+    
+    
+   
+</div>
+
+
+
+
+    <div class="footer-wrapper">
+    <div class="footer">
+        <?php echo $this->getChildHtml('bottomContainer') ?>
+        <div class="footer-left">
+            <?php echo $this->getChildHtml('footer_links') ?><br />
+            <?php echo $this->getCopyright() ?>&nbsp;&nbsp;
+            <!--<?php echo $this->getChildHtml('cms_footer_links') ?>-->
+        </div>
+        <div class="footer-right">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('payment_icons')->toHtml(); ?>
+        </div>
+    </div>
+    </div>
+
+</footer>

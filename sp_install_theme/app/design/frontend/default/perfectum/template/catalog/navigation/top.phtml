@@ -1,0 +1,113 @@
+<?php
+/**
+ * $this->renderCategoriesMenuHtml() supports optional arguments:
+ * int Level number for list item class to start from
+ * string Extra class of outermost list items
+ * string If specified wraps children list in div with this class
+ */
+?>
+<?php $_menu = $this->renderCategoriesMenuHtml(0,'level-top') ?>
+<?php $_menuSelect = $this->renderCategoriesSelectHtml('','level-top') ?>
+<select id="mobile-menu" onchange="window.location = jQuery(this).val();">
+<option value="<?php echo $this->getBaseUrl() ?>"><?php echo $this->__('Home') ?></option>
+<?php if ($_menuSelect) echo $_menuSelect; ?>
+</select>
+<div class="nav-container">
+    <div class="right-bg">
+        <nav>
+        <ul id="nav">
+            <li class="level0 first homelink"><a href="<?php echo $this->getBaseUrl(); ?>"><span><?php echo $this->__('Home') ?></span></a></li>
+            <?php if($_menu): ?>
+                <?php echo $_menu ?>
+            <?php endif ?>
+            <?php $additionalLink = themeOptions('additionalLink'); ?>
+            <?php $additionalLinkUrl = themeOptions('additionalLinkUrl'); ?>
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item1')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item1')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item2')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item2')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item3')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item3')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item4')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item4')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item5')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item5')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item6')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item6')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item7')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item7')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item8')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item8')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item9')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item9')->getTitle(); ?>
+            	<li class="level0 block_li parent">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?> 
+
+            <?php if ($block1 = $this->getChildHtml('custom_menu_item10')): ?>
+                <?php $block1Title = Mage::getModel('cms/block')->setStoreId(Mage::app()->getStore()->getId())->load('custom_menu_item10')->getTitle(); ?>
+            	<li class="level0 block_li parent last_block">
+                    <a class="level-top" href="#"><span><?php echo $block1Title; ?></span></a>
+                    <div class="custom_menu_item"><?php echo $block1; ?></div>
+                </li>
+    		<?php endif; ?>              
+            
+            <?php if($additionalLinkUrl && $additionalLink): ?>
+                <li class="level0 custommenuitem"><a href="<?php echo $additionalLinkUrl ?>" title="<?php echo $additionalLink ?>"><span><?php echo $additionalLink ?></span></a></li>
+            <?php endif ?> 
+                 
+        </ul>
+        </nav>    
+    </div>
+</div>

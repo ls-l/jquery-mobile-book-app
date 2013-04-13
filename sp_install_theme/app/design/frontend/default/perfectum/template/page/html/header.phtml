@@ -1,0 +1,77 @@
+
+<div id="top"></div>
+
+<div id="header_menu">
+    <?php echo $this->getChildHtml('store_language') ?><?php echo $this->getChildHtml('currency') ?><?php echo $this->getChildHtml('topLinks') ?>
+</div>
+<div class="header-container">
+    <div class="header">
+        <div class="header-left">
+            
+            <?php echo $this->getChildHtml('topBar') ?>    
+            
+            
+            
+        </div>
+        
+        <div class="header-center">
+            
+            
+            <?php if ($this->getIsHomePage()):?>
+            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+            <?php else:?>
+            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+            <?php endif?>
+            <div class="welcome-msg"><?php echo $this->getWelcome() ?></div>
+        </div>        
+        <div class="header-right">
+            
+            <div class="minicart-wrapper">
+                <div class="icon" onclick="location.href='<?php echo $this->getUrl('checkout/cart')?>'"></div>
+                <div class="minicart">
+                    
+                    <?php echo $this->getChildHtml('top_cart') ?>
+                    
+                </div>
+                
+            </div>
+            <div class="clear"></div>   
+            
+        </div>      
+    </div>
+    
+    
+    <?php echo $this->getChildHtml('topContainer'); ?>
+
+</div>
+</div> <? // class=page ?>
+
+<?php echo $this->getChildHtml('topMenu') ?>
+</header>
+<section>
+<?php
+$routeName = Mage::app()->getRequest()->getRouteName();  
+$identifier = Mage::getSingleton('cms/page')->getIdentifier();  
+   
+if($routeName == 'cms' && $identifier == 'home') {  
+?>  
+    <article>
+<?php
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('revolution_slider')->toHtml();
+?>
+    </article>
+    <article>
+<?php        
+    echo $this->getLayout()->createBlock('cms/block')->setBlockId('promo_block')->toHtml();
+?>
+    </article>        
+<?php
+} else {  
+    
+} 
+?>
+
+
+
+<div class="page">
+    <?php echo $this->getChildHtml('topBread') ?>

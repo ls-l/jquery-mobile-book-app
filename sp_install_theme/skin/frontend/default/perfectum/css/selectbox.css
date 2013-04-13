@@ -1,0 +1,96 @@
+.selectbox {
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid #f2f2f2;
+}
+.selectbox .select {
+	
+	height: 20px;
+	padding: 2px 45px 0 10px;
+	color: #686161;
+	
+	background: #fff;
+	z-index:10!important;
+	border:0px solid #fff; 
+	border-top:5px solid #fff;
+}
+.selectbox li a {
+	display:block;
+	padding: 5px 10px 6px;
+}
+.selectbox li:hover a {
+	color:#fff;
+}
+.selectbox li a:hover {
+	color:#fff;
+	text-decoration:none!important;
+}
+.selectbox .select:hover {
+	
+	border:0px solid #fff; 
+	border-top:5px solid #fff;
+	
+}
+.selectbox .select:active {
+	border:0px solid #fff; 
+	border-top:5px solid #fff;
+}
+.selectbox.focused .select {
+	border:0px solid #fff; 
+	border-top:5px solid #fff;
+}
+.selectbox .select .text {
+	display: block;
+	width: 100%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.selectbox .trigger {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 34px;
+	height: 100%;
+	border-left: none;
+	background: url("../images/select_arrow.png") center center no-repeat;
+}
+.selectbox .trigger .arrow {
+	
+}
+.selectbox:hover .arrow {
+	
+}
+.selectbox .dropdown {
+	top: 27px;
+	
+	width: 140px;
+	margin: 0;
+	padding: 0px 0;
+	background: #FFF;
+	
+	box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.15);
+}
+.selectbox li {
+	
+	color: #231F20;
+}
+.selectbox li.selected {
+	background: #f2532f;
+	color: #FFF;
+}
+.selectbox li.selected a {
+	color:#fff;
+}
+.selectbox li:hover {
+	background: #f2532f;
+	color: #FFF;
+}
+.selectbox li.disabled {
+	color: #CCC;
+}
+.selectbox li.disabled:hover {
+	background: none;
+}

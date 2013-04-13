@@ -1,0 +1,105 @@
+<?php if($this->getItems()->getSize()): ?>    
+<h5 class="related-product-h5"><?php echo $this->__('Related products') ?></h5>
+<div class="box-related-wrapper">
+<div class="box-collateral box-related clearfix">
+    <div class="slider">
+   
+  <?php $_i_related = -1; ?>
+        <?php foreach($this->getItems() as $_product): $_i_related++; ?>
+            
+            
+          
+<div class="item slide"> 
+                        <?php include('view/labels.phtml')  ?>
+
+                        
+<div class="box-product-item">
+<div class="box-product-buttons">
+    <div class="buttons-compare" onclick="setLocation('<?php echo $this->getAddToCompareUrl($_product) ?>')"></div>
+    <div class="buttons-wish" onclick="setLocation('<?php echo $this->getAddToWishlistUrl($_product) ?>')"></div>
+</div>
+<div class="box-line"></div>
+<div class="view-first">
+
+<div class="view-content">
+
+<div class="image">
+<a href="<?php echo $_product->getProductUrl() ?>">
+<img alt="<?php echo $this->htmlEscape($_product->getName()) ?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(225,255) ?>" alt="<?php echo $this->htmlEscape($_product->getName()) ?>"">
+</a>
+</div>
+<div class="name">
+<?php
+
+ $shortenby = themeOptions('shorten_name');
+
+ $product_name = $this->htmlEscape($_product->getName());
+
+ mb_internal_encoding("UTF-8");
+  
+ if(strlen($product_name) > $shortenby) { $product_name = mb_substr($product_name,0,$shortenby).'...'; }
+?>
+<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $product_name ?></a>
+</div>
+
+<div class="buttons-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"></div>
+
+    
+
+<div class="price">
+    
+<?php
+ if($_product->getSpecialPrice() != ''){// has special price
+                                                   
+    echo '<span class="price-old">'.strip_tags(Mage::helper('core')->currency(Mage::helper('tax')->getPrice($_product, $_product->getPrice()), true, false)).'</span>
+    <span class="price-new">'.strip_tags(Mage::helper('core')->currency(Mage::helper('tax')->getPrice($_product, $_product->getSpecialPrice()), true, false)).'</span>';
+ }
+ else
+ {
+    echo strip_tags(Mage::helper('core')->currency(Mage::helper('tax')->getPrice($_product, $_product->getPrice()), true, false));
+    
+ }
+?>  
+    
+</div>
+
+</div>
+
+
+</div>
+</div>
+                      
+</div>
+ <?php endforeach ?>
+</div>
+
+</div>
+<div class="prev related-arrow"></div>
+<div class="next related-arrow"></div>
+</div>
+<?php if($this->getItems()->getSize() > 1): ?>
+        <script type="text/javascript">
+            jQuery('.related-arrow.prev').addClass('disabled');
+            jQuery('.box-related').iosSlider({
+                desktopClickDrag: true,
+                snapToChildren: true,
+                infiniteSlider: false,
+                navNextSelector: '.related-arrow.next',
+                navPrevSelector: '.related-arrow.prev',
+      
+                onFirstSlideComplete: function(){
+                    jQuery('.related-arrow.prev').addClass('disabled');
+                },
+                onLastSlideComplete: function(){
+                    jQuery('.related-arrow.next').addClass('disabled');
+                },
+                onSlideChange: function(){
+                    jQuery('.related-arrow.prev').removeClass('disabled');
+                    jQuery('.related-arrow.next').removeClass('disabled');
+                }
+            });               
+        </script>           
+    <?php endif; ?>  
+<?php endif ?>
+
+
